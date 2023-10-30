@@ -9,7 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Tables</title>
+    <title>EstoqueAki</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -34,7 +35,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/products">
                 <div class="sidebar-brand-icon rotate-n-0">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-box-seam-fill" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.01-.003.268-.108a.75.75 0 0 1 .558 0l.269.108.01.003 6.97 2.789ZM10.404 2 4.25 4.461 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339L8 5.961 5.596 5l6.154-2.461L10.404 2Z"/>
@@ -48,7 +49,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/products">
                     <i class="fas fa-fw fa-solid fa-house"></i>
                     <span>Início</span></a>
             </li>
@@ -63,19 +64,19 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="entrada.html">
+                <a class="nav-link" href="/inputs">
                     <i class="fas fa-fw fa-solid fa-right-to-bracket"></i>
                     <span>Entrada</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="saida.html">
+                <a class="nav-link" href="/outputs">
                     <i class="fas fa-fw fa-solid fa-right-from-bracket"></i>
                     <span>Saída</span></a>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item active">
-                <a class="nav-link" href="fornecedor.html">
+                <a class="nav-link" href="/suppliers">
                     <i class="fas fa-fw fa-solid fa-truck"></i>
                     <span>Fornecedor</span></a>
             </li>
@@ -90,7 +91,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="/reports">
                     <i class="fas fa-fw fa-solid fa-clipboard-list"></i>
                     <span>Relatórios</span></a>
             </li>
@@ -112,35 +113,18 @@
             <!-- Main Content -->
             <div id="content">
 
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-
-                    <!-- Topbar Search -->
-                    
-
-                    <!-- Topbar Navbar -->
-                    
-
-                </nav>
-                <!-- End of Topbar -->
-
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <div class="d-sm-flex align-items-center justify-content-between mt-4 mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Fornecedores</h1>
                     </div>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-2" style="background-color: #13293D;">
-                            <h3 style="color: white;">Tabelas de fornecedores</h1>
+                            <h3 style="color: white;">Tabela de Fornecedores</h1>
                         </div>
                         <div class="card-header py-3">
                             <a href="#" class="btn btn-primary btn-icon-split">
@@ -161,9 +145,7 @@
                                             <th>Telefone</th>
                                             <th>CEP</th>
                                             <th>Endereço</th>
-                                            <th> </th>
-                                            <th> </th>
-                                            <th> </th>
+                                            <th class="" width="10%">Opções</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -174,9 +156,7 @@
                                             <th>Telefone</th>
                                             <th>CEP</th>
                                             <th>Endereço</th>
-                                            <th> </th>
-                                            <th> </th>
-                                            <th> </th>
+                                            <th class="" width="10%">Opções</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -187,29 +167,24 @@
                                             <td>(+55) 9XXXX-YYYY</td>
                                             <td>00000-000</td>
                                             <td>Av. Algum lugar, nº - Cidade - Estado</td>
-                                            <td>
-                                                <a href="#" class="btn btn-info btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-info-circle"></i>
-                                                    </span>
-                                                    <span class="text">Visualizar</span>
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <a href="#" class="btn btn-warning btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-exclamation-triangle"></i>
-                                                    </span>
-                                                    <span class="text">Editar</span>
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <a href="#" class="btn btn-danger btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-trash"></i>
-                                                    </span>
-                                                    <span class="text">Excluir</span>
-                                                </a>
+                                            <td class="text-center">
+                                                <div class="d-flex justify-content-center">
+                                                   <a href="#" class="btn btn-info btn-icon-split mx-2" data-toggle="tooltip" data-placement="top" title="Mostrar">
+                                                        <span class="icon text-white-50">
+                                                            <i class="fas fa-eye"></i>
+                                                        </span>
+                                                    </a>
+                                                    <a href="#" class="btn btn-warning btn-icon-split mx-2" data-toggle="tooltip" data-placement="top" title="Editar">
+                                                        <span class="icon text-white-50">
+                                                            <i class="fas fa-pencil"></i>
+                                                        </span>
+                                                    </a>
+                                                    <a href="#" class="btn btn-danger btn-icon-split mx-2" data-toggle="tooltip" data-placement="top" title="Excluir">
+                                                        <span class="icon text-white-50">
+                                                            <i class="fas fa-trash"></i>
+                                                        </span>
+                                                    </a>
+                                                </div>
                                             </td>
                                         </tr>
                                         <tr>
@@ -219,29 +194,24 @@
                                             <td>(+55) 9XXXX-YYYY</td>
                                             <td>00000-000</td>
                                             <td>Av. Algum lugar, nº - Cidade - Estado</td>
-                                            <td>
-                                                <a href="#" class="btn btn-info btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-info-circle"></i>
-                                                    </span>
-                                                    <span class="text">Visualizar</span>
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <a href="#" class="btn btn-warning btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-exclamation-triangle"></i>
-                                                    </span>
-                                                    <span class="text">Editar</span>
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <a href="#" class="btn btn-danger btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-trash"></i>
-                                                    </span>
-                                                    <span class="text">Excluir</span>
-                                                </a>
+                                            <td class="text-center">
+                                                <div class="d-flex justify-content-center">
+                                                   <a href="#" class="btn btn-info btn-icon-split mx-2" data-toggle="tooltip" data-placement="top" title="Mostrar">
+                                                        <span class="icon text-white-50">
+                                                            <i class="fas fa-eye"></i>
+                                                        </span>
+                                                    </a>
+                                                    <a href="#" class="btn btn-warning btn-icon-split mx-2" data-toggle="tooltip" data-placement="top" title="Editar">
+                                                        <span class="icon text-white-50">
+                                                            <i class="fas fa-pencil"></i>
+                                                        </span>
+                                                    </a>
+                                                    <a href="#" class="btn btn-danger btn-icon-split mx-2" data-toggle="tooltip" data-placement="top" title="Excluir">
+                                                        <span class="icon text-white-50">
+                                                            <i class="fas fa-trash"></i>
+                                                        </span>
+                                                    </a>
+                                                </div>
                                             </td>
                                         </tr>
                                     </tbody>
