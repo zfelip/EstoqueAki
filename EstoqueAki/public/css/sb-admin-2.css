@@ -4560,6 +4560,7 @@ input[type="button"].btn-block {
   margin-bottom: 0;
   background-color: #f8f9fc;
   border-bottom: 1px solid #e3e6f0;
+  
 }
 
 .card-header:first-child {
@@ -5787,6 +5788,7 @@ a.close.disabled {
 .modal-title {
   margin-bottom: 0;
   line-height: 1.5;
+  text-align: center;
 }
 
 .modal-body {
@@ -10763,7 +10765,6 @@ a:focus {
 
 .btn-icon-split {
   padding: 0;
-  overflow: hidden;
   display: inline-flex;
   align-items: stretch;
   justify-content: center;
