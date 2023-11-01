@@ -127,12 +127,93 @@
                             <h3 style="color: white;">Tabela de Fornecedores</h1>
                         </div>
                         <div class="card-header py-3">
-                            <a href="#" class="btn btn-primary btn-icon-split">
-                                <span class="icon text-white-45">
-                                    +
-                                </span>
-                                <span class="text">Registrar Fornecedor</span>
-                            </a>
+                           <!--botaão para acionar o modal adicionar-->
+                           <button type="submit" class="btn float-end btn-primary"
+                                style="margin-right:1rem;" data-toggle="modal"
+                                data-target="#ExemploModalCentralizado" onclick="mostrar_modal()"> + Adicionar
+                                Fornecedor
+                            </button>
+
+                            <!-- Modal Adicionar-->
+                            <div class="modal fade " id="caixa_lancamento" tabindex="-1" role="dialog"
+                                aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+                                    role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title h1 text-center" id="TituloModalCentralizado">
+                                                Adicionar Fornecedor</h5>
+                                            <button style="background-color: transparent; border:none;" type="button"
+                                                class="close" data-dismiss="modal" aria-label="Close">
+                                                <i class="fa-solid fa-xmark"></i>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container-xxl">
+                                                <div class="authentication-wrapper authentication-basic container-p-y">
+                                                    <form class="" action="{{ route('suppliers.store') }}" method="POST">
+                                                    @csrf
+                                                        <div class="row">
+                                                            <div class="col-xl">
+                                                                <div class="card-body">
+                                                                    <div class="mb-3">
+                                                                        <label class="col-form-label"
+                                                                            for="basic-default-company">Nome</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="basic-default-company"
+                                                                            placeholder="Nome" name="nome" required>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label class="col-form-label"
+                                                                            for="basic-default-company">CNPJ</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="basic-default-company"
+                                                                            placeholder="CNPJ" name="cnpj" required>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label class="col-form-label"
+                                                                            for="basic-default-company">Telefone</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="basic-default-company"
+                                                                            placeholder="Telefone" name="telefone"
+                                                                            required>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <div class="d-inline-block">
+                                                                            <label class="col-form-label"
+                                                                                for="basic-default-company">CEP</label>
+                                                                            <input type="text" class="form-control"
+                                                                                id="basic-default-company"
+                                                                                placeholder="CEP" name="cep"
+                                                                                required>
+
+                                                                        </div>
+                                                                        <div class="d-inline-block">
+                                                                            <label class="col-form-label"
+                                                                                for="basic-default-company">Endereço</label>
+                                                                            <input type="text" class="form-control"
+                                                                                id="basic-default-company"
+                                                                                placeholder="Endereço" name="endereco"
+                                                                                required>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col text-center">
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Salvar</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /modal adicionar-->
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -286,6 +367,30 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+
+        <!-- Modal script -->
+        <script>
+        function mostrar_modal() {
+            let idModal = document.getElementById('caixa_lancamento');
+            let modal_lancamento = new bootstrap.Modal(idModal);
+            modal_lancamento.show();
+        }
+        function mostrar_modal2() {
+            let idModal = document.getElementById('caixa_lancamento2');
+            let modal_lancamento = new bootstrap.Modal(idModal);
+            modal_lancamento.show();
+        }
+        function editar_modal() {
+            let idModal = document.getElementById('caixa_lancamento3');
+            let modal_lancamento = new bootstrap.Modal(idModal);
+            modal_lancamento.show();
+        }
+        function excluir_modal() {
+            let idModal = document.getElementById('caixa_lancamento4');
+            let modal_lancamento = new bootstrap.Modal(idModal);
+            modal_lancamento.show();
+        }
+    </script>
 
 </body>
 
