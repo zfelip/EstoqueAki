@@ -76,9 +76,9 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="/suppliers">
+                <a class="nav-link" href="/inputs">
                     <i class="fas fa-fw fa-solid fa-truck"></i>
-                    <span>Fornecedor</span></a>
+                    <span>Entrada</span></a>
             </li>
 
             <!-- Divider -->
@@ -142,7 +142,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title h1 text-center" id="TituloModalCentralizado">
-                                                Adicionar Fornecedor</h5>
+                                                Adicionar Entrada</h5>
                                             <button style="background-color: transparent; border:none;" type="button"
                                                 class="close" data-dismiss="modal" aria-label="Close">
                                                 <i class="fa-solid fa-xmark"></i>
@@ -151,7 +151,7 @@
                                         <div class="modal-body">
                                             <div class="container-xxl">
                                                 <div class="authentication-wrapper authentication-basic container-p-y">
-                                                    <form class="" action="{{ route('suppliers.store') }}" method="POST">
+                                                    <form class="" action="{{ route('inputs.store') }}" method="POST">
                                                     @csrf
                                                         <div class="row">
                                                             <div class="col-xl">
@@ -161,7 +161,7 @@
                                                                             for="basic-default-company">Produto</label>
                                                                         <select type="text" class="form-control"
                                                                             id="basic-default-company"
-                                                                            placeholder="Fornecedor" name="fornecedor"
+                                                                            placeholder="Entrada" name="Entrada"
                                                                             required>
                                                                                 <option>P 1</option>
                                                                                 <option>P 2</option>
@@ -225,22 +225,170 @@
                                             <td>5</td>
                                             <td>17/09/2023 15:02:23</td>
                                             <td class="text-center">
-                                                <div class="d-flex justify-content-center">
-                                                   <a href="#" class="btn btn-info btn-icon-split mx-2" data-toggle="tooltip" data-placement="top" title="Mostrar">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-eye"></i>
-                                                        </span>
-                                                    </a>
-                                                    <a href="#" class="btn btn-warning btn-icon-split mx-2" data-toggle="tooltip" data-placement="top" title="Editar">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-pencil"></i>                                                    
-                                                        </span>
-                                                    </a>
-                                                    <a href="#" class="btn btn-danger btn-icon-split mx-2" data-toggle="tooltip" data-placement="top" title="Excluir">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-trash"></i>
-                                                        </span>
-                                                    </a>
+                                            <div class="d-flex justify-content-center">
+                                                    <!--botão para acionar o modal mostrar-->
+                                                    <button type="submit" class="btn btn-info btn-icon-split mx-2"
+                                                        style="margin-right:1rem;" data-toggle="modal"
+                                                        data-target="#caixa_lancamento2" 
+                                                        title="Mostrar" onclick="mostrar_modal2()">
+                                                        <span class="icon text-white-50"><i class="fas fa-eye"></i></span>
+                                                    </button>
+
+                                                    <!-- Modal Mostrar -->
+                                                    <div class="modal fade text-center" id="caixa_lancamento2" tabindex="-1"
+                                                        role="dialog" aria-labelledby="TituloModalCentralizado"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+                                                            role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title h1 text-center"
+                                                                        id="TituloModalCentralizado">
+                                                                        Entradas</h5>
+                                                                    <button
+                                                                        style="background-color: transparent; border:none;"
+                                                                        type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close">
+                                                                        <i class="fa-solid fa-xmark" title="Fechar"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="container-xxl">
+                                                                        <div
+                                                                            class="authentication-wrapper authentication-basic container-p-y">
+                                                                            <div class="table-responsive m-3">
+                                                                                <table class="table table-borderless">
+                                                                                    <thead>
+                                                                                        <th scope="col">Nome</th>
+                                                                                        <th scope="col">Quantidade</th>
+                                                                                        <th scope="col">Data</th>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <tr class="">
+                                                                                            <td scope="row">xxxxx</td>
+                                                                                            <td scope="row">X</td>
+                                                                                            <td scope="row">DD/MM/AA</td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /modal mostrar-->
+
+                                                    <!--botão para acionar o modal editar-->
+                                                    <button type="submit" class="btn btn-warning btn-icon-split mx-2"
+                                                        style="margin-right:1rem;" data-toggle="modal"
+                                                        data-target="#caixa_lancamento3"
+                                                        title="Editar" onclick="editar_modal()">
+                                                        <span class="icon text-white-50"><i class="fas fa-pencil"></i></span>
+                                                    </button>
+
+                                                    <!-- Modal Editar-->
+                                                    <div class="modal fade " id="caixa_lancamento3" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+                                                            role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title h1 text-center"
+                                                                        id="TituloModalCentralizado">
+                                                                        Editar Entrada</h5>
+                                                                    <button
+                                                                        style="background-color: transparent; border:none;"
+                                                                        type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close">
+                                                                        <i class="fa-solid fa-xmark"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="container-xxl">
+                                                                        <div class="authentication-wrapper authentication-basic container-p-y">
+                                                                            <form class="" action="" method="POST">
+                                                                                @csrf
+                                                                                <input type="hidden" name="_method" value="PUT">    
+                                                                                <div class="row">
+                                                            <div class="col-xl">
+                                                                <div class="card-body">
+                                                                <div class="mb-3">
+                                                                        <label class="col-form-label"
+                                                                            for="basic-default-company">Produto</label>
+                                                                        <select type="text" class="form-control"
+                                                                            id="basic-default-company"
+                                                                            placeholder="Entrada" name="Entrada"
+                                                                            required>
+                                                                                <option>P 1</option>
+                                                                                <option>P 2</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label class="col-form-label"
+                                                                            for="basic-default-company">Quantidade</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="basic-default-company"
+                                                                            placeholder="Quantidade" name="quantidade"
+                                                                            required>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                                                <div class="row">
+                                                                                    <div class="col text-center">
+                                                                                        <button type="submit"
+                                                                                            class="btn btn-warning">Editar</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /modal editar -->
+
+                                                    <!--botaão para acionar o modal excluir-->
+                                                    <button type="submit" class="btn float-end btn-danger mx-2"
+                                                        style="margin-right:1rem;" data-toggle="modal"
+                                                        data-target="#caixa_lancamento4" onclick="excluir_modal()">
+                                                        <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
+                                                    </button>
+
+                                                    <!-- Modal Excluir-->
+                                                    <div class="modal fade" id="caixa_lancamento4" tabindex="-1"
+                                                        role="dialog" aria-labelledby="exampleModalLabel"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Excluir
+                                                                        Entrada</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>Tem certeza que deseja excluir essa Entrada (Entrada 1)?</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Cancelar
+                                                                    </button>
+                                                                    <form action="" method="post">
+                                                                        @csrf 
+                                                                        @method('DELETE')
+                                                                        <button type="submit" class="btn btn-danger">Excluir</button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </td>
                                         </tr>
