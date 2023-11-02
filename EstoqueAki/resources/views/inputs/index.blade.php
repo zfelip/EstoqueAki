@@ -78,7 +78,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="/inputs">
                     <i class="fas fa-fw fa-solid fa-truck"></i>
-                    <span>Entrada</span></a>
+                    <span>Fornecedor</span></a>
             </li>
 
             <!-- Divider -->
