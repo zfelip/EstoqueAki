@@ -76,9 +76,9 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="/inputs">
+                <a class="nav-link" href="/suppliers">
                     <i class="fas fa-fw fa-solid fa-truck"></i>
-                    <span>Entrada</span></a>
+                    <span>Fornecedor</span></a>
             </li>
 
             <!-- Divider -->
