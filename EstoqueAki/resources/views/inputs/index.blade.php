@@ -127,12 +127,73 @@
                             <h3 style="color: white;">Tabela de Entradas</h1>
                         </div>
                         <div class="card-header py-3">
-                            <a href="#" class="btn btn-primary btn-icon-split">
-                                <span class="icon text-white-45">
-                                    +
-                                </span>
-                                <span class="text">Adicionar entrada</span>
-                            </a>
+                            <!--botaão para acionar o modal adicionar-->
+                           <button type="submit" class="btn float-end btn-primary"
+                                style="margin-right:1rem;" data-toggle="modal"
+                                data-target="#ExemploModalCentralizado" onclick="mostrar_modal()"> + Adicionar
+                                Entrada
+                            </button>
+
+                                                        <!-- Modal Adicionar-->
+                                                        <div class="modal fade " id="caixa_lancamento" tabindex="-1" role="dialog"
+                                aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+                                    role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title h1 text-center" id="TituloModalCentralizado">
+                                                Adicionar Fornecedor</h5>
+                                            <button style="background-color: transparent; border:none;" type="button"
+                                                class="close" data-dismiss="modal" aria-label="Close">
+                                                <i class="fa-solid fa-xmark"></i>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container-xxl">
+                                                <div class="authentication-wrapper authentication-basic container-p-y">
+                                                    <form class="" action="{{ route('suppliers.store') }}" method="POST">
+                                                    @csrf
+                                                        <div class="row">
+                                                            <div class="col-xl">
+                                                                <div class="card-body">
+                                                                <div class="mb-3">
+                                                                        <label class="col-form-label"
+                                                                            for="basic-default-company">Produto</label>
+                                                                        <select type="text" class="form-control"
+                                                                            id="basic-default-company"
+                                                                            placeholder="Fornecedor" name="fornecedor"
+                                                                            required>
+                                                                                <option>P 1</option>
+                                                                                <option>P 2</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label class="col-form-label"
+                                                                            for="basic-default-company">Quantidade</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="basic-default-company"
+                                                                            placeholder="Quantidade" name="quantidade"
+                                                                            required>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col text-center">
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Salvar</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /modal adicionar-->
+
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -173,31 +234,6 @@
                                                     <a href="#" class="btn btn-warning btn-icon-split mx-2" data-toggle="tooltip" data-placement="top" title="Editar">
                                                         <span class="icon text-white-50">
                                                             <i class="fas fa-pencil"></i>                                                    
-                                                        </span>
-                                                    </a>
-                                                    <a href="#" class="btn btn-danger btn-icon-split mx-2" data-toggle="tooltip" data-placement="top" title="Excluir">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-trash"></i>
-                                                        </span>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>8585</td>
-                                            <td>Camisa</td>
-                                            <td>5</td>
-                                            <td>17/09/2023 15:02:23</td>
-                                            <td class="text-center">
-                                                <div class="d-flex justify-content-center">
-                                                   <a href="#" class="btn btn-info btn-icon-split mx-2" data-toggle="tooltip" data-placement="top" title="Mostrar">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-eye"></i>
-                                                        </span>
-                                                    </a>
-                                                    <a href="#" class="btn btn-warning btn-icon-split mx-2" data-toggle="tooltip" data-placement="top" title="Editar">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-pencil"></i>
                                                         </span>
                                                     </a>
                                                     <a href="#" class="btn btn-danger btn-icon-split mx-2" data-toggle="tooltip" data-placement="top" title="Excluir">
@@ -280,6 +316,33 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
+
+        <!-- Modal script -->
+        <script>
+        function mostrar_modal() {
+            let idModal = document.getElementById('caixa_lancamento');
+            let modal_lancamento = new bootstrap.Modal(idModal);
+            modal_lancamento.show();
+        }
+        function mostrar_modal2() {
+            let idModal = document.getElementById('caixa_lancamento2');
+            let modal_lancamento = new bootstrap.Modal(idModal);
+            modal_lancamento.show();
+        }
+        function editar_modal() {
+            let idModal = document.getElementById('caixa_lancamento3');
+            let modal_lancamento = new bootstrap.Modal(idModal);
+            modal_lancamento.show();
+        }
+        function excluir_modal() {
+            let idModal = document.getElementById('caixa_lancamento4');
+            let modal_lancamento = new bootstrap.Modal(idModal);
+            modal_lancamento.show();
+        }
+    </script>
 
 </body>
 

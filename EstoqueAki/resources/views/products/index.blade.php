@@ -233,7 +233,7 @@
                                                                             for="basic-default-company">Descrição</label>
                                                                         <input type="text" class="form-control"
                                                                             id="basic-default-company"
-                                                                            placeholder="Descrição" name="descricao" required>
+                                                                            placeholder="Descricao" name="descricao" required>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="col-form-label"
