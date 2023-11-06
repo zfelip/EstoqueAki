@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('quantidade');
             $table->float('valor', 8, 2);            
             $table->float('preco', 8, 2);
-            $table->boolean('status')->nullable(); //provavelmente será boolean (Disponível/Em falta)
+            $table->boolean('status')->nullable();
             $table->timestamps();
         });
     }

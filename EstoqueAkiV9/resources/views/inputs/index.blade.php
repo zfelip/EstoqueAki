@@ -134,8 +134,8 @@
                                 Entrada
                             </button>
 
-                                                        <!-- Modal Adicionar-->
-                                                        <div class="modal fade " id="caixa_lancamento" tabindex="-1" role="dialog"
+                            <!-- Modal Adicionar-->
+                            <div class="modal fade " id="caixa_lancamento" tabindex="-1" role="dialog"
                                 aria-labelledby="TituloModalCentralizado" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
                                     role="document">
@@ -163,8 +163,9 @@
                                                                             id="basic-default-company"
                                                                             placeholder="Entrada" name="Entrada"
                                                                             required>
-                                                                                <option>P 1</option>
-                                                                                <option>P 2</option>
+                                                                            @foreach ($products as $product)
+                                                                                <option value="{{ $product->id }}">{{ $product->nome }}</option>
+                                                                            @endforeach
                                                                         </select>
                                                                     </div>
                                                                     <div class="mb-3">
@@ -174,8 +175,7 @@
                                                                             id="basic-default-company"
                                                                             placeholder="Quantidade" name="quantidade"
                                                                             required>
-                                                                    </div>
-                                                                    
+                                                                    </div> 
                                                                 </div>
                                                             </div>
                                                         </div>

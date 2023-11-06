@@ -3,15 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\Input;
 
 class InputController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    public readonly Product $product;
+    public readonly Input $input;
+
+    public function __construct() {
+        $this->product = new Product();
+        $this->input = new Input();
+    }
+
     public function index()
     {
-        return view('inputs.index');
+        $products = $this->product->all();
+        $inputs = $this->input->all();
+
+        return view('inputs.index', ['products' => $products], ['inputs' => $inputs]);
     }
 
     /**
@@ -27,7 +40,13 @@ class InputController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->input->quantidade = $request->input('quantidade');
+        $this->input->product_id = $request->input('Entrada');
+
+        $this->input->save();
+
+        return redirect()->route('inputs.index');
+
     }
 
     /**
