@@ -127,12 +127,93 @@
                             <h3 style="color: white;">Tabela de Fornecedores</h1>
                         </div>
                         <div class="card-header py-3">
-                            <a href="#" class="btn btn-primary btn-icon-split">
-                                <span class="icon text-white-45">
-                                    +
-                                </span>
-                                <span class="text">Registrar Fornecedor</span>
-                            </a>
+                           <!--botaão para acionar o modal adicionar-->
+                           <button type="submit" class="btn float-end btn-primary"
+                                style="margin-right:1rem;" data-toggle="modal"
+                                data-target="#ExemploModalCentralizado" onclick="mostrar_modal()"> + Adicionar
+                                Fornecedor
+                            </button>
+
+                            <!-- Modal Adicionar-->
+                            <div class="modal fade " id="caixa_lancamento" tabindex="-1" role="dialog"
+                                aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+                                    role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title h1 text-center" id="TituloModalCentralizado">
+                                                Adicionar Fornecedor</h5>
+                                            <button style="background-color: transparent; border:none;" type="button"
+                                                class="close" data-dismiss="modal" aria-label="Close">
+                                                <i class="fa-solid fa-xmark"></i>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container-xxl">
+                                                <div class="authentication-wrapper authentication-basic container-p-y">
+                                                    <form class="" action="{{ route('suppliers.store') }}" method="POST">
+                                                    @csrf
+                                                        <div class="row">
+                                                            <div class="col-xl">
+                                                                <div class="card-body">
+                                                                    <div class="mb-3">
+                                                                        <label class="col-form-label"
+                                                                            for="basic-default-company">Nome</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="basic-default-company"
+                                                                            placeholder="Nome" name="nome" required>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label class="col-form-label"
+                                                                            for="basic-default-company">CNPJ</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="basic-default-company"
+                                                                            placeholder="CNPJ" name="cnpj" required>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label class="col-form-label"
+                                                                            for="basic-default-company">Telefone</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="basic-default-company"
+                                                                            placeholder="Telefone" name="telefone"
+                                                                            required>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <div class="d-inline-block">
+                                                                            <label class="col-form-label"
+                                                                                for="basic-default-company">CEP</label>
+                                                                            <input type="text" class="form-control"
+                                                                                id="basic-default-company"
+                                                                                placeholder="CEP" name="cep"
+                                                                                required>
+
+                                                                        </div>
+                                                                        <div class="d-inline-block">
+                                                                            <label class="col-form-label"
+                                                                                for="basic-default-company">Endereço</label>
+                                                                            <input type="text" class="form-control"
+                                                                                id="basic-default-company"
+                                                                                placeholder="Endereço" name="endereco"
+                                                                                required>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col text-center">
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Salvar</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /modal adicionar-->
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -161,56 +242,202 @@
                                     </tfoot>
                                     <tbody>
                                         <tr>
-                                            <td>8585</td>
-                                            <td>Loja 01</td>
-                                            <td>XX. XXX. XXX/0001-XX</td>
-                                            <td>(+55) 9XXXX-YYYY</td>
-                                            <td>00000-000</td>
+                                            <td>1</td>
+                                            <td>Fornecedor 1</td>
+                                            <td>XX.XXX.XXX/0001-XX</td>
+                                            <td>(XX) XXXXX-XXXX</td>
+                                            <td>XXXXX-XXX</td>                                          
                                             <td>Av. Algum lugar, nº - Cidade - Estado</td>
-                                            <td class="text-center">
+                                            <td>
                                                 <div class="d-flex justify-content-center">
-                                                   <a href="#" class="btn btn-info btn-icon-split mx-2" data-toggle="tooltip" data-placement="top" title="Mostrar">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-eye"></i>
-                                                        </span>
-                                                    </a>
-                                                    <a href="#" class="btn btn-warning btn-icon-split mx-2" data-toggle="tooltip" data-placement="top" title="Editar">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-pencil"></i>
-                                                        </span>
-                                                    </a>
-                                                    <a href="#" class="btn btn-danger btn-icon-split mx-2" data-toggle="tooltip" data-placement="top" title="Excluir">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-trash"></i>
-                                                        </span>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>8585</td>
-                                            <td>Loja 01</td>
-                                            <td>XX. XXX. XXX/0001-XX</td>
-                                            <td>(+55) 9XXXX-YYYY</td>
-                                            <td>00000-000</td>
-                                            <td>Av. Algum lugar, nº - Cidade - Estado</td>
-                                            <td class="text-center">
-                                                <div class="d-flex justify-content-center">
-                                                   <a href="#" class="btn btn-info btn-icon-split mx-2" data-toggle="tooltip" data-placement="top" title="Mostrar">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-eye"></i>
-                                                        </span>
-                                                    </a>
-                                                    <a href="#" class="btn btn-warning btn-icon-split mx-2" data-toggle="tooltip" data-placement="top" title="Editar">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-pencil"></i>
-                                                        </span>
-                                                    </a>
-                                                    <a href="#" class="btn btn-danger btn-icon-split mx-2" data-toggle="tooltip" data-placement="top" title="Excluir">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-trash"></i>
-                                                        </span>
-                                                    </a>
+                                                    <!--botão para acionar o modal mostrar-->
+                                                    <button type="submit" class="btn btn-info btn-icon-split mx-2"
+                                                        style="margin-right:1rem;" data-toggle="modal"
+                                                        data-target="#caixa_lancamento2" 
+                                                        title="Mostrar" onclick="mostrar_modal2()">
+                                                        <span class="icon text-white-50"><i class="fas fa-eye"></i></span>
+                                                    </button>
+
+                                                    <!-- Modal Mostrar -->
+                                                    <div class="modal fade text-center" id="caixa_lancamento2" tabindex="-1"
+                                                        role="dialog" aria-labelledby="TituloModalCentralizado"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+                                                            role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title h1 text-center"
+                                                                        id="TituloModalCentralizado">
+                                                                        Fornecedores</h5>
+                                                                    <button
+                                                                        style="background-color: transparent; border:none;"
+                                                                        type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close">
+                                                                        <i class="fa-solid fa-xmark" title="Fechar"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="container-xxl">
+                                                                        <div
+                                                                            class="authentication-wrapper authentication-basic container-p-y">
+                                                                            <div class="table-responsive m-3">
+                                                                                <table class="table table-borderless">
+                                                                                    <thead>
+                                                                                        <th scope="col">Nome</th>
+                                                                                        <th scope="col">CNPJ</th>
+                                                                                        <th scope="col">Telefone</th>
+                                                                                        <th scope="col">CEP</th>
+                                                                                        <th scope="col">Endereço</th>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        <tr class="">
+                                                                                            <td scope="row">Fornecedor 1</td>
+                                                                                            <td scope="row">XX.XXX.XXX/0001-XX</td>
+                                                                                            <td scope="row">(XX) XXXXX-XXXX</td>
+                                                                                            <td scope="row">XXXXX-XXX</td>                                            
+                                                                                            <td scope="row">Av. Algum lugar, nº - Cidade - Estado</td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /modal mostrar-->
+
+                                                    <!--botão para acionar o modal editar-->
+                                                    <button type="submit" class="btn btn-warning btn-icon-split mx-2"
+                                                        style="margin-right:1rem;" data-toggle="modal"
+                                                        data-target="#caixa_lancamento3"
+                                                        title="Editar" onclick="editar_modal()">
+                                                        <span class="icon text-white-50"><i class="fas fa-pencil"></i></span>
+                                                    </button>
+
+                                                    <!-- Modal Editar-->
+                                                    <div class="modal fade " id="caixa_lancamento3" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+                                                            role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title h1 text-center"
+                                                                        id="TituloModalCentralizado">
+                                                                        Editar Fornecedor</h5>
+                                                                    <button
+                                                                        style="background-color: transparent; border:none;"
+                                                                        type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close">
+                                                                        <i class="fa-solid fa-xmark"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="container-xxl">
+                                                                        <div class="authentication-wrapper authentication-basic container-p-y">
+                                                                            <form class="" action="" method="POST">
+                                                                                @csrf
+                                                                                <input type="hidden" name="_method" value="PUT">    
+                                                                                <div class="row">
+                                                                                    <div class="col-xl">
+                                                                                        <div class="card-body">
+                                                                                            <div class="mb-3">
+                                                                                                <label class="col-form-label"
+                                                                                                    for="basic-default-company">Nome</label>
+                                                                                                <input type="text" class="form-control"
+                                                                                                    id="basic-default-company"
+                                                                                                    placeholder="Nome" name="nome">
+                                                                                            </div>
+                                                                                            <div class="mb-3">
+                                                                                                <label class="col-form-label"
+                                                                                                    for="basic-default-company">CNPJ</label>
+                                                                                                <input type="text" class="form-control"
+                                                                                                    id="basic-default-company"
+                                                                                                    placeholder="CNPJ" name="cnpj">
+                                                                                            </div>
+                                                                                            <div class="mb-3">
+                                                                                                <label class="col-form-label"
+                                                                                                    for="basic-default-company">Telefone</label>
+                                                                                                <input type="text" class="form-control"
+                                                                                                    id="basic-default-company"
+                                                                                                    placeholder="Telefone" name="telefone"
+                                                                                                   >
+                                                                                            </div>
+                                                                                            <div class="mb-3">
+                                                                                                <div class="d-inline-block">
+                                                                                                    <label class="col-form-label"
+                                                                                                        for="basic-default-company">CEP</label>
+                                                                                                    <input type="text" class="form-control"
+                                                                                                        id="basic-default-company"
+                                                                                                        placeholder="CEP" name="cep"
+                                                                                                       >
+
+                                                                                                </div>
+                                                                                                <div class="d-inline-block">
+                                                                                                    <label class="col-form-label"
+                                                                                                        for="basic-default-company">Endereço</label>
+                                                                                                    <input type="text" class="form-control"
+                                                                                                        id="basic-default-company"
+                                                                                                        placeholder="Endereço" name="endereco"
+                                                                                                       >
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                    <div class="col text-center">
+                                                                                        <button type="submit"
+                                                                                            class="btn btn-warning">Editar</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- /modal editar -->
+
+                                                    <!--botaão para acionar o modal excluir-->
+                                                    <button type="submit" class="btn float-end btn-danger mx-2"
+                                                        style="margin-right:1rem;" data-toggle="modal"
+                                                        data-target="#caixa_lancamento4" onclick="excluir_modal()">
+                                                        <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
+                                                    </button>
+
+                                                    <!-- Modal Excluir-->
+                                                    <div class="modal fade" id="caixa_lancamento4" tabindex="-1"
+                                                        role="dialog" aria-labelledby="exampleModalLabel"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Excluir
+                                                                        Fornecedor</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <p>Tem certeza que deseja excluir esse Fornecedor (Fornecedor 1)?</p>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Cancelar
+                                                                    </button>
+                                                                    <form action="" method="post">
+                                                                        @csrf 
+                                                                        @method('DELETE')
+                                                                        <button type="submit" class="btn btn-danger">Excluir</button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </td>
                                         </tr>
@@ -286,6 +513,30 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+
+        <!-- Modal script -->
+        <script>
+        function mostrar_modal() {
+            let idModal = document.getElementById('caixa_lancamento');
+            let modal_lancamento = new bootstrap.Modal(idModal);
+            modal_lancamento.show();
+        }
+        function mostrar_modal2() {
+            let idModal = document.getElementById('caixa_lancamento2');
+            let modal_lancamento = new bootstrap.Modal(idModal);
+            modal_lancamento.show();
+        }
+        function editar_modal() {
+            let idModal = document.getElementById('caixa_lancamento3');
+            let modal_lancamento = new bootstrap.Modal(idModal);
+            modal_lancamento.show();
+        }
+        function excluir_modal() {
+            let idModal = document.getElementById('caixa_lancamento4');
+            let modal_lancamento = new bootstrap.Modal(idModal);
+            modal_lancamento.show();
+        }
+    </script>
 
 </body>
 
