@@ -118,7 +118,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mt-4 mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Estoque / saída</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Estoque / Saída</h1>
                     </div>
 
                     <!-- DataTales Example -->
@@ -131,7 +131,7 @@
                                 <span class="icon text-white-45">
                                     +
                                 </span>
-                                <span class="text">Registrar saída</span>
+                                <span class="text">Adicionar Saída</span>
                             </a>
                         </div>
                         <div class="card-body">
