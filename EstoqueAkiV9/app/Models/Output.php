@@ -13,4 +13,9 @@ class Output extends Model
         'quantidade',
         'tipo',
     ];
+
+    public function product()
+    {
+    return $this->belongsTo(Product::class, 'product_id');
+    }
 }
