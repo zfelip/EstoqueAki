@@ -10,18 +10,19 @@
     <meta name="author" content="">
 
     <title>EstoqueAki</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -62,7 +63,7 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="/inputs">
                     <i class="fas fa-fw fa-solid fa-right-to-bracket"></i>
                     <span>Entrada</span></a>
@@ -89,7 +90,7 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="/reports">
                     <i class="fas fa-fw fa-solid fa-clipboard-list"></i>
                     <span>Relatórios</span></a>
@@ -117,36 +118,58 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mt-4 mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Relatórios </h1>
+                        <h1 class="h3 mb-0 text-gray-800">Relatório de Movimentação</h1>
                     </div>
 
-                    <a href="" style="text-decoration: none;">
-                    <div class="container-fluid p-4 mb-4 rounded" style="background-color: #E8F1F2;">
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-2" style="background-color: #13293D;">
+                            <h3 style="color: white;">Tabela de Entradas</h1>
+                        </div>
+                        <div class="card-header py-3">
 
-                        <div class="d-flex">
-                            <img src="img/report_icon.svg" alt="Relatório" style="width: 100px;">
-                            <div>
-                                <h3 style="color: #13293D;" class="font-weight-bold">Relatório de Produtos</h2>
-                                <p style="color: #858796;">Todos os produtos em estoque</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Código</th>
+                                            <th>Nome</th>
+                                            <th>Tipo</th>
+                                            <th>Data e Hora</th>
+                                            <th>Quantidade</th>
+                                            <th>Valor Unitário</th>
+                                            <th>Preço Unitário</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Código</th>
+                                            <th>Nome</th>
+                                            <th>Tipo</th>
+                                            <th>Data e Hora</th>
+                                            <th>Quantidade</th>
+                                            <th>Valor Unitário</th>
+                                            <th>Preço Unitário</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Camisa</td>
+                                            <td>Vendido</td>
+                                            <td>17/09/2023 15:02:23</td>
+                                            <td>1</td>
+                                            <td>25</td>
+                                            <td>35</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-
                     </div>
-                    </a>
-
-                    <a href="reports/movements" style="text-decoration: none;">
-                        <div class="container-fluid p-4 mb-4 rounded" style="background-color: #E8F1F2;">
-
-                            <div class="d-flex">
-                                <img src="img/report_icon.svg" alt="Relatório" style="width: 100px;">
-                                <div>
-                                    <h3 style="color: #13293D;" class="font-weight-bold">Relatório de Movimentação</h2>
-                                    <p style="color: #858796;">Entradas e saídas do estoque</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </a>
 
                 </div>
                 <!-- /.container-fluid -->
@@ -199,21 +222,48 @@
     <script src="https://kit.fontawesome.com/f3dad5cee4.js" crossorigin="anonymous"></script>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+    <script src="../js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/demo/datatables-demo.js"></script>
+    <script src="../js/demo/datatables-demo.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="../js/demo/datatables-demo.js"></script>
+
+        <!-- Modal script -->
+        <script>
+        function mostrar_modal() {
+            let idModal = document.getElementById('caixa_lancamento');
+            let modal_lancamento = new bootstrap.Modal(idModal);
+            modal_lancamento.show();
+        }
+        function mostrar_modal2() {
+            let idModal = document.getElementById('caixa_lancamento2');
+            let modal_lancamento = new bootstrap.Modal(idModal);
+            modal_lancamento.show();
+        }
+        function editar_modal() {
+            let idModal = document.getElementById('caixa_lancamento3');
+            let modal_lancamento = new bootstrap.Modal(idModal);
+            modal_lancamento.show();
+        }
+        function excluir_modal() {
+            let idModal = document.getElementById('caixa_lancamento4');
+            let modal_lancamento = new bootstrap.Modal(idModal);
+            modal_lancamento.show();
+        }
+    </script>
 
 </body>
 
