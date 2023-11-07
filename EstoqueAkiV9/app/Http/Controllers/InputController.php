@@ -41,7 +41,7 @@ class InputController extends Controller
     public function store(Request $request)
     {
         $this->input->quantidade = $request->input('quantidade');
-        $this->input->product_id = $request->input('Entrada');
+        $this->input->product_id = $request->input('entrada');
 
         $this->input->save();
 

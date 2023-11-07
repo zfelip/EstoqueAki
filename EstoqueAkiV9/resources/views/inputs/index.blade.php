@@ -161,7 +161,7 @@
                                                                             for="basic-default-company">Produto</label>
                                                                         <select type="text" class="form-control"
                                                                             id="basic-default-company"
-                                                                            placeholder="Entrada" name="Entrada"
+                                                                            placeholder="Entrada" name="entrada"
                                                                             required>
                                                                             @foreach ($products as $product)
                                                                                 <option value="{{ $product->id }}">{{ $product->nome }}</option>
@@ -208,34 +208,25 @@
 
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Código</th>
-                                            <th>Nome</th>
-                                            <th>Quantidade</th>
-                                            <th>Data e Hora</th>
-                                            <th class="" width="10%">Opções</th>
-
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
+                                    @foreach ($inputs as $input)
                                         <tr>
-                                            <td>8585</td>
-                                            <td>Camisa</td>
-                                            <td>5</td>
-                                            <td>17/09/2023 15:02:23</td>
+                                            <td>{{ $input->id }}</td>
+                                            <td>{{ $input->product->nome }}</td>
+                                            <td>{{ $input->quantidade }}</td>
+                                            <td>{{ $input->created_at }}</td>
                                             <td class="text-center">
                                             <div class="d-flex justify-content-center">
                                                     <!--botão para acionar o modal mostrar-->
                                                     <button type="submit" class="btn btn-info btn-icon-split mx-2"
                                                         style="margin-right:1rem;" data-toggle="modal"
-                                                        data-target="#caixa_lancamento2" 
+                                                        data-target="#caixa_lancamento2{{ $input->id }}" 
                                                         title="Mostrar" onclick="mostrar_modal2()">
                                                         <span class="icon text-white-50"><i class="fas fa-eye"></i></span>
                                                     </button>
 
                                                     <!-- Modal Mostrar -->
-                                                    <div class="modal fade text-center" id="caixa_lancamento2" tabindex="-1"
+                                                    <div class="modal fade text-center" id="caixa_lancamento2{{ $input->id }}" tabindex="-1"
                                                         role="dialog" aria-labelledby="TituloModalCentralizado"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
@@ -260,14 +251,18 @@
                                                                                 <table class="table table-borderless">
                                                                                     <thead>
                                                                                         <th scope="col">Nome</th>
+                                                                                        <th scope="col">Descrição</th>
                                                                                         <th scope="col">Quantidade</th>
+                                                                                        <th scope="col">Preço</th>
                                                                                         <th scope="col">Data</th>
                                                                                     </thead>
                                                                                     <tbody>
                                                                                         <tr class="">
-                                                                                            <td scope="row">xxxxx</td>
-                                                                                            <td scope="row">X</td>
-                                                                                            <td scope="row">DD/MM/AA</td>
+                                                                                            <td scope="row">{{ $input->product->nome }}</td>
+                                                                                            <td scope="row">{{ $input->product->descricao }}</td>
+                                                                                            <td scope="row">{{ $input->quantidade }}</td>
+                                                                                            <td scope="row">{{ $input->product->preco }}</td>
+                                                                                            <td scope="row">{{ $input->created_at }}</td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -283,13 +278,13 @@
                                                     <!--botão para acionar o modal editar-->
                                                     <button type="submit" class="btn btn-warning btn-icon-split mx-2"
                                                         style="margin-right:1rem;" data-toggle="modal"
-                                                        data-target="#caixa_lancamento3"
+                                                        data-target="#caixa_lancamento3{{ $input->id }}"
                                                         title="Editar" onclick="editar_modal()">
                                                         <span class="icon text-white-50"><i class="fas fa-pencil"></i></span>
                                                     </button>
 
                                                     <!-- Modal Editar-->
-                                                    <div class="modal fade " id="caixa_lancamento3" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+                                                    <div class="modal fade " id="caixa_lancamento3{{ $input->id }}" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
                                                             role="document">
@@ -308,35 +303,35 @@
                                                                 <div class="modal-body">
                                                                     <div class="container-xxl">
                                                                         <div class="authentication-wrapper authentication-basic container-p-y">
-                                                                            <form class="" action="" method="POST">
+                                                                            <form class="" action="{{ route('inputs.update', ['input' => $input->id]) }}" method="POST">
                                                                                 @csrf
                                                                                 <input type="hidden" name="_method" value="PUT">    
                                                                                 <div class="row">
-                                                            <div class="col-xl">
-                                                                <div class="card-body">
-                                                                <div class="mb-3">
-                                                                        <label class="col-form-label"
-                                                                            for="basic-default-company">Produto</label>
-                                                                        <select type="text" class="form-control"
-                                                                            id="basic-default-company"
-                                                                            placeholder="Entrada" name="Entrada"
-                                                                            required>
-                                                                                <option>P 1</option>
-                                                                                <option>P 2</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="mb-3">
-                                                                        <label class="col-form-label"
-                                                                            for="basic-default-company">Quantidade</label>
-                                                                        <input type="text" class="form-control"
-                                                                            id="basic-default-company"
-                                                                            placeholder="Quantidade" name="quantidade"
-                                                                            required>
-                                                                    </div>
-                                                                    
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                                                    <div class="col-xl">
+                                                                                        <div class="card-body">
+                                                                                            <div class="mb-3">
+                                                                                                <label class="col-form-label"
+                                                                                                    for="basic-default-company">Produto</label>
+                                                                                                    <select type="text" class="form-control"
+                                                                                                        id="basic-default-company"
+                                                                                                        placeholder="Entrada" name="entrada"
+                                                                                                        required>
+                                                                                                        @foreach ($products as $product)
+                                                                                                            <option value="{{ $input->id }}">{{ $product->nome }}</option>
+                                                                                                        @endforeach
+                                                                                                    </select>
+                                                                                            </div>
+                                                                                            <div class="mb-3">
+                                                                                                <label class="col-form-label"
+                                                                                                    for="basic-default-company">Quantidade</label>
+                                                                                                <input type="text" class="form-control"
+                                                                                                    id="basic-default-company"
+                                                                                                    placeholder="{{ $input->quantidade }}" name="quantidade"
+                                                                                                    required>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
                                                                                 <div class="row">
                                                                                     <div class="col text-center">
                                                                                         <button type="submit"
@@ -392,6 +387,7 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
