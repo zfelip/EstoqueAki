@@ -12,6 +12,7 @@ class Input extends Model
 
     protected $fillable = [
         'quantidade',
+        'product_id'
     ];
 
     public function product()

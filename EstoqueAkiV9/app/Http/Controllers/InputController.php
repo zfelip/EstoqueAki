@@ -43,10 +43,17 @@ class InputController extends Controller
         $this->input->quantidade = $request->input('quantidade');
         $this->input->product_id = $request->input('entrada');
 
+        $product_id = $this->input->product_id;
+        $quantidade = $this->input->quantidade;
+
         $this->input->save();
 
-        return redirect()->route('inputs.index');
+        //atualiza a quantidade de produto ao adicionar uma entrada
+        $product = Product::find($product_id);
+        $product->quantidade += $quantidade;
+        $product->save();
 
+        return redirect()->route('inputs.index');
     }
 
     /**
@@ -68,16 +75,41 @@ class InputController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Input $input)
     {
-        //
+        $validated = $request->validate([
+            'quantidade' => 'nullable|integer|gte:0',
+        ]);
+
+        $antiga_quantidade = $input->quantidade;
+
+        $input->fill([
+            'product_id' => is_null($request->input('entrada')) ? $input->product_id : $request->input('entrada'),
+            'quantidade' => is_null($request->input('quantidade')) ? $input->quantidade : $request->input('quantidade'),
+        ]);
+
+        $product = Product::find($input->product_id);
+        $nova_quantidade = $input->quantidade;
+        $input->save();
+
+        //atualiza a quantidade de produto ao adicionar uma entrada
+        $product->quantidade -= $antiga_quantidade;
+        $product->quantidade += $nova_quantidade;
+        $product->save();
+
+        return redirect()->route('inputs.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Input $input)
     {
-        //
+        $product = Product::find($input->product_id);
+        $product->quantidade -= $input->quantidade;
+        $product->save();
+        $input->delete();
+
+        return redirect()->route('inputs.index');
     }
 }

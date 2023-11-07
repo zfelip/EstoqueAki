@@ -88,15 +88,7 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-    //     //..recupera o veículo da base de dados
-    // $product = Product::find($id);
-    // //..se encontrar o veículo, retorna a view com o objeto correspondente
-    // if ($product) {
-    //     return redirect()->route('products.show')->with('product', $product);
-    // } else {
-    //     //..senão, retorna a view com uma mensagem que será exibida.
-    //     return redirect()->route('products.index')->with('msg', 'Veículo não encontrado!');
-    // }
+        //
     }
 
     /**

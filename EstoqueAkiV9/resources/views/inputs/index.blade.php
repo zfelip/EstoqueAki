@@ -216,7 +216,7 @@
                                             <td>{{ $input->id }}</td>
                                             <td>{{ $input->product->nome }}</td>
                                             <td>{{ $input->quantidade }}</td>
-                                            <td>{{ $input->created_at }}</td>
+                                            <td>{{ $input->updated_at }}</td>
                                             <td class="text-center">
                                             <div class="d-flex justify-content-center">
                                                     <!--botão para acionar o modal mostrar-->
@@ -253,6 +253,7 @@
                                                                                 <table class="table table-borderless">
                                                                                     <thead>
                                                                                         <th scope="col">Nome</th>
+                                                                                        <th scope="col">Id do Produto</th>
                                                                                         <th scope="col">Descrição</th>
                                                                                         <th scope="col">Quantidade</th>
                                                                                         <th scope="col">Preço</th>
@@ -261,10 +262,11 @@
                                                                                     <tbody>
                                                                                         <tr class="">
                                                                                             <td scope="row">{{ $input->product->nome }}</td>
+                                                                                            <td scope="row">{{ $input->product_id }}</td>
                                                                                             <td scope="row">{{ $input->product->descricao }}</td>
                                                                                             <td scope="row">{{ $input->quantidade }}</td>
                                                                                             <td scope="row">{{ $input->product->preco }}</td>
-                                                                                            <td scope="row">{{ $input->created_at }}</td>
+                                                                                            <td scope="row">{{ $input->updated_at }}</td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -313,13 +315,15 @@
                                                                                         <div class="card-body">
                                                                                             <div class="mb-3">
                                                                                                 <label class="col-form-label"
-                                                                                                    for="basic-default-company">Produto</label>
+                                                                                                        for="basic-default-company">Produto</label>
                                                                                                     <select type="text" class="form-control"
                                                                                                         id="basic-default-company"
                                                                                                         placeholder="Entrada" name="entrada"
                                                                                                         required>
                                                                                                         @foreach ($products as $product)
-                                                                                                            <option value="{{ $input->id }}">{{ $product->nome }}</option>
+                                                                                                            <option value="{{ $product->id }}" 
+                                                                                                            {{ $input->product->id === $product->id ? 'selected' : '' }}>
+                                                                                                            {{ $product->nome }}</option>
                                                                                                         @endforeach
                                                                                                     </select>
                                                                                             </div>
@@ -328,8 +332,7 @@
                                                                                                     for="basic-default-company">Quantidade</label>
                                                                                                 <input type="text" class="form-control"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{ $input->quantidade }}" name="quantidade"
-                                                                                                    required>
+                                                                                                    placeholder="{{ $input->quantidade }}" name="quantidade">
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -352,12 +355,12 @@
                                                     <!--botaão para acionar o modal excluir-->
                                                     <button type="submit" class="btn float-end btn-danger mx-2"
                                                         style="margin-right:1rem;" data-toggle="modal"
-                                                        data-target="#caixa_lancamento4" onclick="excluir_modal()">
+                                                        data-target="#caixa_lancamento4{{ $input->id }}" onclick="excluir_modal()">
                                                         <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
                                                     </button>
 
                                                     <!-- Modal Excluir-->
-                                                    <div class="modal fade" id="caixa_lancamento4" tabindex="-1"
+                                                    <div class="modal fade" id="caixa_lancamento4{{ $input->id }}" tabindex="-1"
                                                         role="dialog" aria-labelledby="exampleModalLabel"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
@@ -371,13 +374,13 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <p>Tem certeza que deseja excluir essa Entrada (Entrada 1)?</p>
+                                                                    <p>Tem certeza que deseja excluir essa Entrada ({{ $input->product->nome }})?</p>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-dismiss="modal">Cancelar
                                                                     </button>
-                                                                    <form action="" method="post">
+                                                                    <form action="{{ route('inputs.destroy', ['input' => $input->id]) }}" method="post">
                                                                         @csrf 
                                                                         @method('DELETE')
                                                                         <button type="submit" class="btn btn-danger">Excluir</button>
