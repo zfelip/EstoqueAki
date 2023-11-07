@@ -120,7 +120,7 @@
                         <h1 class="h3 mb-0 text-gray-800">Relatórios </h1>
                     </div>
 
-                    <a href="" style="text-decoration: none;">
+                    <a href="/reports/products" style="text-decoration: none;">
                     <div class="container-fluid p-4 mb-4 rounded" style="background-color: #E8F1F2;">
 
                         <div class="d-flex">
