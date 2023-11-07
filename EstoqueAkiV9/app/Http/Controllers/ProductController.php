@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
-    public readonly Product $product;
+    public Product $product;
 
     public function __construct() {
         $this->product = new Product();

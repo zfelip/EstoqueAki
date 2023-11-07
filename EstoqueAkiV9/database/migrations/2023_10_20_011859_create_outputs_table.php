@@ -13,9 +13,15 @@ return new class extends Migration
     {
         Schema::create('outputs', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('product_id'); // Chave estrangeira
             $table->integer('quantidade');
-            $table->string('tipo'); //provavelmente será boolean (Descarte/Vendido)
+            $table->string('tipo'); //provavelmente será boolean (Descarte/Vendido) ou não, pode ter usado
             $table->timestamps();
+            
+            $table->foreign('product_id')
+            ->references('id')
+            ->on('products')
+            ->onDelete('cascade');
         });
     }
 

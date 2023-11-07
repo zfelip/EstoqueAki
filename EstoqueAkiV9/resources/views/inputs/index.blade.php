@@ -126,6 +126,7 @@
                         <div class="card-header py-2" style="background-color: #13293D;">
                             <h3 style="color: white;">Tabela de Entradas</h1>
                         </div>
+                        
                         <div class="card-header py-3">
                             <!--botaão para acionar o modal adicionar-->
                            <button type="submit" class="btn float-end btn-primary"
@@ -195,6 +196,7 @@
                             <!-- /modal adicionar-->
 
                         </div>
+
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

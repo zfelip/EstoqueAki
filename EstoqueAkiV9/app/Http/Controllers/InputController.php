@@ -11,8 +11,8 @@ class InputController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public readonly Product $product;
-    public readonly Input $input;
+    public Product $product;
+    public Input $input;
 
     public function __construct() {
         $this->product = new Product();
