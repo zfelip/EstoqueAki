@@ -50,8 +50,8 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
                 <a class="nav-link" href="/products">
-                    <i class="fas fa-fw fa-solid fa-house"></i>
-                    <span>Início</span></a>
+                    <i class="fas fa-fw fa-solid fa-box"></i>
+                    <span>Produtos</span></a>
             </li>
 
             <!-- Divider -->
