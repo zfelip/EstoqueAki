@@ -49,8 +49,8 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="/products">
-                    <i class="fas fa-fw fa-solid fa-house"></i>
-                    <span>Início</span></a>
+                    <i class="fas fa-fw fa-solid fa-box"></i>
+                    <span>Produtos</span></a>
             </li>
 
             <!-- Divider -->
@@ -117,7 +117,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mt-4 mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Início</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Produtos</h1>
                     </div>
                         <div class="row">
                             <!-- Earnings (Monthly) Card Example -->
