@@ -196,6 +196,14 @@
                                                                                 placeholder="Endereço" name="endereco"
                                                                                 required>
                                                                         </div>
+
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <label class="col-form-label"
+                                                                            for="basic-default-company">Observação</label>
+                                                                        <input type="text" class="form-control"
+                                                                            id="basic-default-company"
+                                                                            placeholder="observacoes" name="observacoes" required>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -224,8 +232,6 @@
                                             <th>Nome</th>
                                             <th>CNPJ</th>
                                             <th>Telefone</th>
-                                            <th>CEP</th>
-                                            <th>Endereço</th>
                                             <th class="" width="10%">Opções</th>
                                         </tr>
                                     </thead>
@@ -235,31 +241,31 @@
                                             <th>Nome</th>
                                             <th>CNPJ</th>
                                             <th>Telefone</th>
-                                            <th>CEP</th>
-                                            <th>Endereço</th>
+
                                             <th class="" width="10%">Opções</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                    @foreach ($suppliers as $supplier)
                                         <tr>
-                                            <td>1</td>
-                                            <td>Fornecedor 1</td>
-                                            <td>XX.XXX.XXX/0001-XX</td>
-                                            <td>(XX) XXXXX-XXXX</td>
-                                            <td>XXXXX-XXX</td>                                          
-                                            <td>Av. Algum lugar, nº - Cidade - Estado</td>
+
+                                            <td>{{ $supplier->id }}</td>
+                                            <td>{{ $supplier->nome }}</td>
+                                            <td>{{ $supplier->cnpj }}</td>
+                                            <td>{{ $supplier->telefone }}</td>
+
                                             <td>
                                                 <div class="d-flex justify-content-center">
                                                     <!--botão para acionar o modal mostrar-->
                                                     <button type="submit" class="btn btn-info btn-icon-split mx-2"
                                                         style="margin-right:1rem;" data-toggle="modal"
-                                                        data-target="#caixa_lancamento2" 
+                                                        data-target="#caixa_lancamento2{{ $supplier->id }}"
                                                         title="Mostrar" onclick="mostrar_modal2()">
                                                         <span class="icon text-white-50"><i class="fas fa-eye"></i></span>
                                                     </button>
 
                                                     <!-- Modal Mostrar -->
-                                                    <div class="modal fade text-center" id="caixa_lancamento2" tabindex="-1"
+                                                    <div class="modal fade text-center" id="caixa_lancamento2{{ $supplier->id }}" tabindex="-1"
                                                         role="dialog" aria-labelledby="TituloModalCentralizado"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
@@ -283,19 +289,17 @@
                                                                             <div class="table-responsive m-3">
                                                                                 <table class="table table-borderless">
                                                                                     <thead>
+                                                                                    <th scope="col">Código</th>
                                                                                         <th scope="col">Nome</th>
                                                                                         <th scope="col">CNPJ</th>
                                                                                         <th scope="col">Telefone</th>
-                                                                                        <th scope="col">CEP</th>
-                                                                                        <th scope="col">Endereço</th>
                                                                                     </thead>
                                                                                     <tbody>
                                                                                         <tr class="">
-                                                                                            <td scope="row">Fornecedor 1</td>
-                                                                                            <td scope="row">XX.XXX.XXX/0001-XX</td>
-                                                                                            <td scope="row">(XX) XXXXX-XXXX</td>
-                                                                                            <td scope="row">XXXXX-XXX</td>                                            
-                                                                                            <td scope="row">Av. Algum lugar, nº - Cidade - Estado</td>
+                                                                                        <td>{{ $supplier->id }}</td>
+                                                                                        <td>{{ $supplier->nome }}</td>
+                                                                                        <td>{{ $supplier->cnpj }}</td>
+                                                                                        <td>{{ $supplier->telefone }}</td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -311,13 +315,13 @@
                                                     <!--botão para acionar o modal editar-->
                                                     <button type="submit" class="btn btn-warning btn-icon-split mx-2"
                                                         style="margin-right:1rem;" data-toggle="modal"
-                                                        data-target="#caixa_lancamento3"
+                                                        data-target="#caixa_lancamento3{{ $supplier->id }}"
                                                         title="Editar" onclick="editar_modal()">
                                                         <span class="icon text-white-50"><i class="fas fa-pencil"></i></span>
                                                     </button>
 
                                                     <!-- Modal Editar-->
-                                                    <div class="modal fade " id="caixa_lancamento3" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+                                                    <div class="modal fade " id="caixa_lancamento3{{ $supplier->id }}" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
                                                             role="document">
@@ -336,9 +340,9 @@
                                                                 <div class="modal-body">
                                                                     <div class="container-xxl">
                                                                         <div class="authentication-wrapper authentication-basic container-p-y">
-                                                                            <form class="" action="" method="POST">
+                                                                            <form class="" action="{{ route('suppliers.update', ['supplier' => $supplier->id]) }}" method="POST">
                                                                                 @csrf
-                                                                                <input type="hidden" name="_method" value="PUT">    
+                                                                                <input type="hidden" name="_method" value="PUT">
                                                                                 <div class="row">
                                                                                     <div class="col-xl">
                                                                                         <div class="card-body">
@@ -347,42 +351,24 @@
                                                                                                     for="basic-default-company">Nome</label>
                                                                                                 <input type="text" class="form-control"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="Nome" name="nome">
+                                                                                                    placeholder="{{$supplier->nome}}" name="nome">
                                                                                             </div>
                                                                                             <div class="mb-3">
                                                                                                 <label class="col-form-label"
                                                                                                     for="basic-default-company">CNPJ</label>
                                                                                                 <input type="text" class="form-control"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="CNPJ" name="cnpj">
+                                                                                                    placeholder="{{$supplier->cnpj}}" name="cnpj">
                                                                                             </div>
                                                                                             <div class="mb-3">
                                                                                                 <label class="col-form-label"
                                                                                                     for="basic-default-company">Telefone</label>
                                                                                                 <input type="text" class="form-control"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="Telefone" name="telefone"
+                                                                                                    placeholder="{{$supplier->telefone}}" name="telefone"
                                                                                                    >
                                                                                             </div>
-                                                                                            <div class="mb-3">
-                                                                                                <div class="d-inline-block">
-                                                                                                    <label class="col-form-label"
-                                                                                                        for="basic-default-company">CEP</label>
-                                                                                                    <input type="text" class="form-control"
-                                                                                                        id="basic-default-company"
-                                                                                                        placeholder="CEP" name="cep"
-                                                                                                       >
 
-                                                                                                </div>
-                                                                                                <div class="d-inline-block">
-                                                                                                    <label class="col-form-label"
-                                                                                                        for="basic-default-company">Endereço</label>
-                                                                                                    <input type="text" class="form-control"
-                                                                                                        id="basic-default-company"
-                                                                                                        placeholder="Endereço" name="endereco"
-                                                                                                       >
-                                                                                                </div>
-                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
@@ -404,12 +390,12 @@
                                                     <!--botaão para acionar o modal excluir-->
                                                     <button type="submit" class="btn float-end btn-danger mx-2"
                                                         style="margin-right:1rem;" data-toggle="modal"
-                                                        data-target="#caixa_lancamento4" onclick="excluir_modal()">
+                                                        data-target="#caixa_lancamento4{{ $supplier->id }}" onclick="excluir_modal()">
                                                         <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
                                                     </button>
 
                                                     <!-- Modal Excluir-->
-                                                    <div class="modal fade" id="caixa_lancamento4" tabindex="-1"
+                                                    <div class="modal fade" id="caixa_lancamento4{{ $supplier->id }}" tabindex="-1"
                                                         role="dialog" aria-labelledby="exampleModalLabel"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
@@ -423,14 +409,14 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <p>Tem certeza que deseja excluir esse Fornecedor (Fornecedor 1)?</p>
+                                                                    <p>Tem certeza que deseja excluir esse Fornecedor ({{$supplier->nome}})?</p>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-dismiss="modal">Cancelar
                                                                     </button>
-                                                                    <form action="" method="post">
-                                                                        @csrf 
+                                                                    <form action="{{ route('suppliers.destroy', ['supplier' => $supplier->id]) }}" method="post">
+                                                                        @csrf
                                                                         @method('DELETE')
                                                                         <button type="submit" class="btn btn-danger">Excluir</button>
                                                                     </form>
@@ -441,6 +427,7 @@
                                                 </div>
                                             </td>
                                         </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
