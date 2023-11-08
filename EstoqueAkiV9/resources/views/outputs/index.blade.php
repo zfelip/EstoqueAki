@@ -236,13 +236,9 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                    @foreach ($outputs as $output)
-                                        <tr>
-
-
+                                    @foreach ($outputs as $output)                                        
+                                        <tr>   
                                             <td>{{ $output->product->nome }}</td>
-
-
                                             <td>{{ $output->quantidade}}</td>
                                             <td>{{ $output->created_at}}</td>
                                             <td>{{ $output->tipo}}</td>
@@ -252,13 +248,13 @@
                                                     <!--botão para acionar o modal mostrar-->
                                                     <button type="submit" class="btn btn-info btn-icon-split mx-2"
                                                         style="margin-right:1rem;" data-toggle="modal"
-                                                        data-target="#caixa_lancamento2{{ $product->id }}"
+                                                        data-target="#caixa_lancamento2{{ $output->id }}" 
                                                         title="Mostrar" onclick="mostrar_modal2()">
                                                         <span class="icon text-white-50"><i class="fas fa-eye"></i></span>
                                                     </button>
 
                                                     <!-- Modal Mostrar -->
-                                                    <div class="modal fade text-center" id="caixa_lancamento2{{ $product->id }}" tabindex="-1"
+                                                    <div class="modal fade text-center" id="caixa_lancamento2{{ $output->id }}" tabindex="-1"
                                                         role="dialog" aria-labelledby="TituloModalCentralizado"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
@@ -289,7 +285,7 @@
                                                                                     </thead>
                                                                                     <tbody>
                                                                                         <tr class="">
-                                                                                            <td scope="row">{{ $product->nome }}</td>
+                                                                                            <td scope="row">{{ $output->product->nome }}</td>
                                                                                             <td scope="row">{{ $output->quantidade }}</td>
                                                                                             <td scope="row">{{ $output->created_at }}</td>
                                                                                             <td scope="row">{{ $output->tipo }}</td>
