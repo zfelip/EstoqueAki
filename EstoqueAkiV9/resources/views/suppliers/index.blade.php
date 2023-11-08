@@ -37,9 +37,11 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/products">
                 <div class="sidebar-brand-icon rotate-n-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-box-seam-fill" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.01-.003.268-.108a.75.75 0 0 1 .558 0l.269.108.01.003 6.97 2.789ZM10.404 2 4.25 4.461 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339L8 5.961 5.596 5l6.154-2.461L10.404 2Z"/>
-                      </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-box-seam-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.01-.003.268-.108a.75.75 0 0 1 .558 0l.269.108.01.003 6.97 2.789ZM10.404 2 4.25 4.461 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339L8 5.961 5.596 5l6.154-2.461L10.404 2Z" />
+                    </svg>
                 </div>
                 <div class="sidebar-brand-text mx-3">EstoqueAki</div>
             </a>
@@ -127,10 +129,10 @@
                             <h3 style="color: white;">Tabela de Fornecedores</h1>
                         </div>
                         <div class="card-header py-3">
-                           <!--botaão para acionar o modal adicionar-->
-                           <button type="submit" class="btn float-end btn-primary"
-                                style="margin-right:1rem;" data-toggle="modal"
-                                data-target="#ExemploModalCentralizado" onclick="mostrar_modal()"> + Adicionar
+                            <!--botaão para acionar o modal adicionar-->
+                            <button type="submit" class="btn float-end btn-primary" style="margin-right:1rem;"
+                                data-toggle="modal" data-target="#ExemploModalCentralizado" onclick="mostrar_modal()"> +
+                                Adicionar
                                 Fornecedor
                             </button>
 
@@ -151,8 +153,9 @@
                                         <div class="modal-body">
                                             <div class="container-xxl">
                                                 <div class="authentication-wrapper authentication-basic container-p-y">
-                                                    <form class="" action="{{ route('suppliers.store') }}" method="POST">
-                                                    @csrf
+                                                    <form class="" action="{{ route('suppliers.store') }}"
+                                                        method="POST">
+                                                        @csrf
                                                         <div class="row">
                                                             <div class="col-xl">
                                                                 <div class="card-body">
@@ -162,6 +165,10 @@
                                                                         <input type="text" class="form-control"
                                                                             id="basic-default-company"
                                                                             placeholder="Nome" name="nome" required>
+                                                                        @error('nome')
+                                                                        <div class="alert alert-danger">{{ $message }}
+                                                                        </div>
+                                                                        @enderror
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="col-form-label"
@@ -169,6 +176,10 @@
                                                                         <input type="text" class="form-control"
                                                                             id="basic-default-company"
                                                                             placeholder="CNPJ" name="cnpj" required>
+                                                                        @error('cnpj')
+                                                                        <div class="alert alert-danger">{{ $message }}
+                                                                        </div>
+                                                                        @enderror
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="col-form-label"
@@ -177,9 +188,13 @@
                                                                             id="basic-default-company"
                                                                             placeholder="Telefone" name="telefone"
                                                                             required>
+                                                                        @error('telefone')
+                                                                        <div class="alert alert-danger">{{ $message }}
+                                                                        </div>
+                                                                        @enderror
                                                                     </div>
-                                                                    
-                                                                 
+
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -221,7 +236,7 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                    @foreach ($suppliers as $supplier)
+                                        @foreach ($suppliers as $supplier)
                                         <tr>
 
                                             <td>{{ $supplier->id }}</td>
@@ -236,11 +251,13 @@
                                                         style="margin-right:1rem;" data-toggle="modal"
                                                         data-target="#caixa_lancamento2{{ $supplier->id }}"
                                                         title="Mostrar" onclick="mostrar_modal2()">
-                                                        <span class="icon text-white-50"><i class="fas fa-eye"></i></span>
+                                                        <span class="icon text-white-50"><i
+                                                                class="fas fa-eye"></i></span>
                                                     </button>
 
                                                     <!-- Modal Mostrar -->
-                                                    <div class="modal fade text-center" id="caixa_lancamento2{{ $supplier->id }}" tabindex="-1"
+                                                    <div class="modal fade text-center"
+                                                        id="caixa_lancamento2{{ $supplier->id }}" tabindex="-1"
                                                         role="dialog" aria-labelledby="TituloModalCentralizado"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
@@ -264,17 +281,20 @@
                                                                             <div class="table-responsive m-3">
                                                                                 <table class="table table-borderless">
                                                                                     <thead>
-                                                                                    <th scope="col">Código</th>
+                                                                                        <th scope="col">Código</th>
                                                                                         <th scope="col">Nome</th>
                                                                                         <th scope="col">CNPJ</th>
                                                                                         <th scope="col">Telefone</th>
                                                                                     </thead>
                                                                                     <tbody>
                                                                                         <tr class="">
-                                                                                        <td>{{ $supplier->id }}</td>
-                                                                                        <td>{{ $supplier->nome }}</td>
-                                                                                        <td>{{ $supplier->cnpj }}</td>
-                                                                                        <td>{{ $supplier->telefone }}</td>
+                                                                                            <td>{{ $supplier->id }}</td>
+                                                                                            <td>{{ $supplier->nome }}
+                                                                                            </td>
+                                                                                            <td>{{ $supplier->cnpj }}
+                                                                                            </td>
+                                                                                            <td>{{ $supplier->telefone }}
+                                                                                            </td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -292,12 +312,14 @@
                                                         style="margin-right:1rem;" data-toggle="modal"
                                                         data-target="#caixa_lancamento3{{ $supplier->id }}"
                                                         title="Editar" onclick="editar_modal()">
-                                                        <span class="icon text-white-50"><i class="fas fa-pencil"></i></span>
+                                                        <span class="icon text-white-50"><i
+                                                                class="fas fa-pencil"></i></span>
                                                     </button>
 
                                                     <!-- Modal Editar-->
-                                                    <div class="modal fade " id="caixa_lancamento3{{ $supplier->id }}" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
-                                                        aria-hidden="true">
+                                                    <div class="modal fade " id="caixa_lancamento3{{ $supplier->id }}"
+                                                        tabindex="-1" role="dialog"
+                                                        aria-labelledby="TituloModalCentralizado" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
                                                             role="document">
                                                             <div class="modal-content">
@@ -314,34 +336,58 @@
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <div class="container-xxl">
-                                                                        <div class="authentication-wrapper authentication-basic container-p-y">
-                                                                            <form class="" action="{{ route('suppliers.update', ['supplier' => $supplier->id]) }}" method="POST">
+                                                                        <div
+                                                                            class="authentication-wrapper authentication-basic container-p-y">
+                                                                            <form class=""
+                                                                                action="{{ route('suppliers.update', ['supplier' => $supplier->id]) }}"
+                                                                                method="POST">
                                                                                 @csrf
-                                                                                <input type="hidden" name="_method" value="PUT">
+                                                                                <input type="hidden" name="_method"
+                                                                                    value="PUT">
                                                                                 <div class="row">
                                                                                     <div class="col-xl">
                                                                                         <div class="card-body">
                                                                                             <div class="mb-3">
-                                                                                                <label class="col-form-label"
+                                                                                                <label
+                                                                                                    class="col-form-label"
                                                                                                     for="basic-default-company">Nome</label>
-                                                                                                <input type="text" class="form-control"
+                                                                                                <input type="text"
+                                                                                                    class="form-control"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{$supplier->nome}}" name="nome">
+                                                                                                    placeholder="{{$supplier->nome}}"
+                                                                                                    name="nome">
+                                                                                                    @error('nome')
+                                                                        <div class="alert alert-danger">{{ $message}}
+                                                                        </div>
+                                                                        @enderror
                                                                                             </div>
                                                                                             <div class="mb-3">
-                                                                                                <label class="col-form-label"
+                                                                                                <label
+                                                                                                    class="col-form-label"
                                                                                                     for="basic-default-company">CNPJ</label>
-                                                                                                <input type="text" class="form-control"
+                                                                                                <input type="text"
+                                                                                                    class="form-control"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{$supplier->cnpj}}" name="cnpj">
+                                                                                                    placeholder="{{$supplier->cnpj}}"
+                                                                                                    name="cnpj">
+                                                                                                    @error('cnpj')
+                                                                        <div class="alert alert-danger">{{ $message }}
+                                                                        </div>
+                                                                        @enderror
                                                                                             </div>
                                                                                             <div class="mb-3">
-                                                                                                <label class="col-form-label"
+                                                                                                <label
+                                                                                                    class="col-form-label"
                                                                                                     for="basic-default-company">Telefone</label>
-                                                                                                <input type="text" class="form-control"
+                                                                                                <input type="text"
+                                                                                                    class="form-control"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{$supplier->telefone}}" name="telefone"
-                                                                                                   >
+                                                                                                    placeholder="{{$supplier->telefone}}"
+                                                                                                    name="telefone">
+                                                                                                    @error('telefone')
+                                                                        <div class="alert alert-danger">{{ $message }}
+                                                                        </div>
+                                                                        @enderror
                                                                                             </div>
 
                                                                                         </div>
@@ -365,35 +411,42 @@
                                                     <!--botaão para acionar o modal excluir-->
                                                     <button type="submit" class="btn float-end btn-danger mx-2"
                                                         style="margin-right:1rem;" data-toggle="modal"
-                                                        data-target="#caixa_lancamento4{{ $supplier->id }}" onclick="excluir_modal()">
-                                                        <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
+                                                        data-target="#caixa_lancamento4{{ $supplier->id }}"
+                                                        onclick="excluir_modal()">
+                                                        <span class="icon text-white-50"><i
+                                                                class="fas fa-trash"></i></span>
                                                     </button>
 
                                                     <!-- Modal Excluir-->
-                                                    <div class="modal fade" id="caixa_lancamento4{{ $supplier->id }}" tabindex="-1"
-                                                        role="dialog" aria-labelledby="exampleModalLabel"
+                                                    <div class="modal fade" id="caixa_lancamento4{{ $supplier->id }}"
+                                                        tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Excluir
+                                                                    <h5 class="modal-title" id="exampleModalLabel">
+                                                                        Excluir
                                                                         Fornecedor</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal"
-                                                                        aria-label="Close">
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <p>Tem certeza que deseja excluir esse Fornecedor ({{$supplier->nome}})?</p>
+                                                                    <p>Tem certeza que deseja excluir esse Fornecedor
+                                                                        ({{$supplier->nome}})?</p>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-dismiss="modal">Cancelar
                                                                     </button>
-                                                                    <form action="{{ route('suppliers.destroy', ['supplier' => $supplier->id]) }}" method="post">
+                                                                    <form
+                                                                        action="{{ route('suppliers.destroy', ['supplier' => $supplier->id]) }}"
+                                                                        method="post">
                                                                         @csrf
                                                                         @method('DELETE')
-                                                                        <button type="submit" class="btn btn-danger">Excluir</button>
+                                                                        <button type="submit"
+                                                                            class="btn btn-danger">Excluir</button>
                                                                     </form>
                                                                 </div>
                                                             </div>
@@ -476,28 +529,31 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
 
-        <!-- Modal script -->
-        <script>
-        function mostrar_modal() {
-            let idModal = document.getElementById('caixa_lancamento');
-            let modal_lancamento = new bootstrap.Modal(idModal);
-            modal_lancamento.show();
-        }
-        function mostrar_modal2() {
-            let idModal = document.getElementById('caixa_lancamento2');
-            let modal_lancamento = new bootstrap.Modal(idModal);
-            modal_lancamento.show();
-        }
-        function editar_modal() {
-            let idModal = document.getElementById('caixa_lancamento3');
-            let modal_lancamento = new bootstrap.Modal(idModal);
-            modal_lancamento.show();
-        }
-        function excluir_modal() {
-            let idModal = document.getElementById('caixa_lancamento4');
-            let modal_lancamento = new bootstrap.Modal(idModal);
-            modal_lancamento.show();
-        }
+    <!-- Modal script -->
+    <script>
+    function mostrar_modal() {
+        let idModal = document.getElementById('caixa_lancamento');
+        let modal_lancamento = new bootstrap.Modal(idModal);
+        modal_lancamento.show();
+    }
+
+    function mostrar_modal2() {
+        let idModal = document.getElementById('caixa_lancamento2');
+        let modal_lancamento = new bootstrap.Modal(idModal);
+        modal_lancamento.show();
+    }
+
+    function editar_modal() {
+        let idModal = document.getElementById('caixa_lancamento3');
+        let modal_lancamento = new bootstrap.Modal(idModal);
+        modal_lancamento.show();
+    }
+
+    function excluir_modal() {
+        let idModal = document.getElementById('caixa_lancamento4');
+        let modal_lancamento = new bootstrap.Modal(idModal);
+        modal_lancamento.show();
+    }
     </script>
 
 </body>

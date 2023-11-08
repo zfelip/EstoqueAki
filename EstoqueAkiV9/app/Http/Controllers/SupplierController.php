@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Supplier;
+use App\Http\Requests\SupplierRequest;
 
 class SupplierController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    public Supplier $supplier;
     public function index()
     {
         return view('suppliers.index', [
@@ -28,8 +30,9 @@ class SupplierController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
+    public function store(SupplierRequest $request)
+    { 
+
         Supplier::create($request->all());   
         return redirect()->route('suppliers.index');
     }
@@ -54,7 +57,7 @@ class SupplierController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Supplier $supplier)
+    public function update(SupplierRequest $request, Supplier $supplier)
     {
         
         $supplier->fill([
@@ -64,7 +67,7 @@ class SupplierController extends Controller
         ]);
 
         $supplier->save();
-        return redirect()->route('suppliers.index')->with('success', 'Produto criado com sucesso!');
+        return redirect()->route('suppliers.index');
     }
 
     /**
