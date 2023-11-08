@@ -187,7 +187,6 @@
                                             <th>Quantidade</th>
                                             <th>Valor Unitário</th>
                                             <th>Preço Unitário</th>
-
                                         </tr>
                                     </thead>
                                     <tfoot>

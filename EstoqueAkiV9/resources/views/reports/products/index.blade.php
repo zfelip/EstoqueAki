@@ -113,43 +113,57 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mt-4 mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Relatório de Produtos</h1>
+                    <div class="d-sm-flex align-items-center justify-content-between mt-4 mb-3">
+                        <h1 class="h3 mb-0 text-gray-800">Relatório de Produto</h1>
                     </div>
+
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb" style="background-color: #F8F9FC; padding: 2px;">
+                            <li class="breadcrumb-item"><a href="/reports">Relatórios</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Relatório de Produto</li>
+                        </ol>
+                    </nav>
                     
+                    <!-- Inputs para o relatório -->
                     <form action="">
-                        <div class="form-row mb-3">
-                       
-                            <div class="col">
-                                <label class="col-form-label" for="basic-default-company">Ordenar por</label>
+                        <div class="form-row mb-3 d-flex">
+                            <div class="col-5 mb-2" style="margin-right: 1rem;">
+                            <label class="col-form-label" for="basic-default-company">Selecionar produto</label>
                                 <select type="text" class="form-control" id="basic-default-company"
-                                    placeholder="Nome do produto" name="entrada" required>
-                                    <option value="">Nome do Produto</option>
+                                    placeholder="Selecionar produto" name="produto" required>
+                                    <option value="">Camisa</option>
                                 </select>
+                            </div>
 
+                            <div class="d-flex align-items-end mb-2">
+                                <button class="pt-2 pb-2 rounded" style="background-color: #13293D; color: white; 
+                                    padding-left: 30px; padding-right: 30px; border:none; font-weight: bold;">
+                                    <i class="bi bi-table"></i> Relatório
+                                </button>
                             </div>
-                            <div class="col">
-                                <label class="col-form-label" for="basic-default-company">Ordem</label>
-                                <select type="text" class="form-control" id="basic-default-company"
-                                    placeholder="Nome do produto" name="entrada" required>
-                                    <option value="">Decrescente</option>
-                                </select>
+                        </div>
+
+                        <div class="d-flex justify-content-end mb-4">
+                            <div class="d-flex flex-column">
+                                <span>Gerar</span>
+
+                                <div style="" class="p-1">
+                                    <button class="pt-2 pb-2 rounded" style="background-color: #148248; color: white; 
+                                    padding-left: 30px; padding-right: 30px; border:none; font-weight: bold;">
+                                    <i class="bi bi-file-earmark-excel-fill"></i> Excel</button>
+
+                                    <button class="pt-2 pb-2 rounded" style="background-color: #B30B00; color: white; 
+                                    padding-left: 30px; padding-right: 30px; border:none; font-weight: bold;">
+                                    <i class="bi bi-file-earmark-pdf-fill"></i> PDF</button>
+                                </div>
                             </div>
-                      
-                        </div>  
+                        </div>
                     </form>
-
-                    <div class="row justify-content-end m-2 p-2"> 
-                        <label class="col-form-label">Gerar</label>
-                            <button type="button" class="btn float-end btn-primary " style="margin-right:1rem; background-color:green;"> <i class="bi bi-file-earmark-excel-fill"></i>Excel
-                            </button>
-                            <button type="submit" class="btn float-end btn-primary " style="margin-right:1rem;">Relatório </button>
-                    </div>
+                    <!-- Fim dos inputs para o relatório -->
                         
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -165,7 +179,7 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                        <th>Código</th>
+                                            <th>Código</th>
                                             <th>Nome</th>
                                             <th>Fornecedor</th>
                                             <th>Quantidade</th>
@@ -181,45 +195,6 @@
                                             <td>X</td>
                                             <td>R$</td>
                                             <td>R$</td>
-                                            <td>
-                                              
-
-                                            
-                                                    <!-- Modal Excluir-->
-                                                    <div class="modal fade" id="caixa_lancamento4" tabindex="-1"
-                                                        role="dialog" aria-labelledby="exampleModalLabel"
-                                                        aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">
-                                                                        Excluir
-                                                                        Fornecedor</h5>
-                                                                    <button type="button" class="close"
-                                                                        data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <p>Tem certeza que deseja excluir esse Fornecedor
-                                                                        (Fornecedor 1)?</p>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-dismiss="modal">Cancelar
-                                                                    </button>
-                                                                    <form action="" method="post">
-                                                                        @csrf
-                                                                        @method('DELETE')
-                                                                        <button type="submit"
-                                                                            class="btn btn-danger">Excluir</button>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
