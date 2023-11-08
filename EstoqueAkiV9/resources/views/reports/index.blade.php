@@ -126,8 +126,8 @@
                         <div class="d-flex">
                             <img src="img/report_icon.svg" alt="Relatório" style="width: 100px;">
                             <div>
-                                <h3 style="color: #13293D;" class="font-weight-bold">Relatório de Produtos</h2>
-                                <p style="color: #858796;">Todos os produtos em estoque</p>
+                                <h3 style="color: #13293D;" class="font-weight-bold">Relatório de Produto</h2>
+                                <p style="color: #858796;">Todos as entradas e saídas de um produto</p>
                             </div>
                         </div>
 
@@ -141,7 +141,7 @@
                                 <img src="img/report_icon.svg" alt="Relatório" style="width: 100px;">
                                 <div>
                                     <h3 style="color: #13293D;" class="font-weight-bold">Relatório de Movimentação</h2>
-                                    <p style="color: #858796;">Entradas e saídas do estoque</p>
+                                    <p style="color: #858796;">Todas as entradas e saídas que ocorreram em um período</p>
                                 </div>
                             </div>
 

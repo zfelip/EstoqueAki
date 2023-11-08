@@ -24,6 +24,9 @@
     <!-- Custom styles for this page -->
     <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
 </head>
 
 <body id="page-top">
@@ -63,7 +66,7 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="/inputs">
                     <i class="fas fa-fw fa-solid fa-right-to-bracket"></i>
                     <span>Entrada</span></a>
@@ -90,7 +93,7 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="/reports">
                     <i class="fas fa-fw fa-solid fa-clipboard-list"></i>
                     <span>Relatórios</span></a>
@@ -117,18 +120,61 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mt-4 mb-4">
+                    <div class="d-sm-flex align-items-center justify-content-between mt-4 mb-3">
                         <h1 class="h3 mb-0 text-gray-800">Relatório de Movimentação</h1>
                     </div>
 
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-2" style="background-color: #13293D;">
-                            <h3 style="color: white;">Tabela de Entradas</h1>
-                        </div>
-                        <div class="card-header py-3">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb" style="background-color: #F8F9FC; padding: 2px;">
+                            <li class="breadcrumb-item"><a href="/reports">Relatórios</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Relatório de Movimentação</li>
+                        </ol>
+                    </nav>
+
+                    <!-- Inputs para o relatório -->
+                    <form action="">
+                        <div class="form-row mb-3 d-flex">
+                            <div class="mb-2">
+                                <label class="col-form-label" for="basic-default-company">Data inicial</label>
+                                <input type="date" class="form-control" id="basic-default-company" style="width: 250px; margin-right: 1rem;">
+                            </div>
+
+                            <div class="mb-2">
+                                <label class="col-form-label" for="basic-default-company">Data final</label>
+                                <input type="date" class="form-control" id="basic-default-company" style="width: 250px; margin-right: 1rem;">
+                            </div>
+
+                            <div class="d-flex align-items-end mb-2">
+                                <button class="pt-2 pb-2 rounded" style="background-color: #13293D; color: white; 
+                                    padding-left: 30px; padding-right: 30px; border:none; font-weight: bold;">
+                                    <i class="bi bi-table"></i> Relatório
+                                </button>
+                            </div>
 
                         </div>
+
+                        <div class="d-flex justify-content-end mb-4">
+                            <div class="d-flex flex-column">
+                                <span>Gerar</span>
+
+                                <div style="" class="p-1">
+                                    <button class="pt-2 pb-2 rounded" style="background-color: #148248; color: white; 
+                                    padding-left: 30px; padding-right: 30px; border:none; font-weight: bold;">
+                                    <i class="bi bi-file-earmark-excel-fill"></i> Excel</button>
+
+                                    <button class="pt-2 pb-2 rounded" style="background-color: #B30B00; color: white; 
+                                    padding-left: 30px; padding-right: 30px; border:none; font-weight: bold;">
+                                    <i class="bi bi-file-earmark-pdf-fill"></i> PDF</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- Fim dos inputs para o relatório -->
+
+
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

@@ -15,6 +15,9 @@
 <!-- Custom styles for this page -->
 <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
 </head>
 
 <body id="page-top">
@@ -68,7 +71,7 @@
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="/suppliers">
                     <i class="fas fa-fw fa-solid fa-truck"></i>
                     <span>Fornecedor</span></a>
@@ -83,7 +86,7 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="/reports">
                     <i class="fas fa-fw fa-solid fa-clipboard-list"></i>
                     <span>Relatórios</span></a>
@@ -115,7 +118,7 @@
                     </div>
                     
                     <form action="">
-                    <div class="form-row mb-3">
+                        <div class="form-row mb-3">
                        
                             <div class="col">
                                 <label class="col-form-label" for="basic-default-company">Ordenar por</label>
@@ -129,21 +132,19 @@
                                 <label class="col-form-label" for="basic-default-company">Ordem</label>
                                 <select type="text" class="form-control" id="basic-default-company"
                                     placeholder="Nome do produto" name="entrada" required>
-                                    <option value="">Descrescente</option>
+                                    <option value="">Decrescente</option>
                                 </select>
                             </div>
                       
-                    </div>  
-                </form>
+                        </div>  
+                    </form>
 
                     <div class="row justify-content-end m-2 p-2"> 
                         <label class="col-form-label">Gerar</label>
                             <button type="button" class="btn float-end btn-primary " style="margin-right:1rem; background-color:green;"> <i class="bi bi-file-earmark-excel-fill"></i>Excel
                             </button>
-                            <button type="submit" class="btn float-end btn-primary " style="margin-right:1rem;">
-                                Relatório </button>
-                           
-                        </div>
+                            <button type="submit" class="btn float-end btn-primary " style="margin-right:1rem;">Relatório </button>
+                    </div>
                         
 
                     <!-- DataTales Example -->
