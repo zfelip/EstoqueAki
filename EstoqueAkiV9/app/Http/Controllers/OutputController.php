@@ -42,13 +42,21 @@ class OutputController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->output->product_id = $request->input('Saida');
         $this->output->quantidade = $request->input('quantidade');
         $this->output->tipo = $request->input('tipo');
 
-        $this->output->save();
+        $product_id = $this->output->product_id;
+        $quantidade = $this->output->quantidade;
 
-        return redirect()->route('outputs.index');
+        $this->output->save();
+        //atualiza a quantidade de produto ao adicionar uma entrada
+        $product = Product::find($product_id);
+        $product->quantidade -= $quantidade;
+        $product->save();
+
+        return redirect()->route('outputs.index');    
     }
 
     /**
@@ -72,25 +80,28 @@ class OutputController extends Controller
      */
     public function update(Request $request, Output $output)
 {
-    $product_id = $request->input('Saida');
-    $quantidade = $request->input('quantidade');
-    $tipo = $request->input('tipo');
+    $validated = $request->validate([
+        'quantidade' => 'nullable|integer|gte:0',
+    ]);
 
-    if (!is_null($product_id)) {
-        $output->product_id = $product_id;
-    }
+    $antiga_quantidade = $output->quantidade;
 
-    if (!is_null($quantidade)) {
-        $output->quantidade = $quantidade;
-    }
+    $output->fill([
+        'product_id' => is_null($request->input('Saida')) ? $output->product_id : $request->input('Saida'),
+        'quantidade' => is_null($request->input('quantidade')) ? $output->quantidade : $request->input('quantidade'),
+        'tipo' => is_null($request->input('tipo')) ? $output->tipo : $request->input('tipo'),
+    ]);
 
-    if (!is_null($tipo)) {
-        $output->tipo = $tipo;
-    }
-
+    $product = Product::find($output->product_id);
+    $nova_quantidade = $output->quantidade;
     $output->save();
 
-    return redirect()->route('outputs.index')->with('success', 'Produto atualizado com sucesso!');
+    //atualiza a quantidade de produto ao adicionar uma entrada
+    $product->quantidade += $antiga_quantidade;
+    $product->quantidade -= $nova_quantidade;
+    $product->save();
+
+    return redirect()->route('outputs.index');
 }
 
 
@@ -99,6 +110,9 @@ class OutputController extends Controller
      */
     public function destroy(Output $output)
     {
+        $product = Product::find($output->product_id);
+        $product->quantidade += $output->quantidade;
+        $product->save();
         $output->delete();
 
         return redirect()->route('outputs.index');

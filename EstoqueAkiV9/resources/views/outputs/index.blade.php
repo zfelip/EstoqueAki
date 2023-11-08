@@ -304,13 +304,13 @@
                                                     <!--botão para acionar o modal editar-->
                                                     <button type="submit" class="btn btn-warning btn-icon-split mx-2"
                                                         style="margin-right:1rem;" data-toggle="modal"
-                                                        data-target="#caixa_lancamento3{{ $product->id }}"
+                                                        data-target="#caixa_lancamento3{{ $output->id }}"
                                                         title="Editar" onclick="editar_modal()">
                                                         <span class="icon text-white-50"><i class="fas fa-pencil"></i></span>
                                                     </button>
 
                                                     <!-- Modal Editar-->
-                                                    <div class="modal fade " id="caixa_lancamento3{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+                                                    <div class="modal fade " id="caixa_lancamento3{{ $output->id }}" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
                                                             role="document">
@@ -389,12 +389,12 @@
                                                     <!--botaão para acionar o modal excluir-->
                                                     <button type="submit" class="btn float-end btn-danger mx-2"
                                                         style="margin-right:1rem;" data-toggle="modal"
-                                                        data-target="#caixa_lancamento4{{ $product->id }}" onclick="excluir_modal()">
+                                                        data-target="#caixa_lancamento4{{ $output->id }}" onclick="excluir_modal()">
                                                         <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
                                                     </button>
 
                                                     <!-- Modal Excluir-->
-                                                    <div class="modal fade" id="caixa_lancamento4{{ $product->id }}" tabindex="-1"
+                                                    <div class="modal fade" id="caixa_lancamento4{{ $output->id }}" tabindex="-1"
                                                         role="dialog" aria-labelledby="exampleModalLabel"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
