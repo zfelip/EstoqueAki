@@ -126,7 +126,7 @@
                         <div class="card-header py-2" style="background-color: #13293D;">
                             <h3 style="color: white;">Tabela de Saídas</h1>
                         </div>
-                        
+
                         <div class="card-header py-3">
                             <!--botaão para acionar o modal adicionar-->
                            <button type="submit" class="btn float-end btn-primary"
@@ -177,7 +177,7 @@
                                                                             id="basic-default-company"
                                                                             placeholder="Quantidade" name="quantidade"
                                                                             required>
-                                                                    </div> 
+                                                                    </div>
 
                                                                     <div class="mb-3">
                                                                         <label class="col-form-label"
@@ -288,7 +288,7 @@
                                                                                             <td scope="row">{{ $output->product->nome }}</td>
                                                                                             <td scope="row">{{ $output->quantidade }}</td>
                                                                                             <td scope="row">{{ $output->created_at }}</td>
-                                                                                            <td scope="row">{{ $output->tipo }}</td>                                             
+                                                                                            <td scope="row">{{ $output->tipo }}</td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -329,18 +329,24 @@
                                                                 <div class="modal-body">
                                                                     <div class="container-xxl">
                                                                         <div class="authentication-wrapper authentication-basic container-p-y">
-                                                                            <form class="" action="{{ route('products.update', ['product' => $product->id]) }}" method="POST">
+                                                                            <form class="" action="{{ route('outputs.update', ['output' => $output->id]) }}" method="POST">
                                                                                 @csrf
-                                                                                <input type="hidden" name="_method" value="PUT">    
+                                                                                <input type="hidden" name="_method" value="PUT">
                                                                                 <div class="row">
                                                                                     <div class="col-xl">
                                                                                         <div class="card-body">
+
                                                                                             <div class="mb-3">
                                                                                                 <label class="col-form-label"
-                                                                                                    for="basic-default-company">Nome</label>
-                                                                                                <input type="text" class="form-control"
+                                                                                                    for="basic-default-company">Produto</label>
+                                                                                                <select type="text" class="form-control"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{$product->nome}}" name="nome">
+                                                                                                    placeholder="Saida" name="Saida"
+                                                                                                    required>
+                                                                                                    @foreach ($products as $product)
+                                                                                                        <option value="{{ $product->id }}">{{ $product->nome }}</option>
+                                                                                                    @endforeach
+                                                                                                </select>
                                                                                             </div>
 
                                                                                             <div class="mb-3">
@@ -348,10 +354,10 @@
                                                                                                     for="basic-default-company">Quantidade</label>
                                                                                                 <input type="text" class="form-control"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{$output->quantidade}}" 
+                                                                                                    placeholder="{{$output->quantidade}}"
                                                                                                     name="quantidade">
                                                                                             </div>
-                                                                                            
+
                                                                                             <div class="mb-3">
                                                                                                 <label class="col-form-label"
                                                                                                     for="basic-default-company">Tipo da Saída</label>
@@ -401,14 +407,14 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <p>Tem certeza que deseja excluir esse Produto <b>{{$product->nome}}</b>?</p>
+                                                                    <p>Tem certeza que deseja excluir essa Saída de Produto <b>{{ $output->product->nome }}</b>?</p>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-dismiss="modal">Cancelar
                                                                     </button>
-                                                                    <form action="{{ route('products.destroy', ['product' => $product->id]) }}" method="post">
-                                                                        @csrf 
+                                                                    <form action="{{ route('outputs.destroy', ['output' => $output->id]) }}" method="post">
+                                                                        @csrf
                                                                         @method('DELETE')
                                                                         <button type="submit" class="btn btn-danger">Excluir</button>
                                                                     </form>
@@ -420,9 +426,9 @@
                                             </td>
 
                                         </tr>
-                                        
+
                                         @endforeach
-                                        
+
 
                                     </tbody>
                                 </table>
