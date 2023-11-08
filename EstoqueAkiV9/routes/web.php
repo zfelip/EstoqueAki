@@ -24,6 +24,12 @@ Route::get('/', function () {
 
 Route::get('/reports', function () {
     return view('reports.index');});
+   
+Route::get('/reports/movements', function () {
+    return view('reports.movements.index');});
+
+Route::get('/reports/products', function () {
+    return view('reports.products.index');});
 
 Route::resource('products', ProductController::class);
 
