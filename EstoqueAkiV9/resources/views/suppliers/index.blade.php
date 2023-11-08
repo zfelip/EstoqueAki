@@ -178,33 +178,8 @@
                                                                             placeholder="Telefone" name="telefone"
                                                                             required>
                                                                     </div>
-                                                                    <div class="mb-3">
-                                                                        <div class="d-inline-block">
-                                                                            <label class="col-form-label"
-                                                                                for="basic-default-company">CEP</label>
-                                                                            <input type="text" class="form-control"
-                                                                                id="basic-default-company"
-                                                                                placeholder="CEP" name="cep"
-                                                                                required>
-
-                                                                        </div>
-                                                                        <div class="d-inline-block">
-                                                                            <label class="col-form-label"
-                                                                                for="basic-default-company">Endereço</label>
-                                                                            <input type="text" class="form-control"
-                                                                                id="basic-default-company"
-                                                                                placeholder="Endereço" name="endereco"
-                                                                                required>
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <div class="mb-3">
-                                                                        <label class="col-form-label"
-                                                                            for="basic-default-company">Observação</label>
-                                                                        <input type="text" class="form-control"
-                                                                            id="basic-default-company"
-                                                                            placeholder="observacoes" name="observacoes" required>
-                                                                    </div>
+                                                                    
+                                                                 
                                                                 </div>
                                                             </div>
                                                         </div>
