@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\InputController;
 use App\Http\Controllers\OutputController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\ReportProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,19 +18,16 @@ use App\Http\Controllers\SupplierController;
 |
 */
 
-/*Falta Model/Migration/Controller de Report*/ 
+/*Falta Model/Migration/Controller de Report*/
 
 Route::get('/', function () {
     return view('auth.index');});
 
 Route::get('/reports', function () {
     return view('reports.index');});
-   
+
 Route::get('/reports/movements', function () {
     return view('reports.movements.index');});
-
-Route::get('/reports/products', function () {
-    return view('reports.products.index');});
 
 Route::resource('products', ProductController::class);
 
@@ -38,3 +36,5 @@ Route::resource('inputs', InputController::class);
 Route::resource('outputs', OutputController::class);
 
 Route::resource('suppliers', SupplierController::class);
+
+Route::resource('reportProduct', ReportProductController::class);
