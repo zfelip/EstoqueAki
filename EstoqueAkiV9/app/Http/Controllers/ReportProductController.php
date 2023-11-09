@@ -27,17 +27,26 @@ class ReportProductController extends Controller
         return view('reports.products.index', ['products' => $products]);
     }
 
-    public function show(Request $request)
+public function show(Request $request)
 {
     // Obtém o ID do produto da requisição
     $productId = $request->input('produto');
-
+    
     // Filtra as entradas e saídas do produto
     $entries = Input::where('product_id', $productId)->get();
     $outputs = Output::where('product_id', $productId)->get();
 
+    $selectedProduct = Product::find($productId);
+    $products = $this->product->all();
+
     // Passa os resultados para a view
-    return view('reports.products.index', compact('entries', 'outputs'));
+    return view('reports.products.index', [
+        'entries' => $entries,
+        'outputs' => $outputs,
+        'products' => $products,
+        'selectedProduct' => $selectedProduct,
+    ]);
 }
+
 
 }

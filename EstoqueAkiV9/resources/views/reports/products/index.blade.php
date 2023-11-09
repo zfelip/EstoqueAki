@@ -128,7 +128,7 @@
                     </nav>
 
                     <!-- Inputs para o relatório -->
-                    <form action="/reportProduct/" method="GET">
+                    <form action="/reportProduct/{?}" method="GET">
                         @csrf
                         <div class="form-row mb-3 d-flex">
 
@@ -169,44 +169,96 @@
                     <!-- Fim dos inputs para o relatório -->
 
 
+                 <div class="card shadow mb-4">
+                 @if(isset($selectedProduct))
+                        <div class="card-header py-2" style="background-color: #13293D;">
+                            <h3 style="color: white;">Entrada(s) do produto: <strong> {{ $selectedProduct->nome }} </strong></h1>
+                        </div>
                     <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
+                    @endif
+                   
                         <div class="card-body">
+                            
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Código</th>
-                                            <th>Nome</th>
-                                            <th>Fornecedor</th>
+                                            <th>Entrada(s)</th>
                                             <th>Quantidade</th>
-                                            <th>Valor Unitário</th>
-                                            <th>Preço Unitário</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Código</th>
-                                            <th>Nome</th>
-                                            <th>Fornecedor</th>
+                                            <th>Entrada(s)</th>
                                             <th>Quantidade</th>
-                                            <th>Valor Unitário</th>
-                                            <th>Preço Unitário</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                    @if(isset($entries))
+                                        @foreach($entries as $entries)
                                         <tr>
-                                            <td>1</td>
-                                            <td>Produto</td>
-                                            <td>Fulano</td>
-                                            <td>X</td>
-                                            <td>R$</td>
-                                            <td>R$</td>
+                                        <td>{{ \Carbon\Carbon::parse($entries->updated_at)->format('d/m/Y \à\s H:i:s') }}</td>
+                                            <td>{{ $entries->quantidade }}</td>                        
                                         </tr>
+                                        @endforeach
+                                        @endif
                                     </tbody>
-                                </table>
-                            </div>
+                                </table> 
                         </div>
+                    </div>
+                </div>
+
+             
+                <!-- tabela de saidas de produtos -->
+                <div class="card shadow mb-4">
+                @if(isset($selectedProduct))
+                        <div class="card-header py-2" style="background-color: #13293D;">
+                            <h3 style="color: white;">Saída(s) do produto: <strong> {{ $selectedProduct->nome }} </strong></h1>
+                        </div>
+@endif
+
+                    <!-- DataTales Example -->
+                   
+                        <div class="card-body">
+                            
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Saída(s)</th>
+                                            <th>Quantidade</th>
+                                            <th>Tipo</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Saída(s)</th>
+                                            <th>Quantidade</th>
+                                            <th>Tipo</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    @if(isset($outputs))
+                                        @foreach($outputs as $output)
+                                        <tr>
+                                        <td>{{ \Carbon\Carbon::parse($output->updated_at)->format('d/m/Y \à\s H:i:s') }}</td>
+                                            <td>{{ $output->quantidade}}</td>   
+                                            <td>{{ $output->tipo}}</td>                      
+                                        </tr>
+                                        @endforeach
+                                        @endif
+                                    </tbody>
+                                </table> 
+
+                            </div>
+
+        
+
+                        </div>
+
+        
+
+
                     </div>
 
                 </div>
