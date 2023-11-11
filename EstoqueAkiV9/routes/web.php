@@ -6,6 +6,7 @@ use App\Http\Controllers\InputController;
 use App\Http\Controllers\OutputController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\ReportProductController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +39,6 @@ Route::resource('outputs', OutputController::class);
 Route::resource('suppliers', SupplierController::class);
 
 Route::resource('reportProduct', ReportProductController::class);
+
+Route::resource('users', UserController::class);
+
