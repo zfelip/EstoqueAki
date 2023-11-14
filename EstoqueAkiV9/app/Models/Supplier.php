@@ -12,6 +12,6 @@ class Supplier extends Model
     protected $fillable = [
         'nome',
         'telefone',
-        'observacoes',
+        'cnpj',
     ];
 }

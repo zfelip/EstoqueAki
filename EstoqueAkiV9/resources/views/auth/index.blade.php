@@ -52,6 +52,7 @@
                                         <h3 style="color: #13293D" class="sidebar-brand-text mx-3">EstoqueAki</h3>
                                     </div>
 
+<<<<<<< HEAD
                                     <form class="user">
                                         <div class="form-group">
                                             <!-- <input type="email" class="form-control form-control-user"
@@ -87,6 +88,24 @@
                                     <div class="text-center">
                                         <!-- <a class="small" href="register.html">Create an Account!</a> -->
                                     </div>
+=======
+                                    @if(session('error'))
+                                        <div class="alert alert-danger">
+                                            {{ session('error') }}
+                                        </div>
+                                    @endif
+                                    <form class="user" action="{{ route('users.store') }}" method="POST">
+                                        @csrf
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-user"
+                                                id="exampleInputPassword" placeholder="Password" name="password">
+                                        </div>
+                                       
+                                      <button class="btn btn-primary btn-user btn-block">Entrar</button>
+                                    </form>
+                                    <hr>
+                                   
+>>>>>>> main
                                 </div>
                             </div>
                         </div>

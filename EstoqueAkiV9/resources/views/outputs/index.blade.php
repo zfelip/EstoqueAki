@@ -50,8 +50,8 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
                 <a class="nav-link" href="/products">
-                    <i class="fas fa-fw fa-solid fa-house"></i>
-                    <span>Início</span></a>
+                    <i class="fas fa-fw fa-solid fa-box"></i>
+                    <span>Produtos</span></a>
             </li>
 
             <!-- Divider -->
@@ -126,7 +126,7 @@
                         <div class="card-header py-2" style="background-color: #13293D;">
                             <h3 style="color: white;">Tabela de Saídas</h1>
                         </div>
-                        
+
                         <div class="card-header py-3">
                             <!--botaão para acionar o modal adicionar-->
                            <button type="submit" class="btn float-end btn-primary"
@@ -177,7 +177,7 @@
                                                                             id="basic-default-company"
                                                                             placeholder="Quantidade" name="quantidade"
                                                                             required>
-                                                                    </div> 
+                                                                    </div>
 
                                                                     <div class="mb-3">
                                                                         <label class="col-form-label"
@@ -238,13 +238,9 @@
                                     <tbody>
                                     @foreach ($outputs as $output)                                        
                                         <tr>   
-
-                                        @foreach ($products as $product)
-                                            <td>{{ $product->nome}}</td>
-                                        @endforeach
-
+                                            <td>{{ $output->product->nome }}</td>
                                             <td>{{ $output->quantidade}}</td>
-                                            <td>{{ $output->created_at}}</td>
+                                            <td>{{ \Carbon\Carbon::parse($output->updated_at)->format('d/m/Y \à\s H:i:s') }}</td>
                                             <td>{{ $output->tipo}}</td>
 
                                             <td>
@@ -252,13 +248,13 @@
                                                     <!--botão para acionar o modal mostrar-->
                                                     <button type="submit" class="btn btn-info btn-icon-split mx-2"
                                                         style="margin-right:1rem;" data-toggle="modal"
-                                                        data-target="#caixa_lancamento2{{ $product->id }}" 
+                                                        data-target="#caixa_lancamento2{{ $output->id }}" 
                                                         title="Mostrar" onclick="mostrar_modal2()">
                                                         <span class="icon text-white-50"><i class="fas fa-eye"></i></span>
                                                     </button>
 
                                                     <!-- Modal Mostrar -->
-                                                    <div class="modal fade text-center" id="caixa_lancamento2{{ $product->id }}" tabindex="-1"
+                                                    <div class="modal fade text-center" id="caixa_lancamento2{{ $output->id }}" tabindex="-1"
                                                         role="dialog" aria-labelledby="TituloModalCentralizado"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
@@ -289,10 +285,10 @@
                                                                                     </thead>
                                                                                     <tbody>
                                                                                         <tr class="">
-                                                                                            <td scope="row">{{ $product->nome }}</td>
+                                                                                            <td scope="row">{{ $output->product->nome }}</td>
                                                                                             <td scope="row">{{ $output->quantidade }}</td>
-                                                                                            <td scope="row">{{ $output->created_at }}</td>
-                                                                                            <td scope="row">{{ $output->tipo }}</td>                                             
+                                                                                            <td scope="row">{{ \Carbon\Carbon::parse($output->updated_at)->format('d/m/Y \à\s H:i:s') }}</td>
+                                                                                            <td scope="row">{{ $output->tipo }}</td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
@@ -308,13 +304,13 @@
                                                     <!--botão para acionar o modal editar-->
                                                     <button type="submit" class="btn btn-warning btn-icon-split mx-2"
                                                         style="margin-right:1rem;" data-toggle="modal"
-                                                        data-target="#caixa_lancamento3{{ $product->id }}"
+                                                        data-target="#caixa_lancamento3{{ $output->id }}"
                                                         title="Editar" onclick="editar_modal()">
                                                         <span class="icon text-white-50"><i class="fas fa-pencil"></i></span>
                                                     </button>
 
                                                     <!-- Modal Editar-->
-                                                    <div class="modal fade " id="caixa_lancamento3{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+                                                    <div class="modal fade " id="caixa_lancamento3{{ $output->id }}" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
                                                             role="document">
@@ -333,18 +329,24 @@
                                                                 <div class="modal-body">
                                                                     <div class="container-xxl">
                                                                         <div class="authentication-wrapper authentication-basic container-p-y">
-                                                                            <form class="" action="{{ route('products.update', ['product' => $product->id]) }}" method="POST">
+                                                                            <form class="" action="{{ route('outputs.update', ['output' => $output->id]) }}" method="POST">
                                                                                 @csrf
-                                                                                <input type="hidden" name="_method" value="PUT">    
+                                                                                <input type="hidden" name="_method" value="PUT">
                                                                                 <div class="row">
                                                                                     <div class="col-xl">
                                                                                         <div class="card-body">
+
                                                                                             <div class="mb-3">
                                                                                                 <label class="col-form-label"
-                                                                                                    for="basic-default-company">Nome</label>
-                                                                                                <input type="text" class="form-control"
+                                                                                                    for="basic-default-company">Produto</label>
+                                                                                                <select type="text" class="form-control"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{$product->nome}}" name="nome">
+                                                                                                    placeholder="Saida" name="Saida"
+                                                                                                    required>
+                                                                                                    @foreach ($products as $product)
+                                                                                                        <option value="{{ $product->id }}">{{ $product->nome }}</option>
+                                                                                                    @endforeach
+                                                                                                </select>
                                                                                             </div>
 
                                                                                             <div class="mb-3">
@@ -352,10 +354,10 @@
                                                                                                     for="basic-default-company">Quantidade</label>
                                                                                                 <input type="text" class="form-control"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{$output->quantidade}}" 
+                                                                                                    placeholder="{{$output->quantidade}}"
                                                                                                     name="quantidade">
                                                                                             </div>
-                                                                                            
+
                                                                                             <div class="mb-3">
                                                                                                 <label class="col-form-label"
                                                                                                     for="basic-default-company">Tipo da Saída</label>
@@ -387,12 +389,12 @@
                                                     <!--botaão para acionar o modal excluir-->
                                                     <button type="submit" class="btn float-end btn-danger mx-2"
                                                         style="margin-right:1rem;" data-toggle="modal"
-                                                        data-target="#caixa_lancamento4{{ $product->id }}" onclick="excluir_modal()">
+                                                        data-target="#caixa_lancamento4{{ $output->id }}" onclick="excluir_modal()">
                                                         <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
                                                     </button>
 
                                                     <!-- Modal Excluir-->
-                                                    <div class="modal fade" id="caixa_lancamento4{{ $product->id }}" tabindex="-1"
+                                                    <div class="modal fade" id="caixa_lancamento4{{ $output->id }}" tabindex="-1"
                                                         role="dialog" aria-labelledby="exampleModalLabel"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
@@ -405,14 +407,14 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <p>Tem certeza que deseja excluir esse Produto <b>{{$product->nome}}</b>?</p>
+                                                                    <p>Tem certeza que deseja excluir essa Saída de Produto <b>{{ $output->product->nome }}</b>?</p>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-dismiss="modal">Cancelar
                                                                     </button>
-                                                                    <form action="{{ route('products.destroy', ['product' => $product->id]) }}" method="post">
-                                                                        @csrf 
+                                                                    <form action="{{ route('outputs.destroy', ['output' => $output->id]) }}" method="post">
+                                                                        @csrf
                                                                         @method('DELETE')
                                                                         <button type="submit" class="btn btn-danger">Excluir</button>
                                                                     </form>
@@ -424,9 +426,9 @@
                                             </td>
 
                                         </tr>
-                                        
+
                                         @endforeach
-                                        
+
 
                                     </tbody>
                                 </table>
