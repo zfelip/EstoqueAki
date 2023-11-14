@@ -42,3 +42,4 @@ Route::resource('reportProduct', ReportProductController::class);
 
 Route::resource('users', UserController::class);
 
+Route::get('/reportProduct/excel', [ReportProductController::class, 'excelExport'])->name('excel');
