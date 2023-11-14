@@ -11,7 +11,7 @@ class Output extends Model
     use HasFactory;
 
     protected $fillable = [
-'product_id',
+        'product_id',
         'quantidade',
         'tipo',
     ];

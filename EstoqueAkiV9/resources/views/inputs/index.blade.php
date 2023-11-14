@@ -216,7 +216,7 @@
                                             <td>{{ $input->id }}</td>
                                             <td>{{ $input->product->nome }}</td>
                                             <td>{{ $input->quantidade }}</td>
-                                            <td>{{ $input->updated_at }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($input->updated_at)->format('d/m/Y \à\s H:i:s') }}</td>
                                             <td class="text-center">
                                             <div class="d-flex justify-content-center">
                                                     <!--botão para acionar o modal mostrar-->
@@ -265,8 +265,8 @@
                                                                                             <td scope="row">{{ $input->product_id }}</td>
                                                                                             <td scope="row">{{ $input->product->descricao }}</td>
                                                                                             <td scope="row">{{ $input->quantidade }}</td>
-                                                                                            <td scope="row">{{ $input->product->preco }}</td>
-                                                                                            <td scope="row">{{ $input->updated_at }}</td>
+                                                                                            <td scope="row">{{ $input->product->preco }}</td>                  
+                                                                                            <td scope="row">{{ \Carbon\Carbon::parse($input->updated_at)->format('d/m/Y \à\s H:i:s') }}</td>
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>

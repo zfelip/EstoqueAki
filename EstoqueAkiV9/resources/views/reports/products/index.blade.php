@@ -1,7 +1,10 @@
 <!DOCTYPE html> <html lang="en"> <head> <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width,
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,
     initial-scale=1, shrink-to-fit=no"> <meta name="description" content="">
-<meta name="author" content=""> <title>EstoqueAki</title>
+
+    <meta name="author" content="">
+    <title>EstoqueAki</title>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet"> <!-- Custom
     fonts for this template -->
 <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -123,20 +126,24 @@
                             <li class="breadcrumb-item active" aria-current="page">Relatório de Produto</li>
                         </ol>
                     </nav>
-                    
+
                     <!-- Inputs para o relatório -->
-                    <form action="">
+                    <form action="/reportProduct/{?}" method="GET">
+                        @csrf
                         <div class="form-row mb-3 d-flex">
+
                             <div class="col-5 mb-2" style="margin-right: 1rem;">
                             <label class="col-form-label" for="basic-default-company">Selecionar produto</label>
                                 <select type="text" class="form-control" id="basic-default-company"
                                     placeholder="Selecionar produto" name="produto" required>
-                                    <option value="">Camisa</option>
+                                    @foreach($products as $product)
+                                        <option value="{{$product->id}}">{{$product->nome}}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
                             <div class="d-flex align-items-end mb-2">
-                                <button class="pt-2 pb-2 rounded" style="background-color: #13293D; color: white; 
+                                <button class="pt-2 pb-2 rounded" style="background-color: #13293D; color: white;
                                     padding-left: 30px; padding-right: 30px; border:none; font-weight: bold;">
                                     <i class="bi bi-table"></i> Relatório
                                 </button>
@@ -148,11 +155,11 @@
                                 <span>Gerar</span>
 
                                 <div style="" class="p-1">
-                                    <button class="pt-2 pb-2 rounded" style="background-color: #148248; color: white; 
+                                    <button class="pt-2 pb-2 rounded" style="background-color: #148248; color: white;
                                     padding-left: 30px; padding-right: 30px; border:none; font-weight: bold;">
                                     <i class="bi bi-file-earmark-excel-fill"></i> Excel</button>
 
-                                    <button class="pt-2 pb-2 rounded" style="background-color: #B30B00; color: white; 
+                                    <button class="pt-2 pb-2 rounded" style="background-color: #B30B00; color: white;
                                     padding-left: 30px; padding-right: 30px; border:none; font-weight: bold;">
                                     <i class="bi bi-file-earmark-pdf-fill"></i> PDF</button>
                                 </div>
@@ -160,46 +167,98 @@
                         </div>
                     </form>
                     <!-- Fim dos inputs para o relatório -->
-                        
 
+
+                 <div class="card shadow mb-4">
+                 @if(isset($selectedProduct))
+                        <div class="card-header py-2" style="background-color: #13293D;">
+                            <h3 style="color: white;">Entrada(s) do produto: <strong> {{ $selectedProduct->nome }} </strong></h1>
+                        </div>
                     <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
+                    @endif
+                   
                         <div class="card-body">
+                            
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Código</th>
-                                            <th>Nome</th>
-                                            <th>Fornecedor</th>
+                                            <th>Entrada(s)</th>
                                             <th>Quantidade</th>
-                                            <th>Valor Unitário</th>
-                                            <th>Preço Unitário</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Código</th>
-                                            <th>Nome</th>
-                                            <th>Fornecedor</th>
+                                            <th>Entrada(s)</th>
                                             <th>Quantidade</th>
-                                            <th>Valor Unitário</th>
-                                            <th>Preço Unitário</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                    @if(isset($entries))
+                                        @foreach($entries as $entries)
                                         <tr>
-                                            <td>1</td>
-                                            <td>Produto</td>
-                                            <td>Fulano</td>
-                                            <td>X</td>
-                                            <td>R$</td>
-                                            <td>R$</td>
+                                        <td>{{ \Carbon\Carbon::parse($entries->updated_at)->format('d/m/Y \à\s H:i:s') }}</td>
+                                            <td>{{ $entries->quantidade }}</td>                        
                                         </tr>
+                                        @endforeach
+                                        @endif
                                     </tbody>
-                                </table>
-                            </div>
+                                </table> 
                         </div>
+                    </div>
+                </div>
+
+             
+                <!-- tabela de saidas de produtos -->
+                <div class="card shadow mb-4">
+                @if(isset($selectedProduct))
+                        <div class="card-header py-2" style="background-color: #13293D;">
+                            <h3 style="color: white;">Saída(s) do produto: <strong> {{ $selectedProduct->nome }} </strong></h1>
+                        </div>
+@endif
+
+                    <!-- DataTales Example -->
+                   
+                        <div class="card-body">
+                            
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Saída(s)</th>
+                                            <th>Quantidade</th>
+                                            <th>Tipo</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Saída(s)</th>
+                                            <th>Quantidade</th>
+                                            <th>Tipo</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    @if(isset($outputs))
+                                        @foreach($outputs as $output)
+                                        <tr>
+                                        <td>{{ \Carbon\Carbon::parse($output->updated_at)->format('d/m/Y \à\s H:i:s') }}</td>
+                                            <td>{{ $output->quantidade}}</td>   
+                                            <td>{{ $output->tipo}}</td>                      
+                                        </tr>
+                                        @endforeach
+                                        @endif
+                                    </tbody>
+                                </table> 
+
+                            </div>
+
+        
+
+                        </div>
+
+        
+
+
                     </div>
 
                 </div>
@@ -290,7 +349,7 @@
             let idModal = document.getElementById('caixa_lancamento4');
             let modal_lancamento = new bootstrap.Modal(idModal);
             modal_lancamento.show();
-     
+
     </script>
 
 </body>

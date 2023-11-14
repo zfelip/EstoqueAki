@@ -50,8 +50,8 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
                 <a class="nav-link" href="/products">
-                    <i class="fas fa-fw fa-solid fa-house"></i>
-                    <span>Início</span></a>
+                    <i class="fas fa-fw fa-solid fa-box"></i>
+                    <span>Produtos</span></a>
             </li>
 
             <!-- Divider -->
@@ -240,7 +240,7 @@
                                         <tr>   
                                             <td>{{ $output->product->nome }}</td>
                                             <td>{{ $output->quantidade}}</td>
-                                            <td>{{ $output->created_at}}</td>
+                                            <td>{{ \Carbon\Carbon::parse($output->updated_at)->format('d/m/Y \à\s H:i:s') }}</td>
                                             <td>{{ $output->tipo}}</td>
 
                                             <td>
@@ -287,7 +287,7 @@
                                                                                         <tr class="">
                                                                                             <td scope="row">{{ $output->product->nome }}</td>
                                                                                             <td scope="row">{{ $output->quantidade }}</td>
-                                                                                            <td scope="row">{{ $output->created_at }}</td>
+                                                                                            <td scope="row">{{ \Carbon\Carbon::parse($output->updated_at)->format('d/m/Y \à\s H:i:s') }}</td>
                                                                                             <td scope="row">{{ $output->tipo }}</td>
                                                                                         </tr>
                                                                                     </tbody>
