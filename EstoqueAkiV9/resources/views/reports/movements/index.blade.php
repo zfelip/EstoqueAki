@@ -132,26 +132,28 @@
                     </nav>
 
                     <!-- Inputs para o relatório -->
-                    <form action="">
-                        <div class="form-row mb-3 d-flex">
-                            <div class="mb-2">
-                                <label class="col-form-label" for="basic-default-company">Data inicial</label>
-                                <input type="date" class="form-control" id="basic-default-company" style="width: 250px; margin-right: 1rem;">
-                            </div>
+                    <form action="/reportMovement" method="POST">
+    @csrf
+    <div class="form-row mb-3 d-flex">
+        <div class="mb-2">
+            <label class="col-form-label" for="start_date">Data inicial</label>
+            <input type="date" class="form-control" id="start_date" name="start_date" style="width: 250px; margin-right: 1rem;" required>
+        </div>
 
-                            <div class="mb-2">
-                                <label class="col-form-label" for="basic-default-company">Data final</label>
-                                <input type="date" class="form-control" id="basic-default-company" style="width: 250px; margin-right: 1rem;">
-                            </div>
+        <div class="mb-2">
+            <label class="col-form-label" for="end_date">Data final</label>
+            <input type="date" class="form-control" id="end_date" name="end_date" style="width: 250px; margin-right: 1rem;" required>
+        </div>
 
-                            <div class="d-flex align-items-end mb-2">
-                                <button class="pt-2 pb-2 rounded" style="background-color: #13293D; color: white; 
-                                    padding-left: 30px; padding-right: 30px; border:none; font-weight: bold;">
-                                    <i class="bi bi-table"></i> Relatório
-                                </button>
-                            </div>
+        <div class="d-flex align-items-end mb-2">
+            <button class="pt-2 pb-2 rounded" style="background-color: #13293D; color: white; 
+                padding-left: 30px; padding-right: 30px; border:none; font-weight: bold;">
+                <i class="bi bi-table"></i> Relatório
+            </button>
+        </div>
+    </div>
+</form>
 
-                        </div>
 
                         <div class="d-flex justify-content-end mb-4">
                             <div class="d-flex flex-column">
@@ -168,50 +170,93 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    
                     <!-- Fim dos inputs para o relatório -->
 
 
 
-                    <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-body">
+                    @if(isset($startDate))
+                        <div class="card-header py-2" style="background-color: #13293D;">
+                            <h3 style="color: white;">Entrada(s) do período: <strong>{{ $startDate }}</strong> à <strong>{{ $endDate }}</strong></h1>
+                        </div>
+                    <!-- DataTales Example -->
+                    @endif
+
+                        <div class="card-body"> 
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Código</th>
-                                            <th>Nome</th>
-                                            <th>Tipo</th>
-                                            <th>Data e Hora</th>
+                                            <th>Entrada(s)</th>
                                             <th>Quantidade</th>
-                                            <th>Valor Unitário</th>
-                                            <th>Preço Unitário</th>
+                                            <th>Produto</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Código</th>
-                                            <th>Nome</th>
-                                            <th>Tipo</th>
-                                            <th>Data e Hora</th>
+                                            <th>Entrada(s)</th>
                                             <th>Quantidade</th>
-                                            <th>Valor Unitário</th>
-                                            <th>Preço Unitário</th>
+                                            <th>Produto</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                    @if(isset($entries))
+                                        @foreach($entries as $entries)
                                         <tr>
-                                            <td>2</td>
-                                            <td>Camisa</td>
-                                            <td>Vendido</td>
-                                            <td>17/09/2023 15:02:23</td>
-                                            <td>1</td>
-                                            <td>25</td>
-                                            <td>35</td>
+                                            <td>{{ \Carbon\Carbon::parse($entries->updated_at)->format('d/m/Y \à\s H:i:s') }}</td>
+                                            <td>{{ $entries->quantidade }}</td>  
+                                            <td>{{ $entries->product->nome }}</td>                
                                         </tr>
+                                        @endforeach
+                                        @endif
                                     </tbody>
-                                </table>
+                                </table> 
+                            </div>
+                        </div>
+                    </div>
+             
+                <!-- tabela de saidas de produtos -->
+                <div class="card shadow mb-4">
+                @if(isset($startDate))
+                    <div class="card-header py-2" style="background-color: #13293D;">
+                        <h3 style="color: white;">Saída(s) do período: <strong>{{ $startDate }}</strong> à <strong>{{ $endDate }}</strong></h1>
+                    </div>
+                @endif
+                    <!-- DataTales Example -->
+                   
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Saída(s)</th>
+                                            <th>Quantidade</th>
+                                            <th>Tipo</th>
+                                            <th>Produto</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Saída(s)</th>
+                                            <th>Quantidade</th>
+                                            <th>Tipo</th>
+                                            <th>Produto</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    @if(isset($outputs))
+                                        @foreach($outputs as $output)
+                                        <tr>
+                                        <td>{{ \Carbon\Carbon::parse($output->updated_at)->format('d/m/Y \à\s H:i:s') }}</td>
+                                            <td>{{ $output->quantidade}}</td>   
+                                            <td>{{ $output->tipo}}</td> 
+                                            <td>{{ $output->product->nome }}</td>                       
+                                        </tr>
+                                        @endforeach
+                                        @endif
+                                    </tbody>
+                                </table> 
                             </div>
                         </div>
                     </div>

@@ -120,6 +120,7 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
+
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mt-4 mb-3">
                         <h1 class="h3 mb-0 text-gray-800">Relatório de Produto</h1>
@@ -155,6 +156,7 @@
                             </div>
                         </div>
                     </form>
+
                         <div class="d-flex justify-content-end mb-4">
                             <div class="d-flex flex-column">
                                 <span>Gerar</span>
@@ -252,6 +254,7 @@
                             </div>
                         </div>
                     </div>
+                    
                 </div>
                 <!-- /.container-fluid -->
 

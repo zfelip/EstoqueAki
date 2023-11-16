@@ -6,6 +6,7 @@ use App\Http\Controllers\InputController;
 use App\Http\Controllers\OutputController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\ReportProductController;
+use App\Http\Controllers\ReportMovementController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -22,24 +23,18 @@ use App\Http\Controllers\UserController;
 /*Falta Model/Migration/Controller de Report*/
 
 Route::get('/', function () {
-    return view('auth.index');});
-
-Route::get('/reports', function () {
-    return view('reports.index');});
-
-Route::get('/reports/movements', function () {
-    return view('reports.movements.index');});
-
-Route::resource('products', ProductController::class);
-
-Route::resource('inputs', InputController::class);
-
-Route::resource('outputs', OutputController::class);
-
-Route::resource('suppliers', SupplierController::class);
-
-Route::resource('reportProduct', ReportProductController::class);
+    return view('auth.index');
+})->name('login');
 
 Route::resource('users', UserController::class);
 
-Route::get('/reportProduct/excel', [ReportProductController::class, 'excelExport'])->name('excel');
+Route::middleware(['check.authenticated'])->group(function () {
+ // Suas rotas protegidas aqui
+ Route::resource('products', ProductController::class);
+ Route::resource('inputs', InputController::class);
+ Route::resource('outputs', OutputController::class);
+ Route::resource('suppliers', SupplierController::class);
+ Route::resource('reportProduct', ReportProductController::class);
+ Route::get('/reportProduct/excel', [ReportProductController::class, 'excelExport'])->name('excel');
+Route::resource('reportMovement', ReportMovementController::class);
+});
