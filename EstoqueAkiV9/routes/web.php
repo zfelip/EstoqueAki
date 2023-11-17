@@ -8,6 +8,7 @@ use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\ReportProductController;
 use App\Http\Controllers\ReportMovementController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ExcelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,4 +43,4 @@ Route::resource('reportMovement', ReportMovementController::class);
 
 Route::resource('users', UserController::class);
 
-Route::get('/reportProduct/excel', [ReportProductController::class, 'excelExport'])->name('excel');
+Route::get('/Product/excel', [ExcelController::class, 'excelToExport'])->name('excel');

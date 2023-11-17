@@ -11,11 +11,6 @@ use Illuminate\Http\Request;
 
 class ReportProductController extends Controller
 {
-    //Export Excel
-    public function excelExport() {
-        dd('Teste');
-        return Excel::download(new ReportProduct, 'Relatorio_Produtos.xlsx');
-    }
 
     public Product $product;
     public Output $output;
