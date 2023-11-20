@@ -6,12 +6,11 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Product;
 use App\Exports\ReportProduct;
-
 use Carbon\Carbon;
 
 class ExcelController extends Controller
 {
-    public function excelToExport(Request $request) {
+    public function excelToExport(Request $request, $type) {
         // Obtém o ID do produto da requisição
         $productId = $request->input('produto');
 
@@ -22,9 +21,8 @@ class ExcelController extends Controller
         $todayDate = Carbon::now()->format('d-m-Y');
 
         // Concatena o nome do produto e a data para formar o nome do arquivo
-        $fileName = "Relatorio_{$productName}_{$todayDate}.xlsx";
+        $fileName = "Relatorio_{$productName}_{$todayDate}." . ($type == 'pdf' ? 'pdf' : 'xlsx');
 
-        // Passa o ID do produto ao criar uma instância de ReportProduct
         return Excel::download(new ReportProduct($productId), $fileName);
     }
 }

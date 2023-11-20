@@ -43,4 +43,5 @@ Route::resource('reportMovement', ReportMovementController::class);
 
 Route::resource('users', UserController::class);
 
-Route::get('/Product/excel', [ExcelController::class, 'excelToExport'])->name('excel');
+Route::get('/Product/{type}/excel', [ExcelController::class, 'excelToExport'])->name('excel');
+Route::get('/Product/{type}/pdf', [ExcelController::class, 'excelToExport'])->name('pdf');

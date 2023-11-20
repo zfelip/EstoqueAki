@@ -188,6 +188,7 @@ return [
         |
         */
         'pdf'      => Excel::DOMPDF,
+        // 'pdf'      => Excel::TCPDF,
     ],
 
     /*
