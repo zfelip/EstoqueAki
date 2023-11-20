@@ -1,25 +1,30 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width,
+<!DOCTYPE html>
+<html lang="en">
+
+<head> 
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,
     initial-scale=1, shrink-to-fit=no"> <meta name="description" content="">
 
     <meta name="author" content="">
     <title>EstoqueAki</title>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet"> <!-- Custom
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" rel="stylesheet"> <!-- Custom
     fonts for this template -->
-<link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-<link
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
     href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
     rel="stylesheet">
 
-<!-- Custom styles for this template -->
-<link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
 
-<!-- Custom styles for this page -->
-<link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!-- Custom styles for this page -->
+    <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-<!-- Bootstrap Icons -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
 </head>
 
@@ -115,6 +120,7 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
+
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mt-4 mb-3">
                         <h1 class="h3 mb-0 text-gray-800">Relatório de Produto</h1>
@@ -149,36 +155,37 @@
                                 </button>
                             </div>
                         </div>
+                    </form>
 
+                    @if(isset($selectedProduct))
                         <div class="d-flex justify-content-end mb-4">
                             <div class="d-flex flex-column">
                                 <span>Gerar</span>
 
                                 <div style="" class="p-1">
-                                    <button class="pt-2 pb-2 rounded" style="background-color: #148248; color: white;
-                                    padding-left: 30px; padding-right: 30px; border:none; font-weight: bold;">
-                                    <i class="bi bi-file-earmark-excel-fill"></i> Excel</button>
-
-                                    <button class="pt-2 pb-2 rounded" style="background-color: #B30B00; color: white;
-                                    padding-left: 30px; padding-right: 30px; border:none; font-weight: bold;">
-                                    <i class="bi bi-file-earmark-pdf-fill"></i> PDF</button>
+                                    <a href="{{ route('excel', ['produto' => $selectedProduct->id]) }}" class="pt-2 pb-2 rounded" style="background-color: #148248; color: white; padding-left: 30px; padding-right: 30px; border:none; font-weight: bold;">
+                                        <i class="bi bi-file-earmark-excel-fill"></i> Excel
+                                    </a>
+                                    <a href="{{ route('excel', ['produto' => $selectedProduct->id]) }}" class="pt-2 pb-2 rounded" style="background-color: #B30B00; color: white; padding-left: 30px; padding-right: 30px; border:none; font-weight: bold;">
+                                    <i class="bi bi-file-earmark-pdf-fill"></i> PDF
+                                    </a>
                                 </div>
+
                             </div>
                         </div>
-                    </form>
+                        @endif
                     <!-- Fim dos inputs para o relatório -->
 
 
-                 <div class="card shadow mb-4">
-                 @if(isset($selectedProduct))
+                    <div class="card shadow mb-4">
+                    @if(isset($selectedProduct))
                         <div class="card-header py-2" style="background-color: #13293D;">
                             <h3 style="color: white;">Entrada(s) do produto: <strong> {{ $selectedProduct->nome }} </strong></h1>
                         </div>
                     <!-- DataTales Example -->
                     @endif
-                   
-                        <div class="card-body">
-                            
+
+                        <div class="card-body"> 
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
@@ -204,23 +211,20 @@
                                         @endif
                                     </tbody>
                                 </table> 
+                            </div>
                         </div>
                     </div>
-                </div>
-
              
                 <!-- tabela de saidas de produtos -->
                 <div class="card shadow mb-4">
                 @if(isset($selectedProduct))
-                        <div class="card-header py-2" style="background-color: #13293D;">
-                            <h3 style="color: white;">Saída(s) do produto: <strong> {{ $selectedProduct->nome }} </strong></h1>
-                        </div>
-@endif
-
+                    <div class="card-header py-2" style="background-color: #13293D;">
+                        <h3 style="color: white;">Saída(s) do produto: <strong> {{ $selectedProduct->nome }} </strong></h1>
+                    </div>
+                @endif
                     <!-- DataTales Example -->
                    
                         <div class="card-body">
-                            
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
                                     <thead>
@@ -249,18 +253,10 @@
                                         @endif
                                     </tbody>
                                 </table> 
-
                             </div>
-
-        
-
                         </div>
-
-        
-
-
                     </div>
-
+                    
                 </div>
                 <!-- /.container-fluid -->
 
@@ -349,6 +345,7 @@
             let idModal = document.getElementById('caixa_lancamento4');
             let modal_lancamento = new bootstrap.Modal(idModal);
             modal_lancamento.show();
+        }
 
     </script>
 

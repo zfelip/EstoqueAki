@@ -6,7 +6,9 @@ use App\Http\Controllers\InputController;
 use App\Http\Controllers\OutputController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\ReportProductController;
+use App\Http\Controllers\ReportMovementController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ExcelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +29,6 @@ Route::get('/', function () {
 Route::get('/reports', function () {
     return view('reports.index');});
 
-Route::get('/reports/movements', function () {
-    return view('reports.movements.index');});
-
 Route::resource('products', ProductController::class);
 
 Route::resource('inputs', InputController::class);
@@ -40,5 +39,8 @@ Route::resource('suppliers', SupplierController::class);
 
 Route::resource('reportProduct', ReportProductController::class);
 
+Route::resource('reportMovement', ReportMovementController::class);
+
 Route::resource('users', UserController::class);
 
+Route::get('/Product/excel', [ExcelController::class, 'excelToExport'])->name('excel');

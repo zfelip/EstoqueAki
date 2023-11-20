@@ -134,7 +134,7 @@
                     </div>
                     </a>
 
-                    <a href="reports/movements" style="text-decoration: none;">
+                    <a href="/reportMovement" style="text-decoration: none;">
                         <div class="container-fluid p-4 mb-4 rounded" style="background-color: #E8F1F2;">
 
                             <div class="d-flex">
