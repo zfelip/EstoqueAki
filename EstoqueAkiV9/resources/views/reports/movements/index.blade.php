@@ -154,22 +154,25 @@
     </div>
 </form>
 
-
+@if(isset($startDate) && isset($endDate))
                         <div class="d-flex justify-content-end mb-4">
                             <div class="d-flex flex-column">
                                 <span>Gerar</span>
 
                                 <div style="" class="p-1">
-                                    <button class="pt-2 pb-2 rounded" style="background-color: #148248; color: white; 
-                                    padding-left: 30px; padding-right: 30px; border:none; font-weight: bold;">
-                                    <i class="bi bi-file-earmark-excel-fill"></i> Excel</button>
+                                <a href="{{ route('excelMovement', ['type' => 'xlsx', 'start_date' => $startDate, 'end_date' => $endDate]) }}" class="pt-2 pb-2 rounded" style="background-color: #148248; color: white; 
+padding-left: 30px; padding-right: 30px; border:none; font-weight: bold;">
+<i class="bi bi-file-earmark-excel-fill"></i> Excel</a>
 
-                                    <button class="pt-2 pb-2 rounded" style="background-color: #B30B00; color: white; 
+
+                                    <a class="pt-2 pb-2 rounded" style="background-color: #B30B00; color: white; 
                                     padding-left: 30px; padding-right: 30px; border:none; font-weight: bold;">
-                                    <i class="bi bi-file-earmark-pdf-fill"></i> PDF</button>
+                                    <i class="bi bi-file-earmark-pdf-fill"></i> PDF</a>
                                 </div>
                             </div>
                         </div>
+
+                    @endif
                     
                     <!-- Fim dos inputs para o relatório -->
 
