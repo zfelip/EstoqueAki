@@ -161,16 +161,14 @@
                         <div class="d-flex justify-content-end mb-4">
                             <div class="d-flex flex-column">
                                 <span>Gerar</span>
-
                                 <div style="" class="p-1">
                                     <a href="{{ route('excelProduct', ['produto' => $selectedProduct->id, 'type' => 'xlsx']) }}" class="pt-2 pb-2 rounded" style="background-color: #148248; color: white; padding-left: 30px; padding-right: 30px; border:none; font-weight: bold;">
                                         <i class="bi bi-file-earmark-excel-fill"></i> Excel
                                     </a>
-                                    <a href="{{ route('pdf', ['produto' => $selectedProduct->id, 'type' => 'pdf']) }}" class="pt-2 pb-2 rounded" style="background-color: #B30B00; color: white; padding-left: 30px; padding-right: 30px; border:none; font-weight: bold;">
+                                    <a href="{{ route('pdfProduct', ['produto' => $selectedProduct->id, 'type' => 'pdf']) }}" class="pt-2 pb-2 rounded" style="background-color: #B30B00; color: white; padding-left: 30px; padding-right: 30px; border:none; font-weight: bold;">
                                     <i class="bi bi-file-earmark-pdf-fill"></i> PDF
                                     </a>
                                 </div>
-
                             </div>
                         </div>
                         @endif

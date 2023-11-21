@@ -47,4 +47,6 @@ Route::resource('users', UserController::class);
 Route::get('/Product/{type}/excel', [ExcelController::class, 'excelToExportProduct'])->name('excelProduct');
 Route::get('/Movement/{type}/excel', [ExcelController::class, 'excelToExportMovement'])->name('excelMovement');
 
-Route::get('/Product/{type}/pdf', [ExcelController::class, 'excelToExportProduct'])->name('pdf');
+//rotas de exportação para pdf
+Route::get('/Product/{type}/pdf', [ExcelController::class, 'excelToExportProduct'])->name('pdfProduct');
+Route::get('/Movement/{type}/pdf', [ExcelController::class, 'excelToExportMovement'])->name('pdfMovement');
