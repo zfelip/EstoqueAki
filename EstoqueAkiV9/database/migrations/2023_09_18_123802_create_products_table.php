@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('supplier_id'); // Chave estrangeira
             $table->string('nome');
             $table->string('descricao');
             $table->integer('quantidade');
@@ -20,6 +21,11 @@ return new class extends Migration
             $table->float('preco', 8, 2);
             $table->boolean('status')->nullable();
             $table->timestamps();
+
+            $table->foreign('supplier_id')
+            ->references('id')
+            ->on('suppliers')
+            ->onDelete('cascade');
         });
     }
 

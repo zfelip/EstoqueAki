@@ -269,8 +269,10 @@
                                                                             id="basic-default-company"
                                                                             placeholder="Fornecedor" name="fornecedor"
                                                                             required>
-                                                                                <option>Loja 1</option>
-                                                                                <option>Loja 2</option>
+                                                                            @foreach ($suppliers as $supplier)
+                                                                                <option value="{{ $supplier->id }}">
+                                                                                {{ $supplier->nome }}</option>
+                                                                            @endforeach
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -318,7 +320,7 @@
                                             <td>{{ floatval($product->valor) }}</td>                                            
                                             <!-- <td>{{ number_format($product->valor_unitario, 2, ',', '.') }}</td> -->
                                             <td>{{ floatval($product->preco) }}</td>
-                                            <td>Loja 1</td>
+                                            <td>{{ $product->supplier->nome}}</td>
                                             <!-- <td>{{ $product->fornecedor }}</td>-->
                                             <td>
                                                 @if ($product->status)
@@ -380,7 +382,7 @@
                                                                                             <td scope="row">{{ floatval($product->valor) }}</td>                                            
                                                                                             <!-- <td scope="row">{{ number_format($product->valor_unitario, 2, ',', '.') }}</td> -->
                                                                                             <td scope="row">{{ floatval($product->preco) }}</td>
-                                                                                            <td scope="row">Loja 1</td>
+                                                                                            <td scope="row">{{ $product->supplier->nome}}</td>
                                                                                             <!-- <td scope="row">{{ $product->fornecedor }}</td>-->
                                                                                             <td scope="row">
                                                                                                 @if ($product->status)
@@ -483,8 +485,11 @@
                                                                                                     id="basic-default-company"
                                                                                                     placeholder="{{$product->fornecedor}}" name="fornecedor"
                                                                                                    >
-                                                                                                        <option>Loja 1</option>
-                                                                                                        <option>Loja 2</option>
+                                                                                                    @foreach ($suppliers as $supplier)
+                                                                                                        <option value="{{ $supplier->id }}" 
+                                                                                                        {{ $product->supplier->id === $supplier->id ? 'selected' : '' }}>
+                                                                                                        {{ $supplier->nome }}</option>
+                                                                                                    @endforeach
                                                                                                 </select>
                                                                                             </div>
                                                                                         </div>

@@ -30,16 +30,16 @@ class ExcelController extends Controller
 
     //função para exportar dados do relatório de movimentação
     public function excelToExportMovement(Request $request, $type)
-{
-    // Obtenha as datas do formulário
-    $startDate = $request->input('start_date');
-    $endDate = $request->input('end_date');
+    {
+        // Obtenha as datas do formulário
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
 
-    // Substitua barras por traços no nome do arquivo
-    $fileName = 'relatorio_movimentacao_' . str_replace('/', '-', $startDate) . '_ate_' . str_replace('/', '-', $endDate) . '.' . $type;
+        // Substitua barras por traços no nome do arquivo
+        $fileName = 'relatorio_movimentacao_' . str_replace('/', '-', $startDate) . '_ate_' . str_replace('/', '-', $endDate) . '.' . $type;
 
-    // Crie uma instância da classe de exportação e exporte os dados
-    return Excel::download(new ReportMovement($startDate, $endDate), $fileName);
-}
+        // Crie uma instância da classe de exportação e exporte os dados
+        return Excel::download(new ReportMovement($startDate, $endDate), $fileName);
+    }
 
 }

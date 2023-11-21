@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Supplier;
 use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
     public Product $product;
+    public Supplier $supplier;
 
     public function __construct() {
         $this->product = new Product();
+        $this->supplier = new Supplier();
     }
     /**
      * Display a listing of the resource.
@@ -19,7 +22,7 @@ class ProductController extends Controller
     public function index()
     {
         $quantidadeProdutos = Product::sum('quantidade');
-        
+        $suppliers = $this->supplier->all();
         $products = $this->product->all();
 
         $quantidade_por_Produtos = 0;
@@ -40,7 +43,7 @@ class ProductController extends Controller
 
         $lucro = $precoEstoque - $valorEstoque;
 
-        return view ('products.index', ['products' => $products], ['quantidadeProdutos' => $quantidadeProdutos,'valorEstoque' => $valorEstoque, 'lucro' => $lucro]);
+        return view('products.index', ['products' => $products, 'suppliers' => $suppliers, 'quantidadeProdutos' => $quantidadeProdutos, 'valorEstoque' => $valorEstoque, 'lucro' => $lucro]);
     }
 
     /**
@@ -64,6 +67,7 @@ class ProductController extends Controller
             'preco' => 'required|numeric|gte:0',
         ]);
 
+        $this->product->supplier_id = $request->input('fornecedor');
         $this->product->nome = $request->input('nome');
         $this->product->descricao = $request->input('descricao');
         $this->product->valor = $request->input('valor');
@@ -112,6 +116,7 @@ class ProductController extends Controller
         ]);
 
         $product->fill([
+            'supplier_id' => is_null($request->input('fornecedor')) ? $product->supplier_id : $request->input('fornecedor'),
             'nome' => is_null($request->input('nome')) ? $product->nome : $request->input('nome'),
             'descricao' => is_null($request->input('descricao')) ? $product->descricao : $request->input('descricao'),
             'valor' => is_null($request->input('valor')) ? $product->valor : $request->input('valor'),
