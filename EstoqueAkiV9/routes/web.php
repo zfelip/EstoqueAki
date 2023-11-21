@@ -24,7 +24,7 @@ use App\Http\Controllers\ExcelController;
 /*Falta Model/Migration/Controller de Report*/
 
 Route::get('/', function () {
-    return view('auth.index');});
+    return view('auth.index');})->name('login');
 
 Route::get('/reports', function () {
     return view('reports.index');});
