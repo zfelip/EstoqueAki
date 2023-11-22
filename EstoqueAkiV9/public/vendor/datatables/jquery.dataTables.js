@@ -125,7 +125,7 @@
 		 *      // Filter to rows with 'Webkit' in them, add a background colour and then
 		 *      // remove the filter, thus highlighting the 'Webkit' rows only.
 		 *      oTable.fnFilter('Webkit');
-		 *      oTable.$('tr', {"search": "applied"}).css('backgroundColor', 'blue');
+		 *      oTable.$('tr', {"Pesquisar": "applied"}).css('backgroundColor', 'blue');
 		 *      oTable.fnFilter('');
 		 *    } );
 		 */
@@ -177,7 +177,7 @@
 		 *
 		 *      // Filter to 'Webkit' and get all data for
 		 *      oTable.fnFilter('Webkit');
-		 *      var data = oTable._('tr', {"search": "applied"});
+		 *      var data = oTable._('tr', {"Pesquisar": "applied"});
 		 *
 		 *      // Do something with the data
 		 *      alert( data.length+" rows matched the search" );
@@ -672,7 +672,7 @@
 		 * Change the pagination - provides the internal logic for pagination in a simple API
 		 * function. With this function you can have a DataTables table go to the next,
 		 * previous, first or last pages.
-		 *  @param {string|int} mAction Paging action to take: "first", "previous", "next" or "last"
+		 *  @param {string|int} mAction Paging action to take: "first", "Anterior", "Próximo" or "last"
 		 *    or page number to jump to (integer), note that page 0 is the first page.
 		 *  @param {bool} [bRedraw=true] Redraw the table or not
 		 *  @dtopt API
@@ -681,7 +681,7 @@
 		 *  @example
 		 *    $(document).ready(function() {
 		 *      var oTable = $('#example').dataTable();
-		 *      oTable.fnPageChange( 'next' );
+		 *      oTable.fnPageChange( 'Próximo' );
 		 *    } );
 		 */
 		this.fnPageChange = function ( mAction, bRedraw )
@@ -1175,7 +1175,7 @@
 			
 					if ( col.mData === i ) {
 						var sort = a( cell, 'sort' ) || a( cell, 'order' );
-						var filter = a( cell, 'filter' ) || a( cell, 'search' );
+						var filter = a( cell, 'filter' ) || a( cell, 'Pesquisar' );
 			
 						if ( sort !== null || filter !== null ) {
 							col.mData = {
@@ -4215,7 +4215,7 @@
 		var language = settings.oLanguage;
 		var previousSearch = settings.oPreviousSearch;
 		var features = settings.aanFeatures;
-		var input = '<input type="search" class="'+classes.sFilterInput+'"/>';
+		var input = '<input type="Pesquisar" class="'+classes.sFilterInput+'"/>';
 	
 		var str = language.sSearch;
 		str = str.match(/_INPUT_/) ?
@@ -4348,7 +4348,7 @@
 	
 		/* Tell the draw function we have been filtering */
 		oSettings.bFiltered = true;
-		_fnCallbackFire( oSettings, null, 'search', [oSettings] );
+		_fnCallbackFire( oSettings, null, 'Pesquisar', [oSettings] );
 	}
 	
 	
@@ -4970,8 +4970,8 @@
 	/**
 	 * Alter the display settings to change the page
 	 *  @param {object} settings DataTables settings object
-	 *  @param {string|int} action Paging action to take: "first", "previous",
-	 *    "next" or "last" or page number to jump to (integer)
+	 *  @param {string|int} action Paging action to take: "first", "Anterior",
+	 *    "Próximo" or "last" or page number to jump to (integer)
 	 *  @param [bool] redraw Automatically draw the update or not
 	 *  @returns {bool} true page has changed, false - no change
 	 *  @memberof DataTable#oApi
@@ -5000,7 +5000,7 @@
 		{
 			start = 0;
 		}
-		else if ( action == "previous" )
+		else if ( action == "Anterior" )
 		{
 			start = len >= 0 ?
 				start - len :
@@ -5011,7 +5011,7 @@
 			  start = 0;
 			}
 		}
-		else if ( action == "next" )
+		else if ( action == "Próximo" )
 		{
 			if ( start + len < records )
 			{
@@ -8062,7 +8062,7 @@
 	_api_registerPlural( 'rows().cache()', 'row().cache()', function ( type ) {
 		return this.iterator( 'row', function ( settings, row ) {
 			var r = settings.aoData[ row ];
-			return type === 'search' ? r._aFilterData : r._aSortData;
+			return type === 'Pesquisar' ? r._aFilterData : r._aSortData;
 		}, 1 );
 	} );
 	
@@ -8682,7 +8682,7 @@
 	_api_registerPlural( 'columns().cache()', 'column().cache()', function ( type ) {
 		return this.iterator( 'column-rows', function ( settings, column, i, j, rows ) {
 			return _pluck_order( settings.aoData, rows,
-				type === 'search' ? '_aFilterData' : '_aSortData', column
+				type === 'Pesquisar' ? '_aFilterData' : '_aSortData', column
 			);
 		}, 1 );
 	} );
@@ -8937,7 +8937,7 @@
 	
 	
 	_api_registerPlural( 'cells().cache()', 'cell().cache()', function ( type ) {
-		type = type === 'search' ? '_aFilterData' : '_aSortData';
+		type = type === 'Pesquisar' ? '_aFilterData' : '_aSortData';
 	
 		return this.iterator( 'cell', function ( settings, row, column ) {
 			return settings.aoData[ row ][ type ][ column ];
@@ -10318,9 +10318,9 @@
 		 *      $('#example').dataTable( {
 		 *        "searchCols": [
 		 *          null,
-		 *          { "search": "My filter" },
+		 *          { "Pesquisar": "My filter" },
 		 *          null,
-		 *          { "search": "^[0-9]", "escapeRegex": false }
+		 *          { "Pesquisar": "^[0-9]", "escapeRegex": false }
 		 *        ]
 		 *      } );
 		 *    } )
@@ -11242,8 +11242,8 @@
 		 *        "serverSide": true,
 		 *        "ajax": "scripts/server_processing.php",
 		 *        "deferLoading": [ 57, 100 ],
-		 *        "search": {
-		 *          "search": "my_filter"
+		 *        "Pesquisar": {
+		 *          "Pesquisar": "my_filter"
 		 *        }
 		 *      } );
 		 *    } );
@@ -11443,7 +11443,7 @@
 	
 	
 				/**
-				 * Text to use for the 'next' pagination button (to take the user to the
+				 * Text to use for the 'Próximo' pagination button (to take the user to the
 				 * next page).
 				 *  @type string
 				 *  @default Next
@@ -11456,17 +11456,17 @@
 				 *      $('#example').dataTable( {
 				 *        "language": {
 				 *          "paginate": {
-				 *            "next": "Next page"
+				 *            "Próximo": "Next page"
 				 *          }
 				 *        }
 				 *      } );
 				 *    } );
 				 */
-				"sNext": "Next",
+				"sNext": "Próximo",
 	
 	
 				/**
-				 * Text to use for the 'previous' pagination button (to take the user to
+				 * Text to use for the 'Anterior' pagination button (to take the user to
 				 * the previous page).
 				 *  @type string
 				 *  @default Previous
@@ -11479,13 +11479,13 @@
 				 *      $('#example').dataTable( {
 				 *        "language": {
 				 *          "paginate": {
-				 *            "previous": "Previous page"
+				 *            "Anterior": "Previous page"
 				 *          }
 				 *        }
 				 *      } );
 				 *    } );
 				 */
-				"sPrevious": "Previous"
+				"sPrevious": "Anterior"
 			},
 	
 			/**
@@ -11540,7 +11540,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+			"sInfo": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
 	
 	
 			/**
@@ -11561,7 +11561,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoEmpty": "Showing 0 to 0 of 0 entries",
+			"sInfoEmpty": "Mostrando 0 a 0 de 0 entradas",
 	
 	
 			/**
@@ -11701,7 +11701,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sLengthMenu": "Show _MENU_ entries",
+			"sLengthMenu": "Mostrar _MENU_ entradas",
 	
 	
 			/**
@@ -11766,7 +11766,7 @@
 			 *    $(document).ready( function() {
 			 *      $('#example').dataTable( {
 			 *        "language": {
-			 *          "search": "Filter records:"
+			 *          "Pesquisar": "Filter records:"
 			 *        }
 			 *      } );
 			 *    } );
@@ -11776,12 +11776,12 @@
 			 *    $(document).ready( function() {
 			 *      $('#example').dataTable( {
 			 *        "language": {
-			 *          "search": "Apply filter _INPUT_ to table"
+			 *          "Pesquisar": "Apply filter _INPUT_ to table"
 			 *        }
 			 *      } );
 			 *    } );
 			 */
-			"sSearch": "Search:",
+			"sSearch": "Pesquisar:",
 	
 	
 			/**
@@ -11860,7 +11860,7 @@
 		 *  @example
 		 *    $(document).ready( function() {
 		 *      $('#example').dataTable( {
-		 *        "search": {"search": "Initial search"}
+		 *        "Pesquisar": {"Pesquisar": "Initial search"}
 		 *      } );
 		 *    } )
 		 */
@@ -11986,10 +11986,10 @@
 		 * display for pagination control:
 		 *
 		 * * `numbers` - Page number buttons only
-		 * * `simple` - 'Previous' and 'Next' buttons only
-		 * * 'simple_numbers` - 'Previous' and 'Next' buttons, plus page numbers
-		 * * `full` - 'First', 'Previous', 'Next' and 'Last' buttons
-		 * * `full_numbers` - 'First', 'Previous', 'Next' and 'Last' buttons, plus page numbers
+		 * * `simple` - 'Anterior' and 'Próximo' buttons only
+		 * * 'simple_numbers` - 'Anterior' and 'Próximo' buttons, plus page numbers
+		 * * `full` - 'First', 'Anterior', 'Próximo' and 'Last' buttons
+		 * * `full_numbers` - 'First', 'Anterior', 'Próximo' and 'Last' buttons, plus page numbers
 		 * * `first_last_numbers` - 'First' and 'Last' buttons, plus page numbers
 		 *  
 		 * Further methods can be added using {@link DataTable.ext.oPagination}.
@@ -14179,7 +14179,7 @@
 		 *  @example
 		 *    // Show previous, next and current page buttons only
 		 *    $.fn.dataTableExt.oPagination.current = function ( page, pages ) {
-		 *      return [ 'previous', page, 'next' ];
+		 *      return [ 'Anterior', page, 'Próximo' ];
 		 *    };
 		 */
 		pager: {},
@@ -14560,11 +14560,11 @@
 	
 	$.extend( extPagination, {
 		simple: function ( page, pages ) {
-			return [ 'previous', 'next' ];
+			return [ 'Anterior', 'Próximo' ];
 		},
 	
 		full: function ( page, pages ) {
-			return [  'first', 'previous', 'next', 'last' ];
+			return [  'first', 'Anterior', 'Próximo', 'last' ];
 		},
 	
 		numbers: function ( page, pages ) {
@@ -14572,11 +14572,11 @@
 		},
 	
 		simple_numbers: function ( page, pages ) {
-			return [ 'previous', _numbers(page, pages), 'next' ];
+			return [ 'Anterior', _numbers(page, pages), 'Próximo' ];
 		},
 	
 		full_numbers: function ( page, pages ) {
-			return [ 'first', 'previous', _numbers(page, pages), 'next', 'last' ];
+			return [ 'first', 'Anterior', _numbers(page, pages), 'Próximo', 'last' ];
 		},
 		
 		first_last_numbers: function (page, pages) {
@@ -14633,7 +14633,7 @@
 									}
 									break;
 	
-								case 'previous':
+								case 'Anterior':
 									btnDisplay = lang.sPrevious;
 	
 									if ( page === 0 ) {
@@ -14642,7 +14642,7 @@
 									}
 									break;
 	
-								case 'next':
+								case 'Próximo':
 									btnDisplay = lang.sNext;
 	
 									if ( pages === 0 || page === pages-1 ) {

@@ -119,7 +119,7 @@ espaço. Nos quatro cantos do tecto as figuras das estações, e ao centro
 das paredes os medalhões de Cesar, Augusto, Nero e Massinissa, com os
 nomes por baixo... Não alcanço a razão de taes personagens. Quando
 fomos para a casa de Matacavallos, já ella estava assim decorada; vinha
-do decennio anterior. Naturalmente era gosto do tempo metter sabor
+do decennio Anterior. Naturalmente era gosto do tempo metter sabor
 classico e figuras antigas em pinturas americanas. O mais é tambem
 analogo e parecido. Tenho chacarinha, flôres, legume, uma casuarina, um
 poço e lavadouro. Uso louça velha e mobilia velha. Emfim, agora, como
@@ -2794,7 +2794,7 @@ mentira é, muita vez, tão involuntaria como a transpiração. Por outro
 lado, leitor amigo, nota que eu queria desviar as suspeitas de cima de
 Capitú, quando havia chamado minha mãe justamente para confirmal-as;
 mas as contradicções são deste mundo. A verdade é que minha mãe era
-candida como a primeira aurora, anterior ao primeiro peccado; nem
+candida como a primeira aurora, Anterior ao primeiro peccado; nem
 por simples intuição era capaz de deduzir uma cousa de outra, isto
 é, não concluiria da minha repentina opposição que eu andasse em
 segredinhos com Capitú, como lhe dissera José Dias. Calou-se durante
