@@ -151,7 +151,7 @@
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800"> 
                                                 R$ {{ $valorEstoque }}
                                                 </div>
-                                                <!-- observar função a ser utilizada na linha anterior -->
+                                                <!-- observar função a ser utilizada na linha Anterior -->
                                             </div>
                                             <div class="col-auto">
                                                 <i class="fa-solid fa-brazilian-real-sign fa-2x text-gray-300"></i>
@@ -171,7 +171,7 @@
                                                 <div class="h5 mb-0 font-weight-bold text-gray-800"> 
                                                 R$ {{ $lucro }}
                                                 </div>
-                                                <!-- observar função a ser utilizada na linha anterior -->
+                                                <!-- observar função a ser utilizada na linha Anterior -->
                                             </div>
                                             <div class="col-auto">
                                                 <i class="fa-solid fa-chart-line fa-2x text-gray-300"></i>

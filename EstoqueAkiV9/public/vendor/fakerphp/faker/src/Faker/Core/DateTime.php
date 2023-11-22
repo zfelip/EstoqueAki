@@ -109,7 +109,7 @@ final class DateTime implements DateTimeExtension, GeneratorAwareExtension
         $end = $this->getTimestamp($until);
 
         if ($start > $end) {
-            throw new \InvalidArgumentException('"$from" must be anterior to "$until".');
+            throw new \InvalidArgumentException('"$from" must be Anterior to "$until".');
         }
 
         $timestamp = $this->generator->numberBetween($start, $end);

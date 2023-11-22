@@ -149,7 +149,7 @@ class DateTime extends Base
         $endTimestamp = static::getMaxTimestamp($endDate);
 
         if ($startTimestamp > $endTimestamp) {
-            throw new \InvalidArgumentException('Start date must be anterior to end date.');
+            throw new \InvalidArgumentException('Start date must be Anterior to end date.');
         }
 
         $timestamp = self::numberBetween($startTimestamp, $endTimestamp);
