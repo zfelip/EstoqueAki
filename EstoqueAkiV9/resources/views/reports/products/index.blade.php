@@ -109,8 +109,8 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link" href="/">
+            <li class="nav-item" style="cursor: pointer;">
+                <a class="nav-link" data-toggle="modal" data-target="#caixa_lancamento5" onclick="logout_modal()">
                 <i class="fa-solid fa-power-off"></i>
                     <span>Sair</span></a>
             </li>
@@ -298,20 +298,20 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="caixa_lancamento5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja sair?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-body">Selecione "Sair" caso deseje encerrar sua sessão.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <a class="btn btn-danger" href="/">Sair</a>
                 </div>
             </div>
         </div>
@@ -358,6 +358,11 @@
             let idModal = document.getElementById('caixa_lancamento4');
             let modal_lancamento = new bootstrap.Modal(idModal);
             modal_lancamento.show();
+        }
+        function logout_modal() {
+            let idModal = document.getElementById('caixa_lancamento5');
+            let modal_lancamento = new bootstrap.Modal(idModal);
+            modal.lancamento.show();
         }
 
     </script>
