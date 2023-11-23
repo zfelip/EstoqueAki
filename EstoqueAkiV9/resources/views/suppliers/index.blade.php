@@ -367,7 +367,7 @@
                                                                                                     class="col-form-label"
                                                                                                     for="basic-default-company">Nome</label>
                                                                                                 <input type="text"
-                                                                                                    class="form-control"
+                                                                                                    class="form-control "
                                                                                                     id="basic-default-company"
                                                                                                     placeholder="{{$supplier->nome}}"
                                                                                                     name="nome">
@@ -544,8 +544,6 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
 
-    <!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <!-- Inputmask -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
@@ -576,16 +574,13 @@
         let modal_lancamento = new bootstrap.Modal(idModal);
         modal_lancamento.show();
     }
-    </script>
 
-<script>
-$(document).ready(function() {
+    $(document).ready(function() {
     $('.cnpj-mask').inputmask('99.999.999/9999-99', { clearIncomplete: true });
     $('.telefone-mask').inputmask('(99) 99999-9999', { clearIncomplete: true });
 
 });
-</script>
-
+    </script>
 
 </body>
 

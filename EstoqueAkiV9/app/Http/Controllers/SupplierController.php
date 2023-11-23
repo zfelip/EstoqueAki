@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Supplier;
-use App\Http\Requests\SupplierRequest;
 
 class SupplierController extends Controller
 {
@@ -30,7 +29,7 @@ class SupplierController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(SupplierRequest $request)
+    public function store(Request $request)
     { 
 
         Supplier::create($request->all());   
