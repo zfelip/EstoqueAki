@@ -39,11 +39,13 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
 
-                                    <div class="sidebar-brand d-flex align-items-center justify-content-center" href="/products">
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+
+                            <div class="col-lg-6">
+                                <div style="padding: 100px 50px 100px 50px">
+
+                                    <div class="sidebar-brand d-flex align-items-center justify-content-center mb-5" href="/products">
                                         <div class="sidebar-brand-icon rotate-n-0">
                                             <svg style="color: #13293D" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-box-seam-fill" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd" d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.01-.003.268-.108a.75.75 0 0 1 .558 0l.269.108.01.003 6.97 2.789ZM10.404 2 4.25 4.461 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339L8 5.961 5.596 5l6.154-2.461L10.404 2Z"/>
@@ -61,7 +63,7 @@
                                         @csrf
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password" name="password">
+                                                id="exampleInputPassword" placeholder="Senha" name="password">
                                         </div>
                                        
                                       <button class="btn btn-primary btn-user btn-block">Entrar</button>
