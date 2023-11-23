@@ -188,7 +188,7 @@
                                                                     <div class="mb-3">
                                                                         <label class="col-form-label"
                                                                             for="basic-default-company">CNPJ</label>
-                                                                        <input type="text" class="form-control"
+                                                                        <input type="text" class="form-control cnpj-mask"
                                                                             id="basic-default-company"
                                                                             placeholder="CNPJ" name="cnpj" required>
                                                                         @error('cnpj')
@@ -199,7 +199,7 @@
                                                                     <div class="mb-3">
                                                                         <label class="col-form-label"
                                                                             for="basic-default-company">Telefone</label>
-                                                                        <input type="text" class="form-control"
+                                                                        <input type="text" class="form-control telefone-mask"
                                                                             id="basic-default-company"
                                                                             placeholder="Telefone" name="telefone"
                                                                             required>
@@ -381,7 +381,7 @@
                                                                                                     class="col-form-label"
                                                                                                     for="basic-default-company">CNPJ</label>
                                                                                                 <input type="text"
-                                                                                                    class="form-control"
+                                                                                                    class="form-control cnpj-mask"
                                                                                                     id="basic-default-company"
                                                                                                     placeholder="{{$supplier->cnpj}}"
                                                                                                     name="cnpj">
@@ -395,7 +395,7 @@
                                                                                                     class="col-form-label"
                                                                                                     for="basic-default-company">Telefone</label>
                                                                                                 <input type="text"
-                                                                                                    class="form-control"
+                                                                                                    class="form-control telefone-mask"
                                                                                                     id="basic-default-company"
                                                                                                     placeholder="{{$supplier->telefone}}"
                                                                                                     name="telefone">
@@ -544,6 +544,13 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
 
+    <!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- Inputmask -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+
+
     <!-- Modal script -->
     <script>
     function mostrar_modal() {
@@ -570,6 +577,15 @@
         modal_lancamento.show();
     }
     </script>
+
+<script>
+$(document).ready(function() {
+    $('.cnpj-mask').inputmask('99.999.999/9999-99', { clearIncomplete: true });
+    $('.telefone-mask').inputmask('(99) 99999-9999', { clearIncomplete: true });
+
+});
+</script>
+
 
 </body>
 

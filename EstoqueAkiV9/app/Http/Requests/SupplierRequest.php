@@ -23,11 +23,7 @@ class SupplierRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'nome' => 'required',
-            'telefone' => 'required|numeric|gte:0', //usasse a regra gte para aceitar 0 e numeros positivos, ao contrario da gt que nao aceita 0
-            'cnpj' => 'required|numeric|gte:0' 
-        ];
+    
 
        
     }

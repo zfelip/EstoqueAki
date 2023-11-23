@@ -50,26 +50,24 @@ class SupplierController extends Controller
      */
     public function edit(Supplier $supplier)
     {
-        return view('suppliers.edit', ['supplier' => $supplier]);
+        
     }
     
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(SupplierRequest $request, Supplier $supplier)
+    public function update(Request $request, Supplier $supplier)
     {
-        
         $supplier->fill([
             'nome' => is_null($request->input('nome')) ? $supplier->nome : $request->input('nome'),
             'cnpj' => is_null($request->input('cnpj')) ? $supplier->cnpj : $request->input('cnpj'),
             'telefone' => is_null($request->input('telefone')) ? $supplier->telefone : $request->input('telefone'),
         ]);
-
         $supplier->save();
         return redirect()->route('suppliers.index');
     }
-
+ 
     /**
      * Remove the specified resource from storage.
      */
