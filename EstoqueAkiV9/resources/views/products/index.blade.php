@@ -36,9 +36,11 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/products">
                 <div class="sidebar-brand-icon rotate-n-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-box-seam-fill" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.01-.003.268-.108a.75.75 0 0 1 .558 0l.269.108.01.003 6.97 2.789ZM10.404 2 4.25 4.461 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339L8 5.961 5.596 5l6.154-2.461L10.404 2Z"/>
-                      </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-box-seam-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.01-.003.268-.108a.75.75 0 0 1 .558 0l.269.108.01.003 6.97 2.789ZM10.404 2 4.25 4.461 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339L8 5.961 5.596 5l6.154-2.461L10.404 2Z" />
+                    </svg>
                 </div>
                 <div class="sidebar-brand-text mx-3">EstoqueAki</div>
             </a>
@@ -106,7 +108,7 @@
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item" style="cursor: pointer;">
                 <a class="nav-link" data-toggle="modal" data-target="#caixa_lancamento5" onclick="logout_modal()">
-                <i class="fa-solid fa-power-off"></i>
+                    <i class="fa-solid fa-power-off"></i>
                     <span>Sair</span></a>
             </li>
 
@@ -134,72 +136,72 @@
                     <div class="d-sm-flex align-items-center justify-content-between mt-4 mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Produtos</h1>
                     </div>
-                        <div class="row">
-                            <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-left-info shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                    Produtos em Estoque</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800">
+                    <div class="row">
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Produtos em Estoque</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 {{ $quantidadeProdutos }}
-                                                </div>
                                             </div>
-                                            <div class="col-auto">
-                                                <i class="fa-solid fa-box-open fa-2x text-gray-300"></i>
-                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fa-solid fa-box-open fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                                <!-- Earnings (Monthly) Card Example -->
-                            <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-left-primary shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    Valor em estoque</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800"> 
-                                                R$ {{ $valorEstoque }}
-                                                </div>
-                                                <!-- observar função a ser utilizada na linha Anterior -->
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fa-solid fa-brazilian-real-sign fa-2x text-gray-300"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-3 col-md-6 mb-4">
-                                <div class="card border-left-primary shadow h-100 py-2">
-                                    <div class="card-body">
-                                        <div class="row no-gutters align-items-center">
-                                            <div class="col mr-2">
-                                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                    Estimativa de lucro</div>
-                                                <div class="h5 mb-0 font-weight-bold text-gray-800"> 
-                                                R$ {{ $lucro }}
-                                                </div>
-                                                <!-- observar função a ser utilizada na linha Anterior -->
-                                            </div>
-                                            <div class="col-auto">
-                                                <i class="fa-solid fa-chart-line fa-2x text-gray-300"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-        
-                            <!-- Earnings (Monthly) Card Example -->
-        
-                            <!-- Pending Requests Card Example -->
                         </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Valor em estoque</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                R$ {{ $valorEstoque }}
+                                            </div>
+                                            <!-- observar função a ser utilizada na linha Anterior -->
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fa-solid fa-brazilian-real-sign fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Estimativa de lucro</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                R$ {{ $lucro }}
+                                            </div>
+                                            <!-- observar função a ser utilizada na linha Anterior -->
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fa-solid fa-chart-line fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+
+                        <!-- Pending Requests Card Example -->
+                    </div>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mt-5 mb-4">
@@ -208,9 +210,9 @@
                         </div>
                         <div class="card-header py-3">
                             <!--botaão para acionar o modal adicionar-->
-                            <button type="submit" class="btn float-end btn-primary"
-                                style="margin-right:1rem;" data-toggle="modal"
-                                data-target="#ExemploModalCentralizado" onclick="mostrar_modal()"> + Adicionar
+                            <button type="submit" class="btn float-end btn-primary" style="margin-right:1rem;"
+                                data-toggle="modal" data-target="#ExemploModalCentralizado" onclick="mostrar_modal()"> +
+                                Adicionar
                                 Produto
                             </button>
 
@@ -232,7 +234,7 @@
                                             <div class="container-xxl">
                                                 <div class="authentication-wrapper authentication-basic container-p-y">
                                                     <form class="" action="{{ route('products.store') }}" method="POST">
-                                                    @csrf
+                                                        @csrf
                                                         <div class="row">
                                                             <div class="col-xl">
                                                                 <div class="card-body">
@@ -248,7 +250,8 @@
                                                                             for="basic-default-company">Descrição</label>
                                                                         <input type="text" class="form-control"
                                                                             id="basic-default-company"
-                                                                            placeholder="Descrição" name="descricao" required>
+                                                                            placeholder="Descrição" name="descricao"
+                                                                            required>
                                                                     </div>
                                                                     <div class="mb-3">
                                                                         <label class="col-form-label"
@@ -285,7 +288,7 @@
                                                                             placeholder="Fornecedor" name="fornecedor"
                                                                             required>
                                                                             @foreach ($suppliers as $supplier)
-                                                                                <option value="{{ $supplier->id }}">
+                                                                            <option value="{{ $supplier->id }}">
                                                                                 {{ $supplier->nome }}</option>
                                                                             @endforeach
                                                                         </select>
@@ -318,7 +321,7 @@
                                             <th>Nome</th>
                                             <th>Descrição</th>
                                             <th>Quantidade</th>
-                                            <th>Valor unitário</th>                                            
+                                            <th>Valor unitário</th>
                                             <th>Preço unitário</th>
                                             <th>Fornecedor</th>
                                             <th>Status</th>
@@ -326,22 +329,26 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($products as $product)
+                                        @foreach ($products as $product)
                                         <tr>
                                             <td>{{ $product->id }}</td>
                                             <td>{{ $product->nome }}</td>
                                             <td>{{ $product->descricao }}</td>
                                             <td>{{ $product->quantidade }}</td>
-                                            <td>{{ floatval($product->valor) }}</td>                                            
+                                            <td>{{ floatval($product->valor) }}</td>
                                             <!-- <td>{{ number_format($product->valor_unitario, 2, ',', '.') }}</td> -->
                                             <td>{{ floatval($product->preco) }}</td>
-                                            <td>{{ $product->supplier->nome}}</td>
+                                            <td>
+                                                @if(isset($product->supplier->nome))
+                                                {{ $product->supplier->nome}}
+                                                @else Fornecedor excluído
+                                                @endif</td>
                                             <!-- <td>{{ $product->fornecedor }}</td>-->
                                             <td>
                                                 @if ($product->status)
-                                                    Disponível
+                                                Disponível
                                                 @else
-                                                    Em Falta
+                                                Em Falta
                                                 @endif
                                             </td>
                                             <!-- <td>{{ $product->status }}</td> -->
@@ -351,13 +358,15 @@
                                                     <!--botão para acionar o modal mostrar-->
                                                     <button type="submit" class="btn btn-info btn-icon-split mx-2"
                                                         style="margin-right:1rem;" data-toggle="modal"
-                                                        data-target="#caixa_lancamento2{{ $product->id }}" 
+                                                        data-target="#caixa_lancamento2{{ $product->id }}"
                                                         title="Mostrar" onclick="mostrar_modal2()">
-                                                        <span class="icon text-white-50"><i class="fas fa-eye"></i></span>
+                                                        <span class="icon text-white-50"><i
+                                                                class="fas fa-eye"></i></span>
                                                     </button>
 
                                                     <!-- Modal Mostrar -->
-                                                    <div class="modal fade text-center" id="caixa_lancamento2{{ $product->id }}" tabindex="-1"
+                                                    <div class="modal fade text-center"
+                                                        id="caixa_lancamento2{{ $product->id }}" tabindex="-1"
                                                         role="dialog" aria-labelledby="TituloModalCentralizado"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
@@ -391,19 +400,34 @@
                                                                                     </thead>
                                                                                     <tbody>
                                                                                         <tr class="">
-                                                                                            <td scope="row">{{ $product->nome }}</td>
-                                                                                            <td scope="row">{{ $product->descricao }}</td>
-                                                                                            <td scope="row">{{ $product->quantidade }}</td>
-                                                                                            <td scope="row">{{ floatval($product->valor) }}</td>                                            
+                                                                                            <td scope="row">{{
+                                                                                                $product->nome }}</td>
+                                                                                            <td scope="row">{{
+                                                                                                $product->descricao }}
+                                                                                            </td>
+                                                                                            <td scope="row">{{
+                                                                                                $product->quantidade }}
+                                                                                            </td>
+                                                                                            <td scope="row">{{
+                                                                                                floatval($product->valor)
+                                                                                                }}</td>
                                                                                             <!-- <td scope="row">{{ number_format($product->valor_unitario, 2, ',', '.') }}</td> -->
-                                                                                            <td scope="row">{{ floatval($product->preco) }}</td>
-                                                                                            <td scope="row">{{ $product->supplier->nome}}</td>
+                                                                                            <td scope="row">{{
+                                                                                                floatval($product->preco)
+                                                                                                }}</td>
+                                                                                            <td>
+                                                                                                @if(isset($product->supplier->nome))
+                                                                                                {{
+                                                                                                $product->supplier->nome}}
+                                                                                                @else Fornecedor
+                                                                                                excluído
+                                                                                                @endif</td>
                                                                                             <!-- <td scope="row">{{ $product->fornecedor }}</td>-->
                                                                                             <td scope="row">
                                                                                                 @if ($product->status)
-                                                                                                    Disponível
+                                                                                                Disponível
                                                                                                 @else
-                                                                                                    Em Falta
+                                                                                                Em Falta
                                                                                                 @endif
                                                                                             </td>
                                                                                         </tr>
@@ -423,12 +447,14 @@
                                                         style="margin-right:1rem;" data-toggle="modal"
                                                         data-target="#caixa_lancamento3{{ $product->id }}"
                                                         title="Editar" onclick="editar_modal()">
-                                                        <span class="icon text-white-50"><i class="fas fa-pencil"></i></span>
+                                                        <span class="icon text-white-50"><i
+                                                                class="fas fa-pencil"></i></span>
                                                     </button>
 
                                                     <!-- Modal Editar-->
-                                                    <div class="modal fade " id="caixa_lancamento3{{ $product->id }}" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
-                                                        aria-hidden="true">
+                                                    <div class="modal fade " id="caixa_lancamento3{{ $product->id }}"
+                                                        tabindex="-1" role="dialog"
+                                                        aria-labelledby="TituloModalCentralizado" aria-hidden="true">
                                                         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
                                                             role="document">
                                                             <div class="modal-content">
@@ -445,65 +471,93 @@
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <div class="container-xxl">
-                                                                        <div class="authentication-wrapper authentication-basic container-p-y">
-                                                                            <form class="" action="{{ route('products.update', ['product' => $product->id]) }}" method="POST">
+                                                                        <div
+                                                                            class="authentication-wrapper authentication-basic container-p-y">
+                                                                            <form class=""
+                                                                                action="{{ route('products.update', ['product' => $product->id]) }}"
+                                                                                method="POST">
                                                                                 @csrf
-                                                                                <input type="hidden" name="_method" value="PUT">    
+                                                                                <input type="hidden" name="_method"
+                                                                                    value="PUT">
                                                                                 <div class="row">
                                                                                     <div class="col-xl">
                                                                                         <div class="card-body">
                                                                                             <div class="mb-3">
-                                                                                                <label class="col-form-label"
+                                                                                                <label
+                                                                                                    class="col-form-label"
                                                                                                     for="basic-default-company">Nome</label>
-                                                                                                <input type="text" class="form-control"
+                                                                                                <input type="text"
+                                                                                                    class="form-control"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{$product->nome}}" name="nome">
+                                                                                                    placeholder="{{$product->nome}}"
+                                                                                                    name="nome">
                                                                                             </div>
                                                                                             <div class="mb-3">
-                                                                                                <label class="col-form-label"
+                                                                                                <label
+                                                                                                    class="col-form-label"
                                                                                                     for="basic-default-company">Descrição</label>
-                                                                                                <input type="text" class="form-control"
+                                                                                                <input type="text"
+                                                                                                    class="form-control"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{$product->descricao}}" name="descricao">
+                                                                                                    placeholder="{{$product->descricao}}"
+                                                                                                    name="descricao">
                                                                                             </div>
                                                                                             <div class="mb-3">
-                                                                                                <label class="col-form-label"
+                                                                                                <label
+                                                                                                    class="col-form-label"
                                                                                                     for="basic-default-company">Quantidade</label>
-                                                                                                <input type="text" class="form-control"
+                                                                                                <input type="text"
+                                                                                                    class="form-control"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{$product->quantidade}}" name="quantidade"
-                                                                                                   >
+                                                                                                    placeholder="{{$product->quantidade}}"
+                                                                                                    name="quantidade">
                                                                                             </div>
                                                                                             <div class="mb-3">
-                                                                                                <div class="d-inline-block">
-                                                                                                    <label class="col-form-label"
+                                                                                                <div
+                                                                                                    class="d-inline-block">
+                                                                                                    <label
+                                                                                                        class="col-form-label"
                                                                                                         for="basic-default-company">Valor</label>
-                                                                                                    <input type="text" class="form-control"
+                                                                                                    <input type="text"
+                                                                                                        class="form-control"
                                                                                                         id="basic-default-company"
-                                                                                                        placeholder="{{$product->valor}}" name="valor"
-                                                                                                       >
+                                                                                                        placeholder="{{$product->valor}}"
+                                                                                                        name="valor">
 
                                                                                                 </div>
-                                                                                                <div class="d-inline-block">
-                                                                                                    <label class="col-form-label"
+                                                                                                <div
+                                                                                                    class="d-inline-block">
+                                                                                                    <label
+                                                                                                        class="col-form-label"
                                                                                                         for="basic-default-company">Preço</label>
-                                                                                                    <input type="text" class="form-control"
+                                                                                                    <input type="text"
+                                                                                                        class="form-control"
                                                                                                         id="basic-default-company"
-                                                                                                        placeholder="{{$product->preco}}" name="preco"
-                                                                                                       >
+                                                                                                        placeholder="{{$product->preco}}"
+                                                                                                        name="preco">
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="mb-3">
-                                                                                                <label class="col-form-label"
+                                                                                                <label
+                                                                                                    class="col-form-label"
                                                                                                     for="basic-default-company">Fornecedor</label>
-                                                                                                <select type="text" class="form-control"
+                                                                                                <select type="text"
+                                                                                                    class="form-control"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{$product->fornecedor}}" name="fornecedor"
-                                                                                                   >
-                                                                                                    @foreach ($suppliers as $supplier)
-                                                                                                        <option value="{{ $supplier->id }}" 
-                                                                                                        {{ $product->supplier->id === $supplier->id ? 'selected' : '' }}>
-                                                                                                        {{ $supplier->nome }}</option>
+                                                                                                    placeholder="{{$product->fornecedor}}"
+                                                                                                    name="fornecedor">
+                                                                                                    @foreach ($suppliers
+                                                                                                    as $supplier)
+                                                                                                    <option
+                                                                                                        value="{{ $supplier->id }}"
+                                                                                                        {{ $product->
+                                                                                                        supplier->id ===
+                                                                                                        $supplier->id ?
+                                                                                                        'selected' : ''
+                                                                                                        }}>
+                                                                                                        {{
+                                                                                                        $supplier->nome
+                                                                                                        }}</option>
                                                                                                     @endforeach
                                                                                                 </select>
                                                                                             </div>
@@ -528,35 +582,42 @@
                                                     <!--botaão para acionar o modal excluir-->
                                                     <button type="submit" class="btn float-end btn-danger mx-2"
                                                         style="margin-right:1rem;" data-toggle="modal"
-                                                        data-target="#caixa_lancamento4{{ $product->id }}" onclick="excluir_modal()">
-                                                        <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
+                                                        data-target="#caixa_lancamento4{{ $product->id }}"
+                                                        onclick="excluir_modal()">
+                                                        <span class="icon text-white-50"><i
+                                                                class="fas fa-trash"></i></span>
                                                     </button>
 
                                                     <!-- Modal Excluir-->
-                                                    <div class="modal fade" id="caixa_lancamento4{{ $product->id }}" tabindex="-1"
-                                                        role="dialog" aria-labelledby="exampleModalLabel"
+                                                    <div class="modal fade" id="caixa_lancamento4{{ $product->id }}"
+                                                        tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Excluir
+                                                                    <h5 class="modal-title" id="exampleModalLabel">
+                                                                        Excluir
                                                                         Produto</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal"
-                                                                        aria-label="Close">
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <p>Tem certeza que deseja excluir esse Produto ({{$product->nome}})?</p>
+                                                                    <p>Tem certeza que deseja excluir esse Produto
+                                                                        ({{$product->nome}})?</p>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-dismiss="modal">Cancelar
                                                                     </button>
-                                                                    <form action="{{ route('products.destroy', ['product' => $product->id]) }}" method="post">
-                                                                        @csrf 
+                                                                    <form
+                                                                        action="{{ route('products.destroy', ['product' => $product->id]) }}"
+                                                                        method="post">
+                                                                        @csrf
                                                                         @method('DELETE')
-                                                                        <button type="submit" class="btn btn-danger">Excluir</button>
+                                                                        <button type="submit"
+                                                                            class="btn btn-danger">Excluir</button>
                                                                     </form>
                                                                 </div>
                                                             </div>
@@ -565,7 +626,7 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                    @endforeach
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
