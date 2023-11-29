@@ -347,7 +347,7 @@
                                                                                                     for="basic-default-company">Quantidade</label>
                                                                                                 <input type="text" class="form-control"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{ $input->quantidade }}" name="quantidade">
+                                                                                                    value="{{ $input->quantidade }}" name="quantidade">
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>

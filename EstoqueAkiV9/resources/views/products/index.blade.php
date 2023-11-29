@@ -489,7 +489,7 @@
                                                                                                 <input type="text"
                                                                                                     class="form-control"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{$product->nome}}"
+                                                                                                    value="{{$product->nome}}"
                                                                                                     name="nome">
                                                                                             </div>
                                                                                             <div class="mb-3">
@@ -499,7 +499,7 @@
                                                                                                 <input type="text"
                                                                                                     class="form-control"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{$product->descricao}}"
+                                                                                                    value="{{$product->descricao}}"
                                                                                                     name="descricao">
                                                                                             </div>
                                                                                             <div class="mb-3">
@@ -509,7 +509,7 @@
                                                                                                 <input type="text"
                                                                                                     class="form-control"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{$product->quantidade}}"
+                                                                                                    value="{{$product->quantidade}}"
                                                                                                     name="quantidade">
                                                                                             </div>
                                                                                             <div class="mb-3">
@@ -521,7 +521,7 @@
                                                                                                     <input type="text"
                                                                                                         class="form-control"
                                                                                                         id="basic-default-company"
-                                                                                                        placeholder="{{$product->valor}}"
+                                                                                                        value="{{$product->valor}}"
                                                                                                         name="valor">
 
                                                                                                 </div>
@@ -533,7 +533,7 @@
                                                                                                     <input type="text"
                                                                                                         class="form-control"
                                                                                                         id="basic-default-company"
-                                                                                                        placeholder="{{$product->preco}}"
+                                                                                                        value="{{$product->preco}}"
                                                                                                         name="preco">
                                                                                                 </div>
                                                                                             </div>

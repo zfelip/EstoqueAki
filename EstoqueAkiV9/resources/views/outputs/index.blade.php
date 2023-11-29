@@ -369,7 +369,7 @@
                                                                                                     for="basic-default-company">Quantidade</label>
                                                                                                 <input type="text" class="form-control"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{$output->quantidade}}"
+                                                                                                    value="{{$output->quantidade}}"
                                                                                                     name="quantidade">
                                                                                             </div>
 

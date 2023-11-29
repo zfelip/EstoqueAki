@@ -63,7 +63,7 @@
                                         @csrf
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Senha" name="password">
+                                                id="exampleInputPassword" placeholder="Senha" name="password" autofocus>
                                         </div>
                                        
                                       <button class="btn btn-primary btn-user btn-block">Entrar</button>
