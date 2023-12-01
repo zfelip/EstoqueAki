@@ -24,6 +24,9 @@
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+
 </head>
 
 <body class="bg-gradient-primary">
@@ -66,10 +69,14 @@
                                                 id="exampleInputPassword" placeholder="Senha" name="password" autofocus>
                                         </div>
                                        
-                                      <button class="btn btn-primary btn-user btn-block">Entrar</button>
+                                        <button class="btn btn-primary btn-user btn-block">Entrar</button>
                                     </form>
-                                    <hr>
-                                   
+                                    <hr class="my-4 mb-4">
+                                    <div class="">
+                                        <button class="btn btn-info btn-block btn-lg" onclick="sobre_modal()"
+                                        style="background-color: #2C9FAF; border: none; border-radius: 30px; font-size: 10pt; padding: 12px;">
+                                        <i class="bi bi-info-circle-fill" style="font-size: 9pt;"></i> Sobre</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +86,51 @@
             </div>
 
         </div>
+                            <!-- Modal Sobre -->
+                            <div class="modal fade " id="caixa_lancamento0" tabindex="-1" role="dialog"
+                                aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+                                    role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title h1 text-center" id="TituloModalCentralizado">
+                                                Sobre o EstoqueAki</h5>
+                                            <button style="background-color: transparent; border:none;" type="button"
+                                                class="close" data-dismiss="modal" aria-label="Close">
+                                                <i class="fa-solid fa-xmark"></i>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container-xxl">
+                                                <div class="authentication-wrapper authentication-basic container-p-y">
+                                                    <form class="" action=""
+                                                        method="POST">
+                                                        @csrf
+                                                        <div class="row">
+                                                            <div class="col-xl">
+                                                                <div class="card-body">
+                                                                    <div class="mb-3 text-justify">
+                                                                        <div class="sidebar-brand-icon rotate-n-0 d-flex justify-content-center">
+                                                                            <svg style="color: #13293D" xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-box-seam-fill" viewBox="0 0 16 16">
+                                                                                <path fill-rule="evenodd" d="M15.528 2.973a.75.75 0 0 1 .472.696v8.662a.75.75 0 0 1-.472.696l-7.25 2.9a.75.75 0 0 1-.557 0l-7.25-2.9A.75.75 0 0 1 0 12.331V3.669a.75.75 0 0 1 .471-.696L7.443.184l.01-.003.268-.108a.75.75 0 0 1 .558 0l.269.108.01.003 6.97 2.789ZM10.404 2 4.25 4.461 1.846 3.5 1 3.839v.4l6.5 2.6v7.922l.5.2.5-.2V6.84l6.5-2.6v-.4l-.846-.339L8 5.961 5.596 5l6.154-2.461L10.404 2Z"/>
+                                                                            </svg>
+                                                                        </div>                                                            
+                                                                        <p class="my-4">
+                                                                        Após uma pesquisa realizada com empreendedores da região do Seridó, constatou-se a ausência de um sistema que pudesse aprimorar as operações desses empresários. Diante dessa lacuna identificada, o EstoqueAki toma a iniciativa de criar um sistema dedicado a atender e suprir essa demanda no âmbito do comércio local, com o objetivo de apoiar os comerciantes regionais.
+                                                                        </p>
+                                                                    </div>
 
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /modal adicionar-->
     </div>
 
     <!-- font awesome -->
@@ -104,6 +155,15 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+    
+    <!-- Modal -->
+    <script>
+    function sobre_modal() {
+        let idModal = document.getElementById('caixa_lancamento0');
+        let modal_lancamento = new bootstrap.Modal(idModal);
+        modal_lancamento.show();
+    }
+    </script>
 
 </body>
 
