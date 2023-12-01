@@ -369,7 +369,7 @@
                                                                                                 <input type="text"
                                                                                                     class="form-control "
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{$supplier->nome}}"
+                                                                                                    value="{{$supplier->nome}}"
                                                                                                     name="nome">
                                                                                                     @error('nome')
                                                                         <div class="alert alert-danger">{{ $message}}
@@ -383,7 +383,7 @@
                                                                                                 <input type="text"
                                                                                                     class="form-control cnpj-mask"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{$supplier->cnpj}}"
+                                                                                                    value="{{$supplier->cnpj}}"
                                                                                                     name="cnpj">
                                                                                                     @error('cnpj')
                                                                         <div class="alert alert-danger">{{ $message }}
@@ -397,7 +397,7 @@
                                                                                                 <input type="text"
                                                                                                     class="form-control telefone-mask"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{$supplier->telefone}}"
+                                                                                                    value="{{$supplier->telefone}}"
                                                                                                     name="telefone">
                                                                                                     @error('telefone')
                                                                         <div class="alert alert-danger">{{ $message }}
