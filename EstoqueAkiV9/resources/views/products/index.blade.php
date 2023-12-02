@@ -233,7 +233,7 @@
                                         <div class="modal-body">
                                             <div class="container-xxl">
                                                 <div class="authentication-wrapper authentication-basic container-p-y">
-                                                    <form class="" action="{{ route('products.store') }}" method="POST">
+                                                    <form class="" action="{{ route('products.store') }}" method="POST" id="formsCadastrar">
                                                         @csrf
                                                         <div class="row">
                                                             <div class="col-xl">
@@ -287,6 +287,7 @@
                                                                             id="basic-default-company"
                                                                             placeholder="Fornecedor" name="fornecedor"
                                                                             required>
+                                                                            <option value="" disabled selected hidden>Selecione um fornecedor</option>
                                                                             @foreach ($suppliers as $supplier)
                                                                             <option value="{{ $supplier->id }}">
                                                                                 {{ $supplier->nome }}</option>
@@ -309,6 +310,8 @@
                                     </div>
                                 </div>
                             </div>
+
+
                             <!-- /modal adicionar-->
                         </div>
                         <div class="card-body">
@@ -724,6 +727,30 @@
             let modal_lancamento = new bootstrap.Modal(idModal);
             modal.lancamento.show();
         }
+
+        //isso serve para aparecer os erros de validação do forms sem fechar o modal
+    //     $(document).ready(function() {
+    //     $('#formsCadastrar').submit(function(event) {
+    //         event.preventDefault();
+
+    //         // Faça a requisição AJAX para validar o formulário
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: $(this).attr('action'),
+    //             data: $(this).serialize(),
+    //             success: function(response) {
+    //                 // O formulário foi validado com sucesso, você pode prosseguir com a lógica desejada
+    //                 modal.modal('hide');
+    //             },
+    //             error: function(response) {
+    //                 // O formulário tem erros de validação, exiba os erros e mantenha o modal aberto
+    //                 var errors = response.responseJSON.errors;
+    //                 // Exiba os erros onde preferir na sua interface
+    //                 alert('Erro de validação: ' + JSON.stringify(errors));
+    //             }
+    //         });
+    //     });
+    // });
     </script>
 
 </body>
