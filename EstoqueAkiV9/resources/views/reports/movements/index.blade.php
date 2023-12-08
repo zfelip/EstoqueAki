@@ -56,6 +56,13 @@
                     <i class="fas fa-fw fa-solid fa-box"></i>
                     <span>Produtos</span></a>
             </li>
+            
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="/suppliers">
+                    <i class="fas fa-fw fa-solid fa-truck"></i>
+                    <span>Fornecedor</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -75,13 +82,6 @@
                 <a class="nav-link" href="/outputs">
                     <i class="fas fa-fw fa-solid fa-right-from-bracket"></i>
                     <span>Saída</span></a>
-            </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link" href="/suppliers">
-                    <i class="fas fa-fw fa-solid fa-truck"></i>
-                    <span>Fornecedor</span></a>
             </li>
 
             <!-- Divider -->
@@ -193,9 +193,9 @@
 
 
                     <div class="card shadow mb-4">
-                    @if(isset($startDate))
+                    @if(isset($startDateBrazilian))
                         <div class="card-header py-2" style="background-color: #13293D;">
-                            <h3 style="color: white;">Entrada(s) do período: <strong>{{ $startDate }}</strong> à <strong>{{ $endDate }}</strong></h1>
+                            <h3 style="color: white;">Entrada(s) do período: <strong>{{ $startDateBrazilian }}</strong> à <strong>{{ $endDateBrazilian }}</strong></h1>
                         </div>
                     <!-- DataTales Example -->
                     @endif
@@ -235,9 +235,9 @@
              
                 <!-- tabela de saidas de produtos -->
                 <div class="card shadow mb-4">
-                @if(isset($startDate))
+                @if(isset($startDateBrazilian))
                     <div class="card-header py-2" style="background-color: #13293D;">
-                        <h3 style="color: white;">Saída(s) do período: <strong>{{ $startDate }}</strong> à <strong>{{ $endDate }}</strong></h1>
+                        <h3 style="color: white;">Saída(s) do período: <strong>{{ $startDateBrazilian }}</strong> à <strong>{{ $endDateBrazilian }}</strong></h1>
                     </div>
                 @endif
                     <!-- DataTales Example -->

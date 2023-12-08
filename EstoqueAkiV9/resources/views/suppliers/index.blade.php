@@ -56,6 +56,13 @@
                     <span>Produtos</span></a>
             </li>
 
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/suppliers">
+                    <i class="fas fa-fw fa-solid fa-truck"></i>
+                    <span>Fornecedor</span></a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -74,13 +81,6 @@
                 <a class="nav-link" href="/outputs">
                     <i class="fas fa-fw fa-solid fa-right-from-bracket"></i>
                     <span>Saída</span></a>
-            </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item active">
-                <a class="nav-link" href="/suppliers">
-                    <i class="fas fa-fw fa-solid fa-truck"></i>
-                    <span>Fornecedor</span></a>
             </li>
 
             <!-- Divider -->

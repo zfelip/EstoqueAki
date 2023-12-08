@@ -65,6 +65,11 @@
                                     <form class="user" action="{{ route('users.store') }}" method="POST">
                                         @csrf
                                         <div class="form-group">
+                                            <input type="text" class="form-control form-control-user"
+                                                id="exampleInputName" placeholder="Sua empresa" name="name" autofocus>
+                                        </div>
+
+                                        <div class="form-group">
                                             <input type="password" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Senha" name="password" autofocus>
                                         </div>

@@ -43,7 +43,17 @@ class ProductController extends Controller
 
         $lucro = $precoEstoque - $valorEstoque;
 
-        return view('products.index', ['products' => $products, 'suppliers' => $suppliers, 'quantidadeProdutos' => $quantidadeProdutos, 'valorEstoque' => $valorEstoque, 'lucro' => $lucro]);
+         // obtendp o número de fornecedores cadastrados
+         $numberSuppliers = $suppliers->count();
+
+        return view('products.index', [
+            'products' => $products, 
+            'suppliers' => $suppliers, 
+            'quantidadeProdutos' => $quantidadeProdutos, 
+            'valorEstoque' => $valorEstoque, 
+            'lucro' => $lucro,
+            'numberSuppliers' => $numberSuppliers,
+        ]);
     }
 
     /**
@@ -58,15 +68,31 @@ class ProductController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+{
+    // Defina mensagens de erro personalizadas
+    $messages = [
+        'nome.required' => 'O campo nome é obrigatório.',
+        'valor.required' => 'O campo valor é obrigatório.',
+        'valor.numeric' => 'O campo valor deve ser um número.',
+        'valor.gte' => 'O campo valor deve ser maior ou igual a :value.',
+        'quantidade.required' => 'O campo quantidade é obrigatório.',
+        'quantidade.integer' => 'O campo quantidade deve ser um número inteiro.',
+        'quantidade.gte' => 'O campo quantidade deve ser maior ou igual a :value.',
+        'preco.required' => 'O campo preço é obrigatório.',
+        'preco.numeric' => 'O campo preço deve ser um número.',
+        'preco.gte' => 'O campo preço deve ser maior ou igual a :value.',
+    ];
 
-        $validated = $request->validate([
-            'nome' => 'required',
-            'valor' => 'required|numeric|gte:0', //usasse a regra gte para aceitar 0 e numeros positivos, ao contrario da gt que nao aceita 0
-            'quantidade' => 'required|integer|gte:0',
-            'preco' => 'required|numeric|gte:0',
-        ]);
+    // Validação com mensagens personalizadas
+    $validated = $request->validate([
+        'nome' => 'required',
+        'valor' => 'required|numeric|gte:0',
+        'quantidade' => 'required|integer|gte:0',
+        'preco' => 'required|numeric|gte:0',
+    ], $messages);
 
+    try {
+        // Crie um novo produto com base nos dados do formulário
         $this->product->supplier_id = $request->input('fornecedor');
         $this->product->nome = $request->input('nome');
         $this->product->descricao = $request->input('descricao');
@@ -74,18 +100,20 @@ class ProductController extends Controller
         $this->product->quantidade = $request->input('quantidade');
         $this->product->preco = $request->input('preco');
 
-        if ($this->product->quantidade > 0) {
-            $this->product->status = true;
-        } else {
-            $this->product->status = false;
-        }
+        // Defina o status com base na quantidade
+        $this->product->status = ($this->product->quantidade > 0);
 
         // Salve o produto no banco de dados
         $this->product->save();
 
-    // Redirecione para uma página de sucesso ou faça qualquer outra ação desejada
-    return redirect()->route('products.index');
+        // Redirecione para uma página de sucesso ou faça qualquer outra ação desejada
+        return redirect()->route('products.index');
+    } catch (\Exception $e) {
+        // Em caso de erro, redirecione de volta para o formulário de criação com os erros de validação
+        return redirect()->route('products.create')->withErrors([$e->getMessage()]);
     }
+}
+
 
     /**
      * Display the specified resource.

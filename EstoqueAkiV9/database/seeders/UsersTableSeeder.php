@@ -15,6 +15,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
+            'name' => 'Cantina IFRN',
             'password' => Hash::make('estoqueAki'),
             'created_at' => now(),
             'updated_at' => now(),
