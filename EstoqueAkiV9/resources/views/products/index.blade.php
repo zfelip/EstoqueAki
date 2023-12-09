@@ -555,7 +555,7 @@
                                                                                                 <label
                                                                                                     class="col-form-label"
                                                                                                     for="basic-default-company">Quantidade</label>
-                                                                                                <input type="text"
+                                                                                                <input type="number"
                                                                                                     class="form-control"
                                                                                                     id="basic-default-company"
                                                                                                     value="{{$product->quantidade}}"
