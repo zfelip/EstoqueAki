@@ -172,13 +172,14 @@
                                                         <div class="row">
                                                             <div class="col-xl">
                                                                 <div class="card-body">
-                                                                <div class="mb-3">
+                                                                    <div class="mb-3">
                                                                         <label class="col-form-label"
                                                                             for="basic-default-company">Produto</label>
                                                                         <select type="text" class="form-control"
                                                                             id="basic-default-company"
                                                                             placeholder="Entrada" name="entrada"
                                                                             required>
+                                                                            <option value="" disabled selected hidden>Selecione um produto</option>
                                                                             @foreach ($products as $product)
                                                                                 <option value="{{ $product->id }}">{{ $product->nome }}</option>
                                                                             @endforeach
@@ -232,183 +233,183 @@
                                             <td>{{ $input->product->nome }}</td>
                                             <td>{{ $input->quantidade }}</td>
                                             <td>{{ \Carbon\Carbon::parse($input->updated_at)->format('d/m/Y \à\s H:i:s') }}</td>
-                                            <td class="text-center">
-                                            <div class="d-flex justify-content-center">
-                                                    <!--botão para acionar o modal mostrar-->
-                                                    <button type="submit" class="btn btn-info btn-icon-split mx-2"
-                                                        style="margin-right:1rem;" data-toggle="modal"
-                                                        data-target="#caixa_lancamento2{{ $input->id }}" 
-                                                        title="Mostrar" onclick="mostrar_modal2()">
-                                                        <span class="icon text-white-50"><i class="fas fa-eye"></i></span>
-                                                    </button>
+                                            <td>
+                                                <div class="d-flex justify-content-center">
+                                                        <!--botão para acionar o modal mostrar-->
+                                                        <button type="submit" class="btn btn-info btn-icon-split mx-2"
+                                                            style="margin-right:1rem;" data-toggle="modal"
+                                                            data-target="#caixa_lancamento2{{ $input->id }}" 
+                                                            title="Mostrar" onclick="mostrar_modal2()">
+                                                            <span class="icon text-white-50"><i class="fas fa-eye"></i></span>
+                                                        </button>
 
-                                                    <!-- Modal Mostrar -->
-                                                    <div class="modal fade text-center" id="caixa_lancamento2{{ $input->id }}" tabindex="-1"
-                                                        role="dialog" aria-labelledby="TituloModalCentralizado"
-                                                        aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
-                                                            role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title h1 text-center"
-                                                                        id="TituloModalCentralizado">
-                                                                        Entradas</h5>
-                                                                    <button
-                                                                        style="background-color: transparent; border:none;"
-                                                                        type="button" class="close" data-dismiss="modal"
-                                                                        aria-label="Close">
-                                                                        <i class="fa-solid fa-xmark" title="Fechar"></i>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <div class="container-xxl">
-                                                                        <div
-                                                                            class="authentication-wrapper authentication-basic container-p-y">
-                                                                            <div class="table-responsive m-3">
-                                                                                <table class="table table-borderless">
-                                                                                    <thead>
-                                                                                        <th scope="col">Nome</th>
-                                                                                        <th scope="col">Id do Produto</th>
-                                                                                        <th scope="col">Descrição</th>
-                                                                                        <th scope="col">Quantidade</th>
-                                                                                        <th scope="col">Preço</th>
-                                                                                        <th scope="col">Data</th>
-                                                                                    </thead>
-                                                                                    <tbody>
-                                                                                        <tr class="">
-                                                                                            <td scope="row">{{ $input->product->nome }}</td>
-                                                                                            <td scope="row">{{ $input->product_id }}</td>
-                                                                                            <td scope="row">{{ $input->product->descricao }}</td>
-                                                                                            <td scope="row">{{ $input->quantidade }}</td>
-                                                                                            <td scope="row">{{ $input->product->preco }}</td>                  
-                                                                                            <td scope="row">{{ \Carbon\Carbon::parse($input->updated_at)->format('d/m/Y \à\s H:i:s') }}</td>
-                                                                                        </tr>
-                                                                                    </tbody>
-                                                                                </table>
+                                                        <!-- Modal Mostrar -->
+                                                        <div class="modal fade text-center" id="caixa_lancamento2{{ $input->id }}" tabindex="-1"
+                                                            role="dialog" aria-labelledby="TituloModalCentralizado"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+                                                                role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title h1 text-center"
+                                                                            id="TituloModalCentralizado">
+                                                                            Entradas</h5>
+                                                                        <button
+                                                                            style="background-color: transparent; border:none;"
+                                                                            type="button" class="close" data-dismiss="modal"
+                                                                            aria-label="Close">
+                                                                            <i class="fa-solid fa-xmark" title="Fechar"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="container-xxl">
+                                                                            <div
+                                                                                class="authentication-wrapper authentication-basic container-p-y">
+                                                                                <div class="table-responsive m-3">
+                                                                                    <table class="table table-borderless">
+                                                                                        <thead>
+                                                                                            <th scope="col">Nome</th>
+                                                                                            <th scope="col">Id do Produto</th>
+                                                                                            <th scope="col">Descrição</th>
+                                                                                            <th scope="col">Quantidade</th>
+                                                                                            <th scope="col">Preço</th>
+                                                                                            <th scope="col">Data</th>
+                                                                                        </thead>
+                                                                                        <tbody>
+                                                                                            <tr class="">
+                                                                                                <td scope="row">{{ $input->product->nome }}</td>
+                                                                                                <td scope="row">{{ $input->product_id }}</td>
+                                                                                                <td scope="row">{{ $input->product->descricao }}</td>
+                                                                                                <td scope="row">{{ $input->quantidade }}</td>
+                                                                                                <td scope="row">{{ $input->product->preco }}</td>                  
+                                                                                                <td scope="row">{{ \Carbon\Carbon::parse($input->updated_at)->format('d/m/Y \à\s H:i:s') }}</td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <!-- /modal mostrar-->
+                                                        <!-- /modal mostrar-->
 
-                                                    <!--botão para acionar o modal editar-->
-                                                    <button type="submit" class="btn btn-warning btn-icon-split mx-2"
-                                                        style="margin-right:1rem;" data-toggle="modal"
-                                                        data-target="#caixa_lancamento3{{ $input->id }}"
-                                                        title="Editar" onclick="editar_modal()">
-                                                        <span class="icon text-white-50"><i class="fas fa-pencil"></i></span>
-                                                    </button>
+                                                        <!--botão para acionar o modal editar-->
+                                                        <button type="submit" class="btn btn-warning btn-icon-split mx-2"
+                                                            style="margin-right:1rem;" data-toggle="modal"
+                                                            data-target="#caixa_lancamento3{{ $input->id }}"
+                                                            title="Editar" onclick="editar_modal()">
+                                                            <span class="icon text-white-50"><i class="fas fa-pencil"></i></span>
+                                                        </button>
 
-                                                    <!-- Modal Editar-->
-                                                    <div class="modal fade " id="caixa_lancamento3{{ $input->id }}" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
-                                                        aria-hidden="true">
-                                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
-                                                            role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title h1 text-center"
-                                                                        id="TituloModalCentralizado">
-                                                                        Editar Entrada</h5>
-                                                                    <button
-                                                                        style="background-color: transparent; border:none;"
-                                                                        type="button" class="close" data-dismiss="modal"
-                                                                        aria-label="Close">
-                                                                        <i class="fa-solid fa-xmark"></i>
-                                                                    </button>
-                                                                </div>
+                                                        <!-- Modal Editar-->
+                                                        <div class="modal fade " id="caixa_lancamento3{{ $input->id }}" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+                                                                role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title h1 text-center"
+                                                                            id="TituloModalCentralizado">
+                                                                            Editar Entrada</h5>
+                                                                        <button
+                                                                            style="background-color: transparent; border:none;"
+                                                                            type="button" class="close" data-dismiss="modal"
+                                                                            aria-label="Close">
+                                                                            <i class="fa-solid fa-xmark"></i>
+                                                                        </button>
+                                                                    </div>
 
-                                                                <div class="modal-body">
-                                                                    <div class="container-xxl">
-                                                                        <div class="authentication-wrapper authentication-basic container-p-y">
+                                                                    <div class="modal-body">
+                                                                        <div class="container-xxl">
+                                                                            <div class="authentication-wrapper authentication-basic container-p-y">
 
-                                                                            <form class="" action="{{ route('inputs.update', ['input' => $input->id]) }}" method="POST">
-                                                                                @csrf
-                                                                                <input type="hidden" name="_method" value="PUT">    
-                                                                                <div class="row">
-                                                                                    <div class="col-xl">
-                                                                                        <div class="card-body ">
-                                                                                            
-                                                                                            <div class="mb-3">
-                                                                                                <label class="col-form-label"
-                                                                                                        for="basic-default-company">Produto</label>
-                                                                                                    <select type="text" class="form-control"
+                                                                                <form class="" action="{{ route('inputs.update', ['input' => $input->id]) }}" method="POST">
+                                                                                    @csrf
+                                                                                    <input type="hidden" name="_method" value="PUT">    
+                                                                                    <div class="row">
+                                                                                        <div class="col-xl">
+                                                                                            <div class="card-body">
+                                                                                                
+                                                                                                <div class="mb-3">
+                                                                                                    <label class="col-form-label"
+                                                                                                            for="basic-default-company">Produto</label>
+                                                                                                        <select type="text" class="form-control"
+                                                                                                            id="basic-default-company"
+                                                                                                            placeholder="Entrada" name="entrada"
+                                                                                                            required>
+                                                                                                            @foreach ($products as $product)
+                                                                                                                <option value="{{ $product->id }}" 
+                                                                                                                {{ $input->product->id === $product->id ? 'selected' : '' }}>
+                                                                                                                {{ $product->nome }}</option>
+                                                                                                            @endforeach
+                                                                                                        </select>
+                                                                                                </div>
+                                                                                                <div class="mb-3">
+                                                                                                    <label class="col-form-label"
+                                                                                                        for="basic-default-company">Quantidade</label>
+                                                                                                    <input type="number" class="form-control"
                                                                                                         id="basic-default-company"
-                                                                                                        placeholder="Entrada" name="entrada"
-                                                                                                        required>
-                                                                                                        @foreach ($products as $product)
-                                                                                                            <option value="{{ $product->id }}" 
-                                                                                                            {{ $input->product->id === $product->id ? 'selected' : '' }}>
-                                                                                                            {{ $product->nome }}</option>
-                                                                                                        @endforeach
-                                                                                                    </select>
-                                                                                            </div>
-                                                                                            <div class="mb-3">
-                                                                                                <label class="col-form-label"
-                                                                                                    for="basic-default-company">Quantidade</label>
-                                                                                                <input type="number" class="form-control"
-                                                                                                    id="basic-default-company"
-                                                                                                    value="{{ $input->quantidade }}" name="quantidade">
-                                                                                            </div>   
+                                                                                                        value="{{ $input->quantidade }}" name="quantidade">
+                                                                                                </div>   
 
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                    <div class="col text-center">
-                                                                                        <button type="submit"
-                                                                                            class="btn btn-warning">Editar</button>
+                                                                                    <div class="row">
+                                                                                        <div class="col text-center">
+                                                                                            <button type="submit"
+                                                                                                class="btn btn-warning">Editar</button>
+                                                                                        </div>
                                                                                     </div>
-                                                                                </div>
-                                                                            </form>
+                                                                                </form>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <!-- /modal editar -->
+                                                        <!-- /modal editar -->
 
-                                                    <!--botaão para acionar o modal excluir-->
-                                                    <button type="submit" class="btn float-end btn-danger mx-2"
-                                                        style="margin-right:1rem;" data-toggle="modal"
-                                                        data-target="#caixa_lancamento4{{ $input->id }}" onclick="excluir_modal()">
-                                                        <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
-                                                    </button>
+                                                        <!--botaão para acionar o modal excluir-->
+                                                        <button type="submit" class="btn float-end btn-danger mx-2"
+                                                            style="margin-right:1rem;" data-toggle="modal"
+                                                            data-target="#caixa_lancamento4{{ $input->id }}" onclick="excluir_modal()">
+                                                            <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
+                                                        </button>
 
-                                                    <!-- Modal Excluir-->
-                                                    <div class="modal fade" id="caixa_lancamento4{{ $input->id }}" tabindex="-1"
-                                                        role="dialog" aria-labelledby="exampleModalLabel"
-                                                        aria-hidden="true">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Excluir
-                                                                        Entrada</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal"
-                                                                        aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <p>Tem certeza que deseja excluir essa Entrada ({{ $input->product->nome }})?</p>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary"
-                                                                        data-dismiss="modal">Cancelar
-                                                                    </button>
-                                                                    <form action="{{ route('inputs.destroy', ['input' => $input->id]) }}" method="post">
-                                                                        @csrf 
-                                                                        @method('DELETE')
-                                                                        <button type="submit" class="btn btn-danger">Excluir</button>
-                                                                    </form>
+                                                        <!-- Modal Excluir-->
+                                                        <div class="modal fade" id="caixa_lancamento4{{ $input->id }}" tabindex="-1"
+                                                            role="dialog" aria-labelledby="exampleModalLabel"
+                                                            aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Excluir
+                                                                            Entrada</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                            aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <p>Tem certeza que deseja excluir essa Entrada ({{ $input->product->nome }})?</p>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary"
+                                                                            data-dismiss="modal">Cancelar
+                                                                        </button>
+                                                                        <form action="{{ route('inputs.destroy', ['input' => $input->id]) }}" method="post">
+                                                                            @csrf 
+                                                                            @method('DELETE')
+                                                                            <button type="submit" class="btn btn-danger">Excluir</button>
+                                                                        </form>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach

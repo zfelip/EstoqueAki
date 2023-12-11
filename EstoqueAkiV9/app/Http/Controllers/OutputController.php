@@ -49,14 +49,22 @@ class OutputController extends Controller
 
         $product_id = $this->output->product_id;
         $quantidade = $this->output->quantidade;
+        $requestQuantidade = $request->input('quantidade');
 
-        $this->output->save();
-        //atualiza a quantidade de produto ao adicionar uma entrada
+        //atualiza a quantidade de produto ao adicionar uma saída
         $product = Product::find($product_id);
-        $product->quantidade -= $quantidade;
-        $product->save();
+        /*Se a quantidade de produtos solicitadas para a realização da saída for
+        maior que a quantidade disponível, a saída não é realizada.*/
+        if ($requestQuantidade > $product->quantidade) {
+            return redirect()->back()->withErrors(['error' => 'Quantidade solicitada maior do que a quantidade disponível.']);
+        }
+        else {
+            $this->output->save();
+            $product->quantidade -= $quantidade;
+            $product->save();
 
-        return redirect()->route('outputs.index');    
+            return redirect()->route('outputs.index');    
+        }
     }
 
     /**

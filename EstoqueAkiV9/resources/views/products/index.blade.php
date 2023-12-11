@@ -264,25 +264,25 @@
                                                             <div class="col-xl">
                                                                 <div class="card-body">
                                                                     
-<!-- Se houver erros, exiba dentro do modal -->
-@if($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+                                                            <!-- Se houver erros, exiba dentro do modal -->
+                                                            @if($errors->any())
+                                                                <div class="alert alert-danger">
+                                                                    <ul>
+                                                                        @foreach($errors->all() as $error)
+                                                                            <li>{{ $error }}</li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                </div>
+                                                            @endif
 
-<!-- Se houver mensagem de erro na sessão, exiba dentro do modal -->
-@if(session('error'))
-    <div class="alert alert-danger">
-        {{ session('error') }}
-    </div>
-@endif
+                                                            <!-- Se houver mensagem de erro na sessão, exiba dentro do modal -->
+                                                            @if(session('error'))
+                                                                <div class="alert alert-danger">
+                                                                    {{ session('error') }}
+                                                                </div>
+                                                            @endif
 
-<!-- Restante do conteúdo do seu modal -->
+                                                            <!-- Restante do conteúdo do seu modal -->
 
                                                                     <div class="mb-3">
                                                                         <label class="col-form-label"
@@ -311,18 +311,18 @@
                                                                         <div class="d-inline-block">
                                                                             <label class="col-form-label"
                                                                                 for="basic-default-company">Valor de compra</label>
-                                                                            <input type="text" class="form-control"
+                                                                            <input type="text" class="form-control money-mask"
                                                                                 id="basic-default-company"
-                                                                                placeholder="Valor" name="valor"
+                                                                                placeholder="Valor de compra" name="valor"
                                                                                 required>
 
                                                                         </div>
                                                                         <div class="d-inline-block">
                                                                             <label class="col-form-label"
                                                                                 for="basic-default-company">Preço de venda</label>
-                                                                            <input type="text" class="form-control"
+                                                                            <input type="text" class="form-control money-mask"
                                                                                 id="basic-default-company"
-                                                                                placeholder="Preço" name="preco"
+                                                                                placeholder="Preço de venda" name="preco"
                                                                                 required>
                                                                         </div>
                                                                     </div>
@@ -370,8 +370,8 @@
                                             <th>Nome</th>
                                             <th>Descrição</th>
                                             <th>Quantidade</th>
-                                            <th>Valor unitário</th>
-                                            <th>Preço unitário</th>
+                                            <th>Valor de compra</th>
+                                            <th>Preço de venda</th>
                                             <th>Fornecedor</th>
                                             <th>Status</th>
                                             <th class="" width="10%">Opções</th>
@@ -384,9 +384,9 @@
                                             <td>{{ $product->nome }}</td>
                                             <td>{{ $product->descricao }}</td>
                                             <td>{{ $product->quantidade }}</td>
-                                            <td>{{ floatval($product->valor) }}</td>
+                                            <td>R$ {{ floatval($product->valor) }}</td>
                                             <!-- <td>{{ number_format($product->valor_unitario, 2, ',', '.') }}</td> -->
-                                            <td>{{ floatval($product->preco) }}</td>
+                                            <td>R$ {{ floatval($product->preco) }}</td>
                                             <td>
                                                 @if(isset($product->supplier->nome))
                                                 {{ $product->supplier->nome}}
@@ -414,7 +414,7 @@
                                                     </button>
 
                                                     <!-- Modal Mostrar -->
-                                                    <div class="modal fade text-center"
+                                                    <div class="modal fade text-center" 
                                                         id="caixa_lancamento2{{ $product->id }}" tabindex="-1"
                                                         role="dialog" aria-labelledby="TituloModalCentralizado"
                                                         aria-hidden="true">
@@ -422,9 +422,9 @@
                                                             role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title h1 text-center"
+                                                                    <h5 class="modal-title h1 text-center text-primary"
                                                                         id="TituloModalCentralizado">
-                                                                        Produtos</h5>
+                                                                        Produto</h5>
                                                                     <button
                                                                         style="background-color: transparent; border:none;"
                                                                         type="button" class="close" data-dismiss="modal"
@@ -432,22 +432,20 @@
                                                                         <i class="fa-solid fa-xmark" title="Fechar"></i>
                                                                     </button>
                                                                 </div>
-                                                                <div class="modal-body">
-                                                                    <div class="container-xxl">
-                                                                        <div
-                                                                            class="authentication-wrapper authentication-basic container-p-y">
-                                                                            <div class="table-responsive m-3">
-                                                                                <table class="table table-borderless">
-                                                                                    <thead>
+                                                                <div class="modal-body p-3">
+                                                                    <div class="container-xxl p-3">
+                                                                        <div class="authentication-wrapper authentication-basic container-p-y">
+                                                                                <table class="table table-responsive table-bordered" style="width: 100%;">
+                                                                                    <thead class="">
                                                                                         <th scope="col">Nome</th>
                                                                                         <th scope="col">Descrição</th>
                                                                                         <th scope="col">Quantidade</th>
-                                                                                        <th scope="col">Valor</th>
-                                                                                        <th scope="col">Preço</th>
+                                                                                        <th scope="col">Valor de compra</th>
+                                                                                        <th scope="col">Preço de venda</th>
                                                                                         <th scope="col">Fornecedor</th>
                                                                                         <th scope="col">Status</th>
                                                                                     </thead>
-                                                                                    <tbody>
+                                                                                    <tbody class="">
                                                                                         <tr class="">
                                                                                             <td scope="row">{{
                                                                                                 $product->nome }}</td>
@@ -457,11 +455,11 @@
                                                                                             <td scope="row">{{
                                                                                                 $product->quantidade }}
                                                                                             </td>
-                                                                                            <td scope="row">{{
+                                                                                            <td scope="row">R$ {{
                                                                                                 floatval($product->valor)
                                                                                                 }}</td>
                                                                                             <!-- <td scope="row">{{ number_format($product->valor_unitario, 2, ',', '.') }}</td> -->
-                                                                                            <td scope="row">{{
+                                                                                            <td scope="row">R$ {{
                                                                                                 floatval($product->preco)
                                                                                                 }}</td>
                                                                                             <td>
@@ -482,7 +480,6 @@
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
-                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -566,7 +563,7 @@
                                                                                                     class="d-inline-block">
                                                                                                     <label
                                                                                                         class="col-form-label"
-                                                                                                        for="basic-default-company">Valor</label>
+                                                                                                        for="basic-default-company">Valor de compra</label>
                                                                                                     <input type="text"
                                                                                                         class="form-control"
                                                                                                         id="basic-default-company"
@@ -578,7 +575,7 @@
                                                                                                     class="d-inline-block">
                                                                                                     <label
                                                                                                         class="col-form-label"
-                                                                                                        for="basic-default-company">Preço</label>
+                                                                                                        for="basic-default-company">Preço de venda</label>
                                                                                                     <input type="text"
                                                                                                         class="form-control"
                                                                                                         id="basic-default-company"
@@ -597,7 +594,8 @@
                                                                                                     name="fornecedor">
                                                                                                     @foreach ($suppliers
                                                                                                     as $supplier)
-                                                                                                    <option
+                                                                                                    @if(isset($product->supplier->id)){
+                                                                                                        <option
                                                                                                         value="{{ $supplier->id }}"
                                                                                                         {{ $product->
                                                                                                         supplier->id ===
@@ -607,6 +605,9 @@
                                                                                                         {{
                                                                                                         $supplier->nome
                                                                                                         }}</option>
+                                                                                                    } @else{<option value="{{ $supplier->id }}">
+                                                                                                        {{ $supplier->nome }}</option>}
+                                                                                                    @endif
                                                                                                     @endforeach
                                                                                                 </select>
                                                                                             </div>
@@ -746,6 +747,9 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
 
+    <!-- Inputmask -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+
     <!-- Modal script -->
     <script>
         
@@ -794,6 +798,17 @@
             let modal_lancamento = new bootstrap.Modal(idModal);
             modal.lancamento.show();
         }
+
+        $(document).ready(function() {
+            $('.money-mask').inputmask('currency', {
+                prefix: '',
+                allowMinus: false,
+                thousandsSeparator: '.',
+                decimalSeparator: ',',
+                rightAlign: false,
+                autoUnmask: true,
+            });
+        });
 
         //isso serve para aparecer os erros de validação do forms sem fechar o modal
     //     $(document).ready(function() {
