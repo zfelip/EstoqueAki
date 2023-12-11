@@ -56,6 +56,13 @@
                     <span>Produtos</span></a>
             </li>
 
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/suppliers">
+                    <i class="fas fa-fw fa-solid fa-truck"></i>
+                    <span>Fornecedor</span></a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -74,13 +81,6 @@
                 <a class="nav-link" href="/outputs">
                     <i class="fas fa-fw fa-solid fa-right-from-bracket"></i>
                     <span>Saída</span></a>
-            </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item active">
-                <a class="nav-link" href="/suppliers">
-                    <i class="fas fa-fw fa-solid fa-truck"></i>
-                    <span>Fornecedor</span></a>
             </li>
 
             <!-- Divider -->
@@ -369,7 +369,7 @@
                                                                                                 <input type="text"
                                                                                                     class="form-control "
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{$supplier->nome}}"
+                                                                                                    value="{{$supplier->nome}}"
                                                                                                     name="nome">
                                                                                                     @error('nome')
                                                                         <div class="alert alert-danger">{{ $message}}
@@ -383,7 +383,7 @@
                                                                                                 <input type="text"
                                                                                                     class="form-control cnpj-mask"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{$supplier->cnpj}}"
+                                                                                                    value="{{$supplier->cnpj}}"
                                                                                                     name="cnpj">
                                                                                                     @error('cnpj')
                                                                         <div class="alert alert-danger">{{ $message }}
@@ -397,7 +397,7 @@
                                                                                                 <input type="text"
                                                                                                     class="form-control telefone-mask"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{$supplier->telefone}}"
+                                                                                                    value="{{$supplier->telefone}}"
                                                                                                     name="telefone">
                                                                                                     @error('telefone')
                                                                         <div class="alert alert-danger">{{ $message }}

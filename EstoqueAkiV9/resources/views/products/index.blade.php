@@ -55,6 +55,13 @@
                     <span>Produtos</span></a>
             </li>
 
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="/suppliers">
+                    <i class="fas fa-fw fa-solid fa-truck"></i>
+                    <span>Fornecedor</span></a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -73,13 +80,6 @@
                 <a class="nav-link" href="/outputs">
                     <i class="fas fa-fw fa-solid fa-right-to-bracket fa-flip-horizontal"></i>
                     <span>Saída</span></a>
-            </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link" href="/suppliers">
-                    <i class="fas fa-fw fa-solid fa-truck"></i>
-                    <span>Fornecedor</span></a>
             </li>
 
             <!-- Divider -->
@@ -157,6 +157,26 @@
                             </div>
                         </div>
 
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Número de fornecedores</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                {{ $numberSuppliers }}
+                                            </div>
+                                            <!-- observar função a ser utilizada na linha Anterior -->
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fa-solid fa-truck-fast fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
@@ -210,11 +230,16 @@
                         </div>
                         <div class="card-header py-3">
                             <!--botaão para acionar o modal adicionar-->
-                            <button type="submit" class="btn float-end btn-primary" style="margin-right:1rem;"
+                            <!-- <button type="submit" class="btn float-end btn-primary" style="margin-right:1rem;"
                                 data-toggle="modal" data-target="#ExemploModalCentralizado" onclick="mostrar_modal()"> +
                                 Adicionar
                                 Produto
+                            </button> -->
+
+                            <button type="submit" class="btn float-end btn-primary" style="margin-right:1rem;" data-toggle="modal" data-target="#caixa_lancamento"> +
+                             Adicionar Produto
                             </button>
+
 
                             <!-- Modal Adicionar-->
                             <div class="modal fade " id="caixa_lancamento" tabindex="-1" role="dialog"
@@ -233,11 +258,32 @@
                                         <div class="modal-body">
                                             <div class="container-xxl">
                                                 <div class="authentication-wrapper authentication-basic container-p-y">
-                                                    <form class="" action="{{ route('products.store') }}" method="POST">
+                                                    <form class="" action="{{ route('products.store') }}" method="POST" id="formsCadastrar">
                                                         @csrf
                                                         <div class="row">
                                                             <div class="col-xl">
                                                                 <div class="card-body">
+                                                                    
+<!-- Se houver erros, exiba dentro do modal -->
+@if($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+<!-- Se houver mensagem de erro na sessão, exiba dentro do modal -->
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
+<!-- Restante do conteúdo do seu modal -->
+
                                                                     <div class="mb-3">
                                                                         <label class="col-form-label"
                                                                             for="basic-default-company">Nome</label>
@@ -253,10 +299,10 @@
                                                                             placeholder="Descrição" name="descricao"
                                                                             required>
                                                                     </div>
-                                                                    <div class="mb-3">
+                                                                    <div class="mb-3">     
                                                                         <label class="col-form-label"
                                                                             for="basic-default-company">Quantidade</label>
-                                                                        <input type="text" class="form-control"
+                                                                        <input type="number" class="form-control"
                                                                             id="basic-default-company"
                                                                             placeholder="Quantidade" name="quantidade"
                                                                             required>
@@ -264,7 +310,7 @@
                                                                     <div class="mb-3">
                                                                         <div class="d-inline-block">
                                                                             <label class="col-form-label"
-                                                                                for="basic-default-company">Valor</label>
+                                                                                for="basic-default-company">Valor de compra</label>
                                                                             <input type="text" class="form-control"
                                                                                 id="basic-default-company"
                                                                                 placeholder="Valor" name="valor"
@@ -273,7 +319,7 @@
                                                                         </div>
                                                                         <div class="d-inline-block">
                                                                             <label class="col-form-label"
-                                                                                for="basic-default-company">Preço</label>
+                                                                                for="basic-default-company">Preço de venda</label>
                                                                             <input type="text" class="form-control"
                                                                                 id="basic-default-company"
                                                                                 placeholder="Preço" name="preco"
@@ -287,6 +333,7 @@
                                                                             id="basic-default-company"
                                                                             placeholder="Fornecedor" name="fornecedor"
                                                                             required>
+                                                                            <option value="" disabled selected hidden>Selecione um fornecedor</option>
                                                                             @foreach ($suppliers as $supplier)
                                                                             <option value="{{ $supplier->id }}">
                                                                                 {{ $supplier->nome }}</option>
@@ -309,6 +356,8 @@
                                     </div>
                                 </div>
                             </div>
+
+
                             <!-- /modal adicionar-->
                         </div>
                         <div class="card-body">
@@ -489,7 +538,7 @@
                                                                                                 <input type="text"
                                                                                                     class="form-control"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{$product->nome}}"
+                                                                                                    value="{{$product->nome}}"
                                                                                                     name="nome">
                                                                                             </div>
                                                                                             <div class="mb-3">
@@ -499,17 +548,17 @@
                                                                                                 <input type="text"
                                                                                                     class="form-control"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{$product->descricao}}"
+                                                                                                    value="{{$product->descricao}}"
                                                                                                     name="descricao">
                                                                                             </div>
                                                                                             <div class="mb-3">
                                                                                                 <label
                                                                                                     class="col-form-label"
                                                                                                     for="basic-default-company">Quantidade</label>
-                                                                                                <input type="text"
+                                                                                                <input type="number"
                                                                                                     class="form-control"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{$product->quantidade}}"
+                                                                                                    value="{{$product->quantidade}}"
                                                                                                     name="quantidade">
                                                                                             </div>
                                                                                             <div class="mb-3">
@@ -521,7 +570,7 @@
                                                                                                     <input type="text"
                                                                                                         class="form-control"
                                                                                                         id="basic-default-company"
-                                                                                                        placeholder="{{$product->valor}}"
+                                                                                                        value="{{$product->valor}}"
                                                                                                         name="valor">
 
                                                                                                 </div>
@@ -533,7 +582,7 @@
                                                                                                     <input type="text"
                                                                                                         class="form-control"
                                                                                                         id="basic-default-company"
-                                                                                                        placeholder="{{$product->preco}}"
+                                                                                                        value="{{$product->preco}}"
                                                                                                         name="preco">
                                                                                                 </div>
                                                                                             </div>
@@ -703,11 +752,32 @@
 
     <!-- Modal script -->
     <script>
+        
+        // function mostrar_modal() {
+        //     let idModal = document.getElementById('caixa_lancamento');
+        //     let modal_lancamento = new bootstrap.Modal(idModal);
+        //     modal_lancamento.show();
+        // }
+
         function mostrar_modal() {
-            let idModal = document.getElementById('caixa_lancamento');
-            let modal_lancamento = new bootstrap.Modal(idModal);
-            modal_lancamento.show();
-        }
+        let idModal = document.getElementById('caixa_lancamento');
+        let modal_lancamento = new bootstrap.Modal(idModal);
+        modal_lancamento.show();
+    }
+
+    // Adicione este bloco de script para lidar com o envio do formulário
+    document.getElementById('formsCadastrar').addEventListener('submit', function (event) {
+        // Permita que o formulário seja enviado
+        // (não há necessidade de evitar a submissão padrão se não houver erros)
+    });
+
+    // Verifique os erros de validação do formulário após a conclusão da submissão
+    let hasErrors = {!! json_encode($errors->any()) !!};
+    if (hasErrors) {
+        // Se houver erros de validação, abra o modal para exibir os erros
+        mostrar_modal();
+    }
+
         function mostrar_modal2() {
             let idModal = document.getElementById('caixa_lancamento2');
             let modal_lancamento = new bootstrap.Modal(idModal);
@@ -728,6 +798,30 @@
             let modal_lancamento = new bootstrap.Modal(idModal);
             modal.lancamento.show();
         }
+
+        //isso serve para aparecer os erros de validação do forms sem fechar o modal
+    //     $(document).ready(function() {
+    //     $('#formsCadastrar').submit(function(event) {
+    //         event.preventDefault();
+
+    //         // Faça a requisição AJAX para validar o formulário
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: $(this).attr('action'),
+    //             data: $(this).serialize(),
+    //             success: function(response) {
+    //                 // O formulário foi validado com sucesso, você pode prosseguir com a lógica desejada
+    //                 modal.modal('hide');
+    //             },
+    //             error: function(response) {
+    //                 // O formulário tem erros de validação, exiba os erros e mantenha o modal aberto
+    //                 var errors = response.responseJSON.errors;
+    //                 // Exiba os erros onde preferir na sua interface
+    //                 alert('Erro de validação: ' + JSON.stringify(errors));
+    //             }
+    //         });
+    //     });
+    // });
     </script>
 
 </body>

@@ -54,6 +54,13 @@
                     <span>Produtos</span></a>
             </li>
 
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link" href="/suppliers">
+                    <i class="fas fa-fw fa-solid fa-truck"></i>
+                    <span>Fornecedor</span></a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -72,13 +79,6 @@
                 <a class="nav-link" href="/outputs">
                     <i class="fas fa-fw fa-solid fa-right-from-bracket"></i>
                     <span>Saída</span></a>
-            </li>
-
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link" href="/suppliers">
-                    <i class="fas fa-fw fa-solid fa-truck"></i>
-                    <span>Fornecedor</span></a>
             </li>
 
             <!-- Divider -->
@@ -187,7 +187,7 @@
                                                                     <div class="mb-3">
                                                                         <label class="col-form-label"
                                                                             for="basic-default-company">Quantidade</label>
-                                                                        <input type="text" class="form-control"
+                                                                        <input type="number" class="form-control"
                                                                             id="basic-default-company"
                                                                             placeholder="Quantidade" name="quantidade"
                                                                             required>
@@ -319,15 +319,18 @@
                                                                         <i class="fa-solid fa-xmark"></i>
                                                                     </button>
                                                                 </div>
+
                                                                 <div class="modal-body">
                                                                     <div class="container-xxl">
                                                                         <div class="authentication-wrapper authentication-basic container-p-y">
+
                                                                             <form class="" action="{{ route('inputs.update', ['input' => $input->id]) }}" method="POST">
                                                                                 @csrf
                                                                                 <input type="hidden" name="_method" value="PUT">    
                                                                                 <div class="row">
                                                                                     <div class="col-xl">
-                                                                                        <div class="card-body">
+                                                                                        <div class="card-body ">
+                                                                                            
                                                                                             <div class="mb-3">
                                                                                                 <label class="col-form-label"
                                                                                                         for="basic-default-company">Produto</label>
@@ -345,10 +348,11 @@
                                                                                             <div class="mb-3">
                                                                                                 <label class="col-form-label"
                                                                                                     for="basic-default-company">Quantidade</label>
-                                                                                                <input type="text" class="form-control"
+                                                                                                <input type="number" class="form-control"
                                                                                                     id="basic-default-company"
-                                                                                                    placeholder="{{ $input->quantidade }}" name="quantidade">
-                                                                                            </div>
+                                                                                                    value="{{ $input->quantidade }}" name="quantidade">
+                                                                                            </div>   
+
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
