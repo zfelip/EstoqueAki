@@ -181,6 +181,7 @@
                                                                             id="basic-default-company"
                                                                             placeholder="Saida" name="Saida"
                                                                             required>
+                                                                            <option value="" disabled selected hidden>Selecione um produto</option>
                                                                             @foreach ($products as $product)
                                                                                 <option value="{{ $product->id }}">{{ $product->nome }}</option>
                                                                             @endforeach
@@ -212,14 +213,12 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
                                                         <div class="row">
                                                             <div class="col text-center">
                                                                 <button type="submit"
                                                                     class="btn btn-primary">Salvar</button>
                                                             </div>
                                                         </div>
-
                                                     </form>
                                                 </div>
                                             </div>
@@ -350,7 +349,6 @@
                                                                             
                                                                             <form class="" action="{{ route('outputs.update', ['output' => $output->id]) }}" method="POST">
                                                                                 @csrf
-                                                                                
                                                                                 <input type="hidden" name="_method" value="PUT">
                                                                                 <div class="row">
                                                                                     <div class="col-xl">
