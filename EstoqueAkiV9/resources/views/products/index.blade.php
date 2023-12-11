@@ -548,7 +548,8 @@
                                                                                                     name="fornecedor">
                                                                                                     @foreach ($suppliers
                                                                                                     as $supplier)
-                                                                                                    <option
+                                                                                                    @if(isset($product->supplier->id)){
+                                                                                                        <option
                                                                                                         value="{{ $supplier->id }}"
                                                                                                         {{ $product->
                                                                                                         supplier->id ===
@@ -558,6 +559,9 @@
                                                                                                         {{
                                                                                                         $supplier->nome
                                                                                                         }}</option>
+                                                                                                    } @else{<option value="{{ $supplier->id }}">
+                                                                                                        {{ $supplier->nome }}</option>}
+                                                                                                    @endif
                                                                                                     @endforeach
                                                                                                 </select>
                                                                                             </div>
