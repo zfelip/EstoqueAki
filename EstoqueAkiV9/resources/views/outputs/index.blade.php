@@ -335,7 +335,7 @@
                                                                 <div class="modal-header">
                                                                     <h5 class="modal-title h1 text-center"
                                                                         id="TituloModalCentralizado">
-                                                                        Editar Produto</h5>
+                                                                        Editar Saída</h5>
                                                                     <button
                                                                         style="background-color: transparent; border:none;"
                                                                         type="button" class="close" data-dismiss="modal"
