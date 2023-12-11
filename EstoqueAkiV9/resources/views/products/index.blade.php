@@ -803,11 +803,15 @@
         }
 
         $(document).ready(function() {
-            $('.money-mask').inputmask('currency', {
-                prefix: '',
-                allowMinus: false,
-                thousandsSeparator: '.',
-                decimalSeparator: ',',
+            $('.money-mask').inputmask({
+                alias: 'numeric',
+                autoGroup: true,
+                digits: 2,
+                digitsOptional: false,
+                placeholder: '0',
+                groupSeparator: '.',
+                radixPoint: ',',
+                numericInput: true,
                 rightAlign: false,
                 autoUnmask: true,
             });

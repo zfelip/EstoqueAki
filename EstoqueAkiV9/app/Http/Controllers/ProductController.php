@@ -86,19 +86,22 @@ class ProductController extends Controller
     // Validação com mensagens personalizadas
     $validated = $request->validate([
         'nome' => 'required',
-        'valor' => 'required|numeric|gte:0',
+        'valor' => 'required',
         'quantidade' => 'required|integer|gte:0',
-        'preco' => 'required|numeric|gte:0',
+        'preco' => 'required',
     ], $messages);
 
     try {
+        $valorFloat = (float) str_replace(['.', ','], ['', '.'], $request->input('valor'));
+        $precoFloat = (float) str_replace(['.', ','], ['', '.'], $request->input('preco'));
+        
         // Crie um novo produto com base nos dados do formulário
         $this->product->supplier_id = $request->input('fornecedor');
         $this->product->nome = $request->input('nome');
         $this->product->descricao = $request->input('descricao');
-        $this->product->valor = $request->input('valor');
+        $this->product->valor = $valorFloat;
         $this->product->quantidade = $request->input('quantidade');
-        $this->product->preco = $request->input('preco');
+        $this->product->preco = $precoFloat;
 
         // Defina o status com base na quantidade
         $this->product->status = ($this->product->quantidade > 0);
