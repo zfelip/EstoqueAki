@@ -154,9 +154,10 @@
                         <div class="form-row mb-3 d-flex">
 
                             <div class="col-5 mb-2" style="margin-right: 1rem;">
-                            <label class="col-form-label" for="basic-default-company">Selecionar produto</label>
+                            <label class="col-form-label" for="basic-default-company">Produto</label>
                                 <select type="text" class="form-control" id="basic-default-company"
                                     placeholder="Selecionar produto" name="produto" required>
+                                    <option value="" disabled selected hidden>Selecione um produto</option>
                                     @foreach($products as $product)
                                         <option value="{{$product->id}}">{{$product->nome}}</option>
                                     @endforeach

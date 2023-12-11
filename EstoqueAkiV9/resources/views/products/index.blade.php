@@ -311,7 +311,7 @@
                                                                         <div class="d-inline-block">
                                                                             <label class="col-form-label"
                                                                                 for="basic-default-company">Valor de compra</label>
-                                                                            <input type="text" class="form-control"
+                                                                            <input type="text" class="form-control money-mask"
                                                                                 id="basic-default-company"
                                                                                 placeholder="Valor" name="valor"
                                                                                 required>
@@ -320,7 +320,7 @@
                                                                         <div class="d-inline-block">
                                                                             <label class="col-form-label"
                                                                                 for="basic-default-company">Preço de venda</label>
-                                                                            <input type="text" class="form-control"
+                                                                            <input type="text" class="form-control money-mask"
                                                                                 id="basic-default-company"
                                                                                 placeholder="Preço" name="preco"
                                                                                 required>
@@ -750,6 +750,9 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
 
+    <!-- Inputmask -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.6/jquery.inputmask.min.js"></script>
+
     <!-- Modal script -->
     <script>
         
@@ -798,6 +801,17 @@
             let modal_lancamento = new bootstrap.Modal(idModal);
             modal.lancamento.show();
         }
+
+        $(document).ready(function() {
+            $('.money-mask').inputmask('currency', {
+                prefix: '',
+                allowMinus: false,
+                thousandsSeparator: '.',
+                decimalSeparator: ',',
+                rightAlign: false,
+                autoUnmask: true,
+            });
+        });
 
         //isso serve para aparecer os erros de validação do forms sem fechar o modal
     //     $(document).ready(function() {
