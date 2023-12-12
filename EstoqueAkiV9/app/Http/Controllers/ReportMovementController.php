@@ -46,7 +46,7 @@ class ReportMovementController extends Controller
     $endDateBrazilian = $endDate->format('d/m/Y H:i:s');
 
     // Passa os resultados e o período para a view
-    return view('reports.movements.index', compact('entries', 'outputs', 'startDate', 'endDate', 'startDateBrazilian', 'endDateBrazilian'));
+    return view('reports.movements.index', compact('entries', 'outputs', 'startDateFormatted', 'endDateFormatted', 'startDateBrazilian', 'endDateBrazilian'));
 }
 
 
