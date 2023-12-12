@@ -248,7 +248,7 @@
                                     role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title h1 text-center" id="TituloModalCentralizado">
+                                            <h5 class="modal-title h1 text-center text-primary" id="TituloModalCentralizado">
                                                 Adicionar Produto</h5>
                                             <button style="background-color: transparent; border:none;" type="button"
                                                 class="close" data-dismiss="modal" aria-label="Close">
@@ -433,10 +433,10 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body p-3">
-                                                                    <div class="container-xxl p-3">
+                                                                    <div class="container-xxl p-3 d-flex justify-content-center">
                                                                         <div class="authentication-wrapper authentication-basic container-p-y">
                                                                                 <table class="table table-responsive table-bordered" style="width: 100%;">
-                                                                                    <thead class="">
+                                                                                    <thead class="bg-primary text-white">
                                                                                         <th scope="col">Nome</th>
                                                                                         <th scope="col">Descrição</th>
                                                                                         <th scope="col">Quantidade</th>
@@ -447,28 +447,25 @@
                                                                                     </thead>
                                                                                     <tbody class="">
                                                                                         <tr class="">
-                                                                                            <td scope="row">{{
-                                                                                                $product->nome }}</td>
-                                                                                            <td scope="row">{{
-                                                                                                $product->descricao }}
-                                                                                            </td>
-                                                                                            <td scope="row">{{
-                                                                                                $product->quantidade }}
-                                                                                            </td>
-                                                                                            <td scope="row">R$ {{
-                                                                                                floatval($product->valor)
-                                                                                                }}</td>
+                                                                                            <td scope="row">{{ $product->nome }}</td>
+
+                                                                                            <td scope="row">{{ $product->descricao }}</td>
+                                                                                            
+                                                                                            <td scope="row">{{ $product->quantidade }}</td>
+
+                                                                                            <td scope="row">R$ {{ floatval($product->valor) }}</td>
+
                                                                                             <!-- <td scope="row">{{ number_format($product->valor_unitario, 2, ',', '.') }}</td> -->
-                                                                                            <td scope="row">R$ {{
-                                                                                                floatval($product->preco)
-                                                                                                }}</td>
+                                                                                            <td scope="row">R$ {{ floatval($product->preco) }}</td>
+                                                                                              
                                                                                             <td>
                                                                                                 @if(isset($product->supplier->nome))
                                                                                                 {{
                                                                                                 $product->supplier->nome}}
                                                                                                 @else Fornecedor
                                                                                                 excluído
-                                                                                                @endif</td>
+                                                                                                @endif
+                                                                                            </td>
                                                                                             <!-- <td scope="row">{{ $product->fornecedor }}</td>-->
                                                                                             <td scope="row">
                                                                                                 @if ($product->status)
@@ -505,7 +502,7 @@
                                                             role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title h1 text-center"
+                                                                    <h5 class="modal-title h1 text-center text-primary"
                                                                         id="TituloModalCentralizado">
                                                                         Editar Produto</h5>
                                                                     <button
@@ -645,7 +642,7 @@
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">
+                                                                    <h5 class="modal-title text-primary" id="exampleModalLabel">
                                                                         Excluir
                                                                         Produto</h5>
                                                                     <button type="button" class="close"
@@ -716,7 +713,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja sair?</h5>
+                    <h5 class="modal-title text-primary" id="exampleModalLabel">Tem certeza que deseja sair?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>

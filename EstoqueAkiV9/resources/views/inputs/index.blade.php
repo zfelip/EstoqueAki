@@ -157,7 +157,7 @@
                                     role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title h1 text-center" id="TituloModalCentralizado">
+                                            <h5 class="modal-title h1 text-center text-primary" id="TituloModalCentralizado">
                                                 Adicionar Entrada</h5>
                                             <button style="background-color: transparent; border:none;" type="button"
                                                 class="close" data-dismiss="modal" aria-label="Close">
@@ -251,9 +251,9 @@
                                                                 role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title h1 text-center"
+                                                                        <h5 class="modal-title h1 text-center text-primary"
                                                                             id="TituloModalCentralizado">
-                                                                            Entradas</h5>
+                                                                            Entrada do Produto</h5>
                                                                         <button
                                                                             style="background-color: transparent; border:none;"
                                                                             type="button" class="close" data-dismiss="modal"
@@ -261,27 +261,25 @@
                                                                             <i class="fa-solid fa-xmark" title="Fechar"></i>
                                                                         </button>
                                                                     </div>
-                                                                    <div class="modal-body">
-                                                                        <div class="container-xxl">
-                                                                            <div
-                                                                                class="authentication-wrapper authentication-basic container-p-y">
-                                                                                <div class="table-responsive m-3">
-                                                                                    <table class="table table-borderless">
-                                                                                        <thead>
+                                                                        <div class="modal-body p-3">
+                                                                            <div class="container-xxl p-3 d-flex justify-content-center">
+                                                                                <div class="authentication-wrapper authentication-basic container-p-y">
+                                                                                    <table class="table table-responsive table-bordered" style="width: 100%;">
+                                                                                        <thead class="bg-primary text-white">
+                                                                                            <th scope="col">Código</th>
                                                                                             <th scope="col">Nome</th>
-                                                                                            <th scope="col">Id do Produto</th>
                                                                                             <th scope="col">Descrição</th>
                                                                                             <th scope="col">Quantidade</th>
-                                                                                            <th scope="col">Preço</th>
+                                                                                            <th scope="col">Preço de venda</th>
                                                                                             <th scope="col">Data</th>
                                                                                         </thead>
                                                                                         <tbody>
                                                                                             <tr class="">
-                                                                                                <td scope="row">{{ $input->product->nome }}</td>
                                                                                                 <td scope="row">{{ $input->product_id }}</td>
+                                                                                                <td scope="row">{{ $input->product->nome }}</td>
                                                                                                 <td scope="row">{{ $input->product->descricao }}</td>
                                                                                                 <td scope="row">{{ $input->quantidade }}</td>
-                                                                                                <td scope="row">{{ $input->product->preco }}</td>                  
+                                                                                                <td scope="row">R$ {{ $input->product->preco }}</td>                  
                                                                                                 <td scope="row">{{ \Carbon\Carbon::parse($input->updated_at)->format('d/m/Y \à\s H:i:s') }}</td>
                                                                                             </tr>
                                                                                         </tbody>
@@ -289,7 +287,6 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -310,7 +307,7 @@
                                                                 role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title h1 text-center"
+                                                                        <h5 class="modal-title h1 text-center text-primary"
                                                                             id="TituloModalCentralizado">
                                                                             Editar Entrada</h5>
                                                                         <button
@@ -386,7 +383,7 @@
                                                             <div class="modal-dialog" role="document">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLabel">Excluir
+                                                                        <h5 class="modal-title text-primary" id="exampleModalLabel">Excluir
                                                                             Entrada</h5>
                                                                         <button type="button" class="close" data-dismiss="modal"
                                                                             aria-label="Close">
@@ -452,7 +449,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja sair?</h5>
+                    <h5 class="modal-title text-primary" id="exampleModalLabel">Tem certeza que deseja sair?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>

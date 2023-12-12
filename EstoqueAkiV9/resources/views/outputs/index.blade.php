@@ -159,7 +159,7 @@
                                     role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title h1 text-center" id="TituloModalCentralizado">
+                                            <h5 class="modal-title h1 text-center text-primary" id="TituloModalCentralizado">
                                                 Adicionar Saída</h5>
                                             <button style="background-color: transparent; border:none;" type="button"
                                                 class="close" data-dismiss="modal" aria-label="Close">
@@ -277,7 +277,7 @@
                                                             role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title h1 text-center"
+                                                                    <h5 class="modal-title h1 text-center text-primary"
                                                                         id="TituloModalCentralizado">
                                                                         Saída do Produto</h5>
                                                                     <button
@@ -288,16 +288,14 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <div class="container-xxl">
-                                                                        <div
-                                                                            class="authentication-wrapper authentication-basic container-p-y">
-                                                                            <div class="table-responsive m-3">
-                                                                                <table class="table table-borderless">
-                                                                                    <thead>
+                                                                    <div class="container-xxl p-3 d-flex justify-content-center">
+                                                                        <div class="authentication-wrapper authentication-basic container-p-y">
+                                                                                <table class="table table-responsive table-bordered" style="width: 100%;">
+                                                                                    <thead class="bg-primary text-white">
                                                                                         <th scope="col">Nome</th>
                                                                                         <th scope="col">Quantidade</th>
                                                                                         <th scope="col">Data e Hora</th>
-                                                                                        <th scope="col">Tipo da Saída</th>
+                                                                                        <th scope="col">Tipo de saída</th>
                                                                                     </thead>
                                                                                     <tbody>
                                                                                         <tr class="">
@@ -308,7 +306,6 @@
                                                                                         </tr>
                                                                                     </tbody>
                                                                                 </table>
-                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -332,7 +329,7 @@
                                                             role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title h1 text-center"
+                                                                    <h5 class="modal-title h1 text-center text-primary"
                                                                         id="TituloModalCentralizado">
                                                                         Editar Saída</h5>
                                                                     <button
@@ -418,7 +415,7 @@
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Excluir Produto</h5>
+                                                                    <h5 class="modal-title text-primary" id="exampleModalLabel">Excluir Produto</h5>
                                                                     <button type="button" class="close" data-dismiss="modal"
                                                                         aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
@@ -487,7 +484,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja sair?</h5>
+                    <h5 class="modal-title text-primary" id="exampleModalLabel">Tem certeza que deseja sair?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
