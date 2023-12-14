@@ -240,16 +240,6 @@
                                             <th class="" width="10%">Opções</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Código</th>
-                                            <th>Nome</th>
-                                            <th>CNPJ</th>
-                                            <th>Telefone</th>
-
-                                            <th class="" width="10%">Opções</th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
                                         @foreach ($suppliers as $supplier)
                                         <tr>
@@ -408,7 +398,7 @@
                                                                                 <div class="row">
                                                                                     <div class="col text-center">
                                                                                         <button type="submit"
-                                                                                            class="btn btn-warning">Editar</button>
+                                                                                            class="btn btn-warning">Salvar alterações</button>
                                                                                     </div>
                                                                                 </div>
                                                                             </form>

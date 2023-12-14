@@ -242,15 +242,6 @@
                                             <th class="" width="10%">Opções</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Produto</th>
-                                            <th>Quantidade</th>
-                                            <th>Data e Hora</th>
-                                            <th>Tipo de saída</th>
-                                            <th class="" width="10%">Opções</th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
                                     @foreach ($outputs as $output)                                        
                                         <tr>   
@@ -389,7 +380,7 @@
                                                                                 <div class="row">
                                                                                     <div class="col text-center">
                                                                                         <button type="submit"
-                                                                                            class="btn btn-warning">Editar</button>
+                                                                                            class="btn btn-warning">Salvar alterações</button>
                                                                                     </div>
                                                                                 </div>
                                                                             </form>
