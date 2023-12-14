@@ -138,6 +138,17 @@
                         <h1 class="h3 mb-0 text-gray-800">Estoque / Saída</h1>
                     </div>
 
+                     <!-- Se houver erros, exiba dentro do modal -->
+                     @if($errors->any())
+                                                                <div class="alert alert-danger">
+                                                                    <ul>
+                                                                        @foreach($errors->all() as $error)
+                                                                            <li>{{ $error }}</li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                </div>
+                                                            @endif
+
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-2" style="background-color: #13293D;">

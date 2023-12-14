@@ -218,8 +218,8 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Código</th>
-                                            <th>Nome</th>
+                                            <!-- <th>Código</th> -->
+                                            <th>Produto</th>
                                             <th>Quantidade</th>
                                             <th>Data e Hora</th>
                                             <th class="" width="10%">Opções</th>
@@ -229,7 +229,7 @@
                                     <tbody>
                                     @foreach ($inputs as $input)
                                         <tr>
-                                            <td>{{ $input->id }}</td>
+                                            <!-- <td>{{ $input->id }}</td> -->
                                             <td>{{ $input->product->nome }}</td>
                                             <td>{{ $input->quantidade }}</td>
                                             <td>{{ \Carbon\Carbon::parse($input->updated_at)->format('d/m/Y \à\s H:i:s') }}</td>
@@ -266,8 +266,8 @@
                                                                                 <div class="authentication-wrapper authentication-basic container-p-y">
                                                                                     <table class="table table-responsive table-bordered" style="width: 100%;">
                                                                                         <thead class="bg-primary text-white">
-                                                                                            <th scope="col">Código</th>
-                                                                                            <th scope="col">Nome</th>
+                                                                                            <!-- <th scope="col">Código</th> -->
+                                                                                            <th scope="col">Produto</th>
                                                                                             <th scope="col">Descrição</th>
                                                                                             <th scope="col">Quantidade</th>
                                                                                             <th scope="col">Preço de venda</th>
@@ -275,7 +275,7 @@
                                                                                         </thead>
                                                                                         <tbody>
                                                                                             <tr class="">
-                                                                                                <td scope="row">{{ $input->product_id }}</td>
+                                                                                                <!-- <td scope="row">{{ $input->product_id }}</td> -->
                                                                                                 <td scope="row">{{ $input->product->nome }}</td>
                                                                                                 <td scope="row">{{ $input->product->descricao }}</td>
                                                                                                 <td scope="row">{{ $input->quantidade }}</td>

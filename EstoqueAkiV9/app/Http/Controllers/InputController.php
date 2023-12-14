@@ -39,22 +39,30 @@ class InputController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $this->input->quantidade = $request->input('quantidade');
-        $this->input->product_id = $request->input('entrada');
+{
+    $this->input->quantidade = $request->input('quantidade');
+    $this->input->product_id = $request->input('entrada');
 
-        $product_id = $this->input->product_id;
-        $quantidade = $this->input->quantidade;
+    $product_id = $this->input->product_id;
+    $quantidade = $this->input->quantidade;
 
-        $this->input->save();
+    $this->input->save();
 
-        //atualiza a quantidade de produto ao adicionar uma entrada
-        $product = Product::find($product_id);
-        $product->quantidade += $quantidade;
-        $product->save();
+    // Atualiza a quantidade de produto ao adicionar uma entrada
+    $product = Product::find($product_id);
+    $product->quantidade += $quantidade;
 
-        return redirect()->route('inputs.index');
+    // Atualiza o status do produto se a nova quantidade for maior que zero
+    if ($product->quantidade > 0) {
+        $product->status = true;
+    } else {
+        $product->status = false;
     }
+
+    $product->save();
+
+    return redirect()->route('inputs.index');
+}
 
     /**
      * Display the specified resource.
@@ -76,40 +84,57 @@ class InputController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, Input $input)
-    {
-        $validated = $request->validate([
-            'quantidade' => 'nullable|integer|gte:0',
-        ]);
+{
+    $validated = $request->validate([
+        'quantidade' => 'nullable|integer|gte:0',
+    ]);
 
-        $antiga_quantidade = $input->quantidade;
+    $antiga_quantidade = $input->quantidade;
 
-        $input->fill([
-            'product_id' => is_null($request->input('entrada')) ? $input->product_id : $request->input('entrada'),
-            'quantidade' => is_null($request->input('quantidade')) ? $input->quantidade : $request->input('quantidade'),
-        ]);
+    $input->fill([
+        'product_id' => is_null($request->input('entrada')) ? $input->product_id : $request->input('entrada'),
+        'quantidade' => is_null($request->input('quantidade')) ? $input->quantidade : $request->input('quantidade'),
+    ]);
 
-        $product = Product::find($input->product_id);
-        $nova_quantidade = $input->quantidade;
-        $input->save();
+    $product = Product::find($input->product_id);
+    $nova_quantidade = $input->quantidade;
+    $input->save();
 
-        //atualiza a quantidade de produto ao adicionar uma entrada
-        $product->quantidade -= $antiga_quantidade;
-        $product->quantidade += $nova_quantidade;
-        $product->save();
+    // Atualiza a quantidade de produto ao adicionar uma entrada
+    $product->quantidade -= $antiga_quantidade;
+    $product->quantidade += $nova_quantidade;
 
-        return redirect()->route('inputs.index');
+    // Atualiza o status do produto se a nova quantidade for maior que zero
+    if ($product->quantidade > 0) {
+        $product->status = true;
+    } else {
+        $product->status = false;
     }
+
+    $product->save();
+
+    return redirect()->route('inputs.index');
+}
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Input $input)
-    {
-        $product = Product::find($input->product_id);
-        $product->quantidade -= $input->quantidade;
-        $product->save();
-        $input->delete();
+{
+    $product = Product::find($input->product_id);
+    $product->quantidade -= $input->quantidade;
 
-        return redirect()->route('inputs.index');
+    // Atualiza o status do produto se a nova quantidade for maior que zero
+    if ($product->quantidade > 0) {
+        $product->status = true;
+    } else {
+        $product->status = false;
     }
+
+    $product->save();
+
+    $input->delete();
+
+    return redirect()->route('inputs.index');
+}
 }

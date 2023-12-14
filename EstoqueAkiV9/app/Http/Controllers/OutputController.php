@@ -41,31 +41,36 @@ class OutputController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+{
+    $this->output->product_id = $request->input('Saida');
+    $this->output->quantidade = $request->input('quantidade');
+    $this->output->tipo = $request->input('tipo');
 
-        $this->output->product_id = $request->input('Saida');
-        $this->output->quantidade = $request->input('quantidade');
-        $this->output->tipo = $request->input('tipo');
+    $product_id = $this->output->product_id;
+    $quantidade = $this->output->quantidade;
+    $requestQuantidade = $request->input('quantidade');
 
-        $product_id = $this->output->product_id;
-        $quantidade = $this->output->quantidade;
-        $requestQuantidade = $request->input('quantidade');
+    // Atualiza a quantidade de produto ao adicionar uma saída
+    $product = Product::find($product_id);
 
-        //atualiza a quantidade de produto ao adicionar uma saída
-        $product = Product::find($product_id);
-        /*Se a quantidade de produtos solicitadas para a realização da saída for
-        maior que a quantidade disponível, a saída não é realizada.*/
-        if ($requestQuantidade > $product->quantidade) {
-            return redirect()->back()->withErrors(['error' => 'Quantidade solicitada maior do que a quantidade disponível.']);
+    // Se a quantidade de produtos solicitadas para a realização da saída for maior que a quantidade disponível, a saída não é realizada.
+    if ($requestQuantidade > $product->quantidade) {
+        return redirect()->back()->withErrors(['error' => 'Quantidade inserida maior do que a quantidade disponível no estoque.']);
+    } else {
+        $this->output->save();
+        $product->quantidade -= $quantidade;
+
+        // Atualiza o status do produto se a nova quantidade for menor que zero
+        if ($product->quantidade <= 0) {
+            $product->status = false;
+        } else {
+            $product->status = true;
         }
-        else {
-            $this->output->save();
-            $product->quantidade -= $quantidade;
-            $product->save();
 
-            return redirect()->route('outputs.index');    
-        }
+        $product->save();
+        return redirect()->route('outputs.index');
     }
+}
 
     /**
      * Display the specified resource.
@@ -86,7 +91,10 @@ class OutputController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Output $output)
+   /**
+ * Update the specified resource in storage.
+ */
+public function update(Request $request, Output $output)
 {
     $validated = $request->validate([
         'quantidade' => 'nullable|integer|gte:0',
@@ -101,28 +109,55 @@ class OutputController extends Controller
     ]);
 
     $product = Product::find($output->product_id);
+
+    // Verifica se a nova quantidade é maior que a quantidade disponível
+    if ($output->quantidade > $product->quantidade) {
+        return redirect()->back()->withErrors(['error' => 'Quantidade inserida maior do que a quantidade disponível no estoque.']);
+    }
+
     $nova_quantidade = $output->quantidade;
     $output->save();
 
-    //atualiza a quantidade de produto ao adicionar uma entrada
+    // Atualiza a quantidade de produto ao adicionar uma entrada
     $product->quantidade += $antiga_quantidade;
     $product->quantidade -= $nova_quantidade;
+
+    
+
+    // Atualiza o status do produto se a nova quantidade for menor ou igual a zero
+    if ($product->quantidade <= 0) {
+        $product->status = false;
+    } else {
+        $product->status = true;
+    }
+
     $product->save();
 
     return redirect()->route('outputs.index');
 }
 
 
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Output $output)
-    {
-        $product = Product::find($output->product_id);
-        $product->quantidade += $output->quantidade;
-        $product->save();
-        $output->delete();
+{
+    $product = Product::find($output->product_id);
+    $product->quantidade += $output->quantidade;
 
-        return redirect()->route('outputs.index');
+    // Atualiza o status do produto se a nova quantidade for menor que zero
+    if ($product->quantidade <= 0) {
+        $product->status = false;
+    } else {
+        $product->status = true;
     }
+
+    $output->delete();
+    $product->save();
+
+   
+
+    return redirect()->route('outputs.index');
+}
 }
