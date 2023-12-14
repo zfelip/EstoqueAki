@@ -357,7 +357,7 @@
                                                                                     <div class="row">
                                                                                         <div class="col text-center">
                                                                                             <button type="submit"
-                                                                                                class="btn btn-warning">Editar</button>
+                                                                                                class="btn btn-warning">Salvar alterações</button>
                                                                                         </div>
                                                                                     </div>
                                                                                 </form>

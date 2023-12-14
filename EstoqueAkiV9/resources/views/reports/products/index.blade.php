@@ -208,12 +208,6 @@
                                             <th>Quantidade</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Entrada(s)</th>
-                                            <th>Quantidade</th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
                                     @if(isset($entries))
                                         @foreach($entries as $entries)
@@ -248,13 +242,6 @@
                                             <th>Tipo</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Saída(s)</th>
-                                            <th>Quantidade</th>
-                                            <th>Tipo</th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
                                     @if(isset($outputs))
                                         @foreach($outputs as $output)
