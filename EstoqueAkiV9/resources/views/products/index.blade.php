@@ -310,7 +310,7 @@
                                                                     <div class="mb-3">
                                                                         <div class="d-inline-block">
                                                                             <label class="col-form-label"
-                                                                                for="basic-default-company">Valor de compra</label>
+                                                                                for="basic-default-company">Valor de compra (R$)</label>
                                                                             <input type="text" class="form-control money-mask"
                                                                                 id="basic-default-company"
                                                                                 placeholder="Valor de compra" name="valor"
@@ -319,7 +319,7 @@
                                                                         </div>
                                                                         <div class="d-inline-block">
                                                                             <label class="col-form-label"
-                                                                                for="basic-default-company">Preço de venda</label>
+                                                                                for="basic-default-company">Preço de venda (R$)</label>
                                                                             <input type="text" class="form-control money-mask"
                                                                                 id="basic-default-company"
                                                                                 placeholder="Preço de venda" name="preco"
@@ -333,11 +333,15 @@
                                                                             id="basic-default-company"
                                                                             placeholder="Fornecedor" name="fornecedor"
                                                                             required>
+                                                                            @if(count($suppliers) == 0)
+                                                                            <option value="" disabled selected hidden>Não há fornecedor cadastrado</option>
+                                                                            @else
                                                                             <option value="" disabled selected hidden>Selecione um fornecedor</option>
                                                                             @foreach ($suppliers as $supplier)
                                                                             <option value="{{ $supplier->id }}">
                                                                                 {{ $supplier->nome }}</option>
                                                                             @endforeach
+                                                                            @endif
                                                                         </select>
                                                                     </div>
                                                                 </div>
