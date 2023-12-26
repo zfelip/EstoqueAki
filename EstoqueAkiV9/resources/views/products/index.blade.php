@@ -388,9 +388,8 @@
                                             <td>{{ $product->nome }}</td>
                                             <td>{{ $product->descricao }}</td>
                                             <td>{{ $product->quantidade }}</td>
-                                            <td>R$ {{ floatval($product->valor) }}</td>
-                                            <!-- <td>{{ number_format($product->valor_unitario, 2, ',', '.') }}</td> -->
-                                            <td>R$ {{ floatval($product->preco) }}</td>
+                                            <td>R$ {{ number_format(floatval($product->valor), 2, '.', ' ') }}</td>
+                                            <td>R$ {{ number_format(floatval($product->preco), 2, '.', ' ') }}</td>
                                             <td>
                                                 @if(isset($product->supplier->nome))
                                                 {{ $product->supplier->nome}}
@@ -439,7 +438,7 @@
                                                                 <div class="modal-body p-3">
                                                                     <div class="container-xxl p-3 d-flex justify-content-center">
                                                                         <div class="authentication-wrapper authentication-basic container-p-y">
-                                                                                <table class="table table-responsive table-bordered" style="width: 100%;">
+                                                                                <table class="table table-responsive table-bordered" style="width: 105%;">
                                                                                     <thead class="bg-primary text-white">
                                                                                         <th scope="col">Nome</th>
                                                                                         <th scope="col">Descrição</th>
@@ -457,10 +456,9 @@
                                                                                             
                                                                                             <td scope="row">{{ $product->quantidade }}</td>
 
-                                                                                            <td scope="row">R$ {{ floatval($product->valor) }}</td>
-
-                                                                                            <!-- <td scope="row">{{ number_format($product->valor_unitario, 2, ',', '.') }}</td> -->
-                                                                                            <td scope="row">R$ {{ floatval($product->preco) }}</td>
+                                                                                            <td scope="row">R$ {{ number_format(floatval($product->valor), 2, '.', ' ') }}</td>
+ 
+                                                                                            <td scope="row">R$ {{ number_format(floatval($product->preco), 2, '.', ' ') }}</td>
                                                                                               
                                                                                             <td>
                                                                                                 @if(isset($product->supplier->nome))
@@ -564,9 +562,9 @@
                                                                                                     class="d-inline-block">
                                                                                                     <label
                                                                                                         class="col-form-label"
-                                                                                                        for="basic-default-company">Valor de compra</label>
+                                                                                                        for="basic-default-company">Valor de compra (R$)</label>
                                                                                                     <input type="text"
-                                                                                                        class="form-control"
+                                                                                                        class="form-control money-mask"
                                                                                                         id="basic-default-company"
                                                                                                         value="{{$product->valor}}"
                                                                                                         name="valor">
@@ -576,9 +574,9 @@
                                                                                                     class="d-inline-block">
                                                                                                     <label
                                                                                                         class="col-form-label"
-                                                                                                        for="basic-default-company">Preço de venda</label>
+                                                                                                        for="basic-default-company">Preço de venda (R$)</label>
                                                                                                     <input type="text"
-                                                                                                        class="form-control"
+                                                                                                        class="form-control money-mask"
                                                                                                         id="basic-default-company"
                                                                                                         value="{{$product->preco}}"
                                                                                                         name="preco">
@@ -805,35 +803,10 @@
                 prefix: '',
                 allowMinus: false,
                 thousandsSeparator: '.',
-                decimalSeparator: ',',
                 rightAlign: false,
                 autoUnmask: true,
             });
         });
-
-        //isso serve para aparecer os erros de validação do forms sem fechar o modal
-    //     $(document).ready(function() {
-    //     $('#formsCadastrar').submit(function(event) {
-    //         event.preventDefault();
-
-    //         // Faça a requisição AJAX para validar o formulário
-    //         $.ajax({
-    //             type: 'POST',
-    //             url: $(this).attr('action'),
-    //             data: $(this).serialize(),
-    //             success: function(response) {
-    //                 // O formulário foi validado com sucesso, você pode prosseguir com a lógica desejada
-    //                 modal.modal('hide');
-    //             },
-    //             error: function(response) {
-    //                 // O formulário tem erros de validação, exiba os erros e mantenha o modal aberto
-    //                 var errors = response.responseJSON.errors;
-    //                 // Exiba os erros onde preferir na sua interface
-    //                 alert('Erro de validação: ' + JSON.stringify(errors));
-    //             }
-    //         });
-    //     });
-    // });
     </script>
 
 </body>

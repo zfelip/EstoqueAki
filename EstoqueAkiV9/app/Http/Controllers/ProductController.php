@@ -69,6 +69,11 @@ class ProductController extends Controller
      */
     public function store(Request $request)
 {
+     // Remova as vírgulas dos campos valor e preco
+     $request->merge([
+        'valor' => str_replace(',', '', $request->input('valor')),
+        'preco' => str_replace(',', '', $request->input('preco')),
+    ]);
     // Defina mensagens de erro personalizadas
     $messages = [
         'nome.required' => 'O campo nome é obrigatório.',
@@ -136,6 +141,11 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        $request->merge([
+        'valor' => str_replace(',', '', $request->input('valor')),
+        'preco' => str_replace(',', '', $request->input('preco')),
+    ]);
+    
         $validated = $request->validate([
             'nome' => 'nullable',
             'valor' => 'nullable|numeric|gte:0',
