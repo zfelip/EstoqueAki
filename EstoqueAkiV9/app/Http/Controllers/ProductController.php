@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Input;
+use App\Models\Output;
 use App\Models\Supplier;
 use Illuminate\Support\Facades\DB;
 
@@ -11,10 +13,14 @@ class ProductController extends Controller
 {
     public Product $product;
     public Supplier $supplier;
+    public Input $input;
+    public Output $output;
 
     public function __construct() {
         $this->product = new Product();
         $this->supplier = new Supplier();
+        $this->input = new Input();
+        $this->output = new Output();
     }
     /**
      * Display a listing of the resource.
@@ -176,8 +182,16 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(Product $product, Input $input, Output $output)
     {
+        $input = $product->input;
+        $output = $product->output;
+        if ($input) {
+            $input->delete();
+        }
+        if ($output) {
+            $output->delete();
+        }
         $product->delete();
 
         return redirect()->route('products.index');

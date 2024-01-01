@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Supplier;
+use App\Models\Input;
+use App\Models\Output;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
@@ -25,5 +27,15 @@ class Product extends Model
     public function supplier()
     {
     return $this->belongsTo(Supplier::class, 'supplier_id');
+    }
+
+    public function input()
+    {
+        return $this->hasOne(Input::class, 'product_id');
+    }
+
+    public function Output()
+    {
+        return $this->hasOne(Output::class, 'product_id');
     }
 }

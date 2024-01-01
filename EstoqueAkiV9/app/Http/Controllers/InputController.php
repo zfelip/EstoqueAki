@@ -120,21 +120,21 @@ class InputController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Input $input)
-{
-    $product = Product::find($input->product_id);
-    $product->quantidade -= $input->quantidade;
+    {
+        $product = Product::find($input->product_id);
+        $product->quantidade -= $input->quantidade;
 
-    // Atualiza o status do produto se a nova quantidade for maior que zero
-    if ($product->quantidade > 0) {
-        $product->status = true;
-    } else {
-        $product->status = false;
+        // Atualiza o status do produto se a nova quantidade for maior que zero
+        if ($product->quantidade > 0) {
+            $product->status = true;
+        } else {
+            $product->status = false;
+        }
+
+        $product->save();
+
+        $input->delete();
+
+        return redirect()->route('inputs.index');
     }
-
-    $product->save();
-
-    $input->delete();
-
-    return redirect()->route('inputs.index');
-}
 }
